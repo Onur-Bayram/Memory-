@@ -3,15 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build:css": "sass src/scss/main.scss assets/css/main.css --style=expanded",
-    "build:js": "tsc",
-    "build": "npm run build:css && npm run build:js",
-    "watch:css": "sass --watch src/scss/main.scss:assets/css/main.css",
-    "watch:js": "tsc --watch"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
     "sass": "^1.89.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vite": "^8.0.16"
   }
 }
 
