@@ -1,16 +1,25 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "strict": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    /* Language and target environment */
+    "target": "ESNext", // Modern syntax for browsers and Vite
+    "lib": ["ESNext", "DOM"], // Browser APIs and modern JS features
+
+    /* Modules and resolution */
+    "module": "ESNext", // ES modules for Vite/Rollup
+    "moduleResolution": "Bundler", // Vite-specific resolution strategy
+    "isolatedModules": true, // Treat each file as an isolated module
+
+    /* Type checking */
+    "strict": true, // Enable all strict checks
+    "skipLibCheck": true, // Faster because node_modules types are skipped
+    "noEmit": true, // Vite handles the build output
+
+    /* Miscellaneous */
+    "esModuleInterop": true, // Better import compatibility
+    "resolveJsonModule": true, // Allow imports from JSON files
+    "forceConsistentCasingInFileNames": true // Keep file name casing consistent
   },
-  "include": ["src"]
+  "include": ["src"], // Only compile project source code
+  "exclude": ["node_modules", "dist"] // Exclude dependencies and build output
 }
 
