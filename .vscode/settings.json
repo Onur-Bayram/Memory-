@@ -2,5 +2,11 @@
   "terminal.integrated.defaultProfile.windows": "Command Prompt",
   "terminal.integrated.env.windows": {
     "PATH": "C:\\Program Files\\nodejs;${env:PATH}"
+  },
+  "files.exclude": {
+    "**/.agents": true,
+    "**/.git": true,
+    "**/.gitignore": true,
+    "**/.vscode": true
   }
 }
