@@ -3,6 +3,9 @@
   "terminal.integrated.env.windows": {
     "PATH": "C:\\Program Files\\nodejs;${env:PATH}"
   },
+  "files.associations": {
+    "*.scss": "scss"
+  },
   "files.exclude": {
     "**/.agents": true,
     "**/.git": true,
