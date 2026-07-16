@@ -11,6 +11,9 @@ body {
 }
 
 #field {
+  display: grid;
+  grid-template-columns: repeat(4, 120px);
+  gap: 16px;
   padding: 20px;
 }
 
