@@ -43,14 +43,19 @@ body {
     inset: 0;
     display: block;
     border-radius: 5px;
-    background-image: url('/assets/bild1.png');
     background-size: cover;
     background-position: center;
     backface-visibility: hidden;
     box-shadow: 0 4px 8px rgb(0 0 0 / 20%);
 
+    &--front {
+      background-image: url('/assets/bild1.png');
+    }
+
     &--back {
       transform: rotateY(180deg);
+      background-color: white;
+      background-image: var(--card-image);
     }
   }
 
