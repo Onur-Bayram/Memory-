@@ -23,15 +23,22 @@ function init() {
     const shuffledImages = shuffleCards([...cardImages, ...cardImages]);
 
     cardRefs.forEach((cardRef, index) => {
-      const cardImagePath = `/dist/assets/${shuffledImages[index]}`;
+      const cardImage = shuffledImages[index];
+      const cardImagePath = `/dist/assets/${cardImage}`;
 
       cardRef.style.setProperty('--card-image', `url('${cardImagePath}')`);
+      cardRef.dataset.cardImage = cardImage;
     });
 
     fieldRef.addEventListener('click', (e) => {
       const card = (e.target as HTMLElement).closest('.card');
 
-      if (!(card instanceof HTMLElement) || isLocked || card.classList.contains('is-flipped')) {
+      if (
+        !(card instanceof HTMLElement) ||
+        isLocked ||
+        card.classList.contains('is-flipped') ||
+        card.classList.contains('is-matched')
+      ) {
         return;
       }
 
@@ -40,12 +47,24 @@ function init() {
 
       if (flippedCards.length === 2) {
         isLocked = true;
+        const [firstCard, secondCard] = flippedCards;
+        const isMatch = firstCard.dataset.cardImage === secondCard.dataset.cardImage;
+
+        if (isMatch) {
+          flippedCards.forEach((flippedCard) => {
+            flippedCard.classList.add('is-matched');
+          });
+
+          flippedCards = [];
+          isLocked = false;
+
+          return;
+        }
 
         setTimeout(() => {
           flippedCards.forEach((flippedCard) => {
             flippedCard.classList.remove('is-flipped');
           });
-
           flippedCards = [];
           isLocked = false;
         }, 1000);
