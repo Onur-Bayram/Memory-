@@ -17,6 +17,8 @@ function init() {
   const fieldRef = document.getElementById('field');
 
   if (fieldRef) {
+    let flippedCards: HTMLElement[] = [];
+    let isLocked = false;
     const cardRefs = fieldRef.querySelectorAll<HTMLElement>('.card');
     const shuffledImages = shuffleCards([...cardImages, ...cardImages]);
 
@@ -27,10 +29,26 @@ function init() {
     });
 
     fieldRef.addEventListener('click', (e) => {
-      const card = (e.target as HTMLElement).closest('.card') as HTMLElement;
+      const card = (e.target as HTMLElement).closest('.card');
 
-      if (card) {
-        card.classList.toggle('is-flipped');
+      if (!(card instanceof HTMLElement) || isLocked || card.classList.contains('is-flipped')) {
+        return;
+      }
+
+      card.classList.add('is-flipped');
+      flippedCards.push(card);
+
+      if (flippedCards.length === 2) {
+        isLocked = true;
+
+        setTimeout(() => {
+          flippedCards.forEach((flippedCard) => {
+            flippedCard.classList.remove('is-flipped');
+          });
+
+          flippedCards = [];
+          isLocked = false;
+        }, 1000);
       }
     });
   }
