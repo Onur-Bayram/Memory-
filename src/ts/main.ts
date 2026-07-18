@@ -11,16 +11,31 @@ const cardImages = [
   'karte_8_unten.png',
 ];
 
+type Player = 'blue' | 'orange';
+
+const playerColors = {
+  blue: '#2fb4ff',
+  orange: '#ff8a2a',
+};
+
 init();
 
 function init() {
   const fieldRef = document.getElementById('field');
+  const blueScoreRef = document.getElementById('blue-score');
+  const orangeScoreRef = document.getElementById('orange-score');
+  const currentPlayerMarkerRef = document.querySelector<HTMLElement>('.current-player__marker');
 
-  if (fieldRef) {
+  if (fieldRef && blueScoreRef && orangeScoreRef && currentPlayerMarkerRef) {
     let flippedCards: HTMLElement[] = [];
     let isLocked = false;
+    let currentPlayer: Player = 'blue';
+    let blueScore = 0;
+    let orangeScore = 0;
     const cardRefs = fieldRef.querySelectorAll<HTMLElement>('.card');
     const shuffledImages = shuffleCards([...cardImages, ...cardImages]);
+
+    updateCurrentPlayerMarker(currentPlayerMarkerRef, currentPlayer);
 
     cardRefs.forEach((cardRef, index) => {
       const cardImage = shuffledImages[index];
@@ -55,6 +70,14 @@ function init() {
             flippedCard.classList.add('is-matched');
           });
 
+          if (currentPlayer === 'blue') {
+            blueScore++;
+          } else {
+            orangeScore++;
+          }
+
+          updateScore(blueScoreRef, blueScore);
+          updateScore(orangeScoreRef, orangeScore);
           flippedCards = [];
           isLocked = false;
 
@@ -65,6 +88,9 @@ function init() {
           flippedCards.forEach((flippedCard) => {
             flippedCard.classList.remove('is-flipped');
           });
+
+          currentPlayer = switchPlayer(currentPlayer);
+          updateCurrentPlayerMarker(currentPlayerMarkerRef, currentPlayer);
           flippedCards = [];
           isLocked = false;
         }, 1000);
@@ -75,4 +101,16 @@ function init() {
 
 function shuffleCards(cards: string[]) {
   return cards.sort(() => Math.random() - 0.5);
+}
+
+function switchPlayer(currentPlayer: Player) {
+  return currentPlayer === 'blue' ? 'orange' : 'blue';
+}
+
+function updateScore(scoreRef: HTMLElement, score: number) {
+  scoreRef.textContent = score.toString();
+}
+
+function updateCurrentPlayerMarker(markerRef: HTMLElement, currentPlayer: Player) {
+  markerRef.style.background = playerColors[currentPlayer];
 }
