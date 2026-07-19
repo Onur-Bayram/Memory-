@@ -8,24 +8,27 @@
     <script type="module" src="/src/ts/main.ts"></script>
   </head>
   <body>
-    <section class="score-board" aria-label="Spielstand">
-      <div class="score-board__player score-board__player--blue">
-        <span class="score-board__marker"></span>
-        <span class="score-board__name">Blue</span>
-        <span class="score-board__points" id="blue-score">0</span>
-      </div>
-      <div class="score-board__player score-board__player--orange">
-        <span class="score-board__marker"></span>
-        <span class="score-board__name">Orange</span>
-        <span class="score-board__points" id="orange-score">0</span>
-      </div>
-    </section>
-    <section class="current-player" aria-label="Aktueller Spieler">
-      <span class="current-player__label">Current player:</span>
-      <span class="current-player__marker"></span>
-    </section>
-    <button class="exit-game" type="button" aria-label="Exit game"></button>
-    <section id="field">
+    <main class="game-content">
+      <header class="game-header">
+      <section class="score-board" aria-label="Spielstand">
+        <div class="score-board__player score-board__player--blue">
+          <span class="score-board__marker"></span>
+          <span class="score-board__name">Blue</span>
+          <span class="score-board__points" id="blue-score">0</span>
+        </div>
+        <div class="score-board__player score-board__player--orange">
+          <span class="score-board__marker"></span>
+          <span class="score-board__name">Orange</span>
+          <span class="score-board__points" id="orange-score">0</span>
+        </div>
+      </section>
+      <section class="current-player" aria-label="Aktueller Spieler">
+        <span class="current-player__label">Current player:</span>
+        <span class="current-player__marker"></span>
+      </section>
+      <button class="exit-game" type="button" aria-label="Exit game"></button>
+      </header>
+      <section id="field">
       <button class="card" type="button" aria-label="Memory Karte">
         <span class="card__inner">
           <span class="card__face card__face--front"></span>
@@ -122,6 +125,7 @@
           <span class="card__face card__face--back"></span>
         </span>
       </button>
-    </section>
+      </section>
+    </main>
   </body>
 </html>
