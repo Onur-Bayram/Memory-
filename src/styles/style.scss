@@ -7,9 +7,9 @@
 body {
   margin: 0;
   position: relative;
-  min-width: 100%;
   min-height: 100vh;
   background: #303131;
+  font-family: Arial, sans-serif;
 }
 
 .game-content {
@@ -22,7 +22,6 @@ body {
   gap: 54px;
   width: 1217px;
   height: 644px;
-  opacity: 1;
   transform: translateX(-50%);
 }
 
@@ -32,7 +31,6 @@ body {
   justify-content: space-between;
   width: 1217px;
   height: 62px;
-  opacity: 1;
 }
 
 .score-board {
@@ -43,7 +41,6 @@ body {
   width: 295px;
   height: 62px;
   background: rgb(84 122 114 / 62%);
-  font-family: Arial, sans-serif;
   font-size: 22px;
   font-weight: 700;
 
@@ -73,7 +70,6 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-family: Arial, sans-serif;
   font-size: 28px;
   font-weight: 700;
   color: white;
@@ -110,6 +106,86 @@ body {
   }
 }
 
+.exit-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  background: rgb(48 49 49 / 78%);
+
+  &[hidden] {
+    display: none;
+  }
+
+  &__content {
+    width: 539px;
+    height: 270px;
+    padding-top: 45px;
+    background: #f4f4f5;
+    text-align: center;
+  }
+
+  &__title {
+    margin: 0;
+    color: #252b31;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 55px;
+  }
+
+  &__button {
+    height: 57px;
+    padding: 0;
+    border: 2px solid transparent;
+    font-size: 19px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 140ms ease-in-out, border-color 140ms ease-in-out, box-shadow 140ms ease-in-out,
+      color 140ms ease-in-out, transform 140ms ease-in-out;
+
+    &:hover {
+      border-color: #54dfce;
+      box-shadow: 0 10px 18px rgb(0 0 0 / 16%);
+      transform: translateY(-2px) scale(1.04);
+    }
+
+    &:focus-visible {
+      outline: 2px solid #54dfce;
+      outline-offset: 3px;
+    }
+  }
+
+  &__back-button {
+    width: 183px;
+    color: white;
+    background: #67cdbd;
+
+    &:hover {
+      background: #76ddce;
+    }
+  }
+
+  &__exit-button {
+    width: 147px;
+    color: #54dfce;
+    background: white;
+    border-color: #54dfce;
+
+    &:hover {
+      color: white;
+      background: #54dfce;
+    }
+  }
+}
+
 #field {
   display: grid;
   grid-template-columns: repeat(4, 120px);
@@ -118,7 +194,6 @@ body {
   width: 529px;
   height: 528px;
   padding: 0;
-  opacity: 1;
 }
 
 .card {

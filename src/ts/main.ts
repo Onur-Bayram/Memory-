@@ -32,18 +32,10 @@ function init() {
     let currentPlayer: Player = 'blue';
     let blueScore = 0;
     let orangeScore = 0;
-    const cardRefs = fieldRef.querySelectorAll<HTMLElement>('.card');
     const shuffledImages = shuffleCards([...cardImages, ...cardImages]);
 
+    renderCards(fieldRef, shuffledImages);
     updateCurrentPlayerMarker(currentPlayerMarkerRef, currentPlayer);
-
-    cardRefs.forEach((cardRef, index) => {
-      const cardImage = shuffledImages[index];
-      const cardImagePath = `/dist/assets/${cardImage}`;
-
-      cardRef.style.setProperty('--card-image', `url('${cardImagePath}')`);
-      cardRef.dataset.cardImage = cardImage;
-    });
 
     fieldRef.addEventListener('click', (e) => {
       const card = (e.target as HTMLElement).closest('.card');
@@ -95,6 +87,51 @@ function init() {
           isLocked = false;
         }, 1000);
       }
+    });
+  }
+
+  initExitPopup();
+}
+
+function renderCards(fieldRef: HTMLElement, shuffledImages: string[]) {
+  fieldRef.innerHTML = '';
+
+  shuffledImages.forEach((cardImage) => {
+    const cardRef = document.createElement('button');
+
+    cardRef.classList.add('card');
+    cardRef.type = 'button';
+    cardRef.ariaLabel = 'Memory Karte';
+    cardRef.dataset.cardImage = cardImage;
+    cardRef.style.setProperty('--card-image', `url('/dist/assets/${cardImage}')`);
+    cardRef.innerHTML = `
+      <span class="card__inner">
+        <span class="card__face card__face--front"></span>
+        <span class="card__face card__face--back"></span>
+      </span>
+    `;
+
+    fieldRef.appendChild(cardRef);
+  });
+}
+
+function initExitPopup() {
+  const exitGameButtonRef = document.querySelector<HTMLButtonElement>('.exit-game');
+  const exitPopupRef = document.getElementById('exit-popup');
+  const backToGameButtonRef = document.querySelector<HTMLButtonElement>('.exit-popup__back-button');
+  const confirmExitButtonRef = document.querySelector<HTMLButtonElement>('.exit-popup__exit-button');
+
+  if (exitGameButtonRef && exitPopupRef && backToGameButtonRef && confirmExitButtonRef) {
+    exitGameButtonRef.addEventListener('click', () => {
+      exitPopupRef.hidden = false;
+    });
+
+    backToGameButtonRef.addEventListener('click', () => {
+      exitPopupRef.hidden = true;
+    });
+
+    confirmExitButtonRef.addEventListener('click', () => {
+      window.location.reload();
     });
   }
 }
