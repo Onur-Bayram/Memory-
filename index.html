@@ -43,5 +43,25 @@
         </div>
       </div>
     </section>
+
+    <section class="game-over" id="game-over" aria-label="Game over" hidden>
+      <h1 class="game-over__title">Game Over</h1>
+
+      <div class="game-over__final-score">
+        <p class="game-over__label">Final score</p>
+        <section class="score-board game-over__score-board" aria-label="Endstand">
+          <div class="score-board__player score-board__player--blue">
+            <span class="score-board__marker"></span>
+            <span class="score-board__name">Blue</span>
+            <span class="score-board__points" id="final-blue-score">0</span>
+          </div>
+          <div class="score-board__player score-board__player--orange">
+            <span class="score-board__marker"></span>
+            <span class="score-board__name">Orange</span>
+            <span class="score-board__points" id="final-orange-score">0</span>
+          </div>
+        </section>
+      </div>
+    </section>
   </body>
 </html>

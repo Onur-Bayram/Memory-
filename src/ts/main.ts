@@ -24,14 +24,28 @@ function init() {
   const fieldRef = document.getElementById('field');
   const blueScoreRef = document.getElementById('blue-score');
   const orangeScoreRef = document.getElementById('orange-score');
+  const finalBlueScoreRef = document.getElementById('final-blue-score');
+  const finalOrangeScoreRef = document.getElementById('final-orange-score');
+  const gameContentRef = document.querySelector<HTMLElement>('.game-content');
+  const gameOverRef = document.getElementById('game-over');
   const currentPlayerMarkerRef = document.querySelector<HTMLElement>('.current-player__marker');
 
-  if (fieldRef && blueScoreRef && orangeScoreRef && currentPlayerMarkerRef) {
+  if (
+    fieldRef &&
+    blueScoreRef &&
+    orangeScoreRef &&
+    finalBlueScoreRef &&
+    finalOrangeScoreRef &&
+    gameContentRef &&
+    gameOverRef &&
+    currentPlayerMarkerRef
+  ) {
     let flippedCards: HTMLElement[] = [];
     let isLocked = false;
     let currentPlayer: Player = 'blue';
     let blueScore = 0;
     let orangeScore = 0;
+    let matchedPairs = 0;
     const shuffledImages = shuffleCards([...cardImages, ...cardImages]);
 
     renderCards(fieldRef, shuffledImages);
@@ -70,8 +84,22 @@ function init() {
 
           updateScore(blueScoreRef, blueScore);
           updateScore(orangeScoreRef, orangeScore);
+          matchedPairs++;
           flippedCards = [];
           isLocked = false;
+
+          if (matchedPairs === cardImages.length) {
+            setTimeout(() => {
+              showGameOver(
+                gameContentRef,
+                gameOverRef,
+                finalBlueScoreRef,
+                finalOrangeScoreRef,
+                blueScore,
+                orangeScore,
+              );
+            }, 600);
+          }
 
           return;
         }
@@ -150,4 +178,19 @@ function updateScore(scoreRef: HTMLElement, score: number) {
 
 function updateCurrentPlayerMarker(markerRef: HTMLElement, currentPlayer: Player) {
   markerRef.style.background = playerColors[currentPlayer];
+}
+
+function showGameOver(
+  gameContentRef: HTMLElement,
+  gameOverRef: HTMLElement,
+  finalBlueScoreRef: HTMLElement,
+  finalOrangeScoreRef: HTMLElement,
+  blueScore: number,
+  orangeScore: number,
+) {
+  updateScore(finalBlueScoreRef, blueScore);
+  updateScore(finalOrangeScoreRef, orangeScore);
+
+  gameContentRef.hidden = true;
+  gameOverRef.hidden = false;
 }
