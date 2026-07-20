@@ -98,7 +98,7 @@ function init() {
                 blueScore,
                 orangeScore,
               );
-            }, 600);
+            }, 1600);
           }
 
           return;
