@@ -9,10 +9,21 @@ const cardImages = [
   'karte_6_unten.png',
   'karte_7_unten.png',
   'karte_8_unten.png',
+  'karte_9_unten.png',
+  'karte_10_unten.png',
+  'karte_11_unten.png',
+  'karte_12_unten.png',
+  'karte_13_unten.png',
+  'karte_14_unten.png',
+  'karte_15_unten.png',
+  'karte_16_unten.png',
+  'karte_17_unten.png',
+  'karte_18_unten.png',
 ];
 
 type Player = 'blue' | 'orange';
 type Winner = Player | 'draw';
+type BoardSize = 16 | 24 | 36;
 
 const playerColors = {
   blue: '#2fb4ff',
@@ -20,6 +31,20 @@ const playerColors = {
 };
 
 const assetPath = '/dist/assets/';
+const boardConfigs = {
+  16: {
+    pairCount: 8,
+    fieldClass: 'field--16',
+  },
+  24: {
+    pairCount: 12,
+    fieldClass: 'field--24',
+  },
+  36: {
+    pairCount: 18,
+    fieldClass: 'field--36',
+  },
+};
 
 init();
 
@@ -53,8 +78,12 @@ function init() {
     let blueScore = 0;
     let orangeScore = 0;
     let matchedPairs = 0;
-    const shuffledImages = shuffleCards([...cardImages, ...cardImages]);
+    const boardSize = getBoardSize();
+    const boardConfig = boardConfigs[boardSize];
+    const selectedImages = cardImages.slice(0, boardConfig.pairCount);
+    const shuffledImages = shuffleCards([...selectedImages, ...selectedImages]);
 
+    setBoardSize(fieldRef, boardConfig.fieldClass);
     renderCards(fieldRef, shuffledImages);
     updateCurrentPlayerMarker(currentPlayerMarkerRef, currentPlayer);
 
@@ -95,7 +124,7 @@ function init() {
           flippedCards = [];
           isLocked = false;
 
-          if (matchedPairs === cardImages.length) {
+          if (matchedPairs === boardConfig.pairCount) {
             setTimeout(() => {
               showGameOver(
                 gameContentRef,
@@ -129,6 +158,25 @@ function init() {
 
   initExitPopup();
   initWinnerScreen();
+}
+
+function getBoardSize(): BoardSize {
+  const cardsParam = Number(new URLSearchParams(window.location.search).get('cards'));
+
+  if (isBoardSize(cardsParam)) {
+    return cardsParam;
+  }
+
+  return 16;
+}
+
+function isBoardSize(value: number): value is BoardSize {
+  return value === 16 || value === 24 || value === 36;
+}
+
+function setBoardSize(fieldRef: HTMLElement, fieldClass: string) {
+  fieldRef.classList.remove('field--16', 'field--24', 'field--36');
+  fieldRef.classList.add(fieldClass);
 }
 
 function renderCards(fieldRef: HTMLElement, shuffledImages: string[]) {

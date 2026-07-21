@@ -320,18 +320,45 @@ body {
 
 #field {
   display: grid;
-  grid-template-columns: repeat(4, 120px);
-  grid-template-rows: repeat(4, 120px);
+  padding: 0;
+}
+
+.field--16 {
+  --card-size: 120px;
+
+  grid-template-columns: repeat(4, var(--card-size));
+  grid-template-rows: repeat(4, var(--card-size));
   gap: 16px;
   width: 529px;
   height: 528px;
-  padding: 0;
   transform: translate(36px, 24px);
 }
 
+.field--24 {
+  --card-size: 85px;
+
+  grid-template-columns: repeat(6, var(--card-size));
+  grid-template-rows: repeat(4, var(--card-size));
+  gap: 4px;
+  width: 530px;
+  height: 352px;
+  transform: translate(36px, 36px);
+}
+
+.field--36 {
+  --card-size: 76px;
+
+  grid-template-columns: repeat(6, var(--card-size));
+  grid-template-rows: repeat(6, var(--card-size));
+  gap: 8px;
+  width: 496px;
+  height: 496px;
+  transform: translate(36px, 0);
+}
+
 .card {
-  width: 120px;
-  height: 120px;
+  width: var(--card-size);
+  height: var(--card-size);
   padding: 0;
   background-color: transparent;
   border: 0;
