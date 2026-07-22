@@ -8,7 +8,103 @@
     <script type="module" src="/src/ts/main.ts"></script>
   </head>
   <body>
-    <main class="game-content">
+    <main class="settings-screen" id="settings-screen">
+      <section class="settings-panel" aria-label="Memory Einstellungen">
+        <div class="settings-panel__inner">
+          <h1 class="settings-title">
+            <img class="settings-title__image" src="/assets/Headline.png" alt="Settings" />
+          </h1>
+
+          <div class="settings-layout">
+            <form class="settings-form" id="settings-form">
+              <fieldset class="settings-group">
+                <legend class="settings-group__title settings-group__title--themes">Game themes</legend>
+                <label class="settings-option">
+                  <input type="radio" name="theme" value="code-vibes" data-label="Game theme" />
+                  <span>Code vibes theme</span>
+                </label>
+                <label class="settings-option">
+                  <input type="radio" name="theme" value="gaming" data-label="Game theme" />
+                  <span>Gaming theme</span>
+                </label>
+                <label class="settings-option">
+                  <input type="radio" name="theme" value="da-projects" data-label="Game theme" />
+                  <span>DA Projects theme</span>
+                </label>
+                <label class="settings-option">
+                  <input type="radio" name="theme" value="foods" data-label="Game theme" />
+                  <span>Foods theme</span>
+                </label>
+              </fieldset>
+
+              <fieldset class="settings-group">
+                <legend class="settings-group__title settings-group__title--player">Choose player</legend>
+                <label class="settings-option">
+                  <input type="radio" name="first-player" value="blue" data-label="Blue Player" />
+                  <span>Blue</span>
+                </label>
+                <label class="settings-option">
+                  <input type="radio" name="first-player" value="orange" data-label="Orange Player" />
+                  <span>Orange</span>
+                </label>
+              </fieldset>
+
+              <fieldset class="settings-group">
+                <legend class="settings-group__title settings-group__title--board">Board size</legend>
+                <label class="settings-option">
+                  <input type="radio" name="board-size" value="16" data-label="Board-16 Cards" />
+                  <span>16 cards</span>
+                </label>
+                <label class="settings-option">
+                  <input type="radio" name="board-size" value="24" data-label="Board-24 Cards" />
+                  <span>24 cards</span>
+                </label>
+                <label class="settings-option">
+                  <input type="radio" name="board-size" value="36" data-label="Board-36 Cards" />
+                  <span>36 cards</span>
+                </label>
+              </fieldset>
+            </form>
+
+            <div class="settings-preview-column">
+              <section class="theme-preview" aria-label="Theme preview">
+                <div class="theme-preview__header">
+                  <span class="theme-preview__score">
+                    <span class="theme-preview__tag theme-preview__tag--blue"></span>
+                    Blue 0
+                  </span>
+                  <span class="theme-preview__score">
+                    <span class="theme-preview__tag theme-preview__tag--orange"></span>
+                    Orange 6
+                  </span>
+                  <span class="theme-preview__current">
+                    Current player:
+                    <span class="theme-preview__tag theme-preview__tag--blue"></span>
+                  </span>
+                  <span class="theme-preview__exit">Exit game</span>
+                </div>
+
+                <div class="theme-preview__cards">
+                  <span class="theme-preview__card theme-preview__card--front"></span>
+                  <span class="theme-preview__card theme-preview__card--back"></span>
+                </div>
+              </section>
+
+              <div class="settings-steps" aria-label="Settings steps">
+                <span class="settings-steps__text settings-steps__text--theme" id="selected-theme">Theme</span>
+                <span class="settings-steps__divider"></span>
+                <span class="settings-steps__text settings-steps__text--player" id="selected-player">Player</span>
+                <span class="settings-steps__divider"></span>
+                <span class="settings-steps__text settings-steps__text--board" id="selected-board-size">Board size</span>
+                <button class="settings-start" id="settings-start" type="submit" form="settings-form" aria-label="Start" disabled></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <main class="game-content" hidden>
       <header class="game-header">
         <section class="score-board" aria-label="Spielstand">
           <div class="score-board__player score-board__player--blue">

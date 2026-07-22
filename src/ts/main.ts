@@ -24,6 +24,10 @@ const cardImages = [
 type Player = 'blue' | 'orange';
 type Winner = Player | 'draw';
 type BoardSize = 16 | 24 | 36;
+type GameSettings = {
+  boardSize: BoardSize;
+  firstPlayer: Player;
+};
 
 const playerColors = {
   blue: '#2fb4ff',
@@ -49,6 +53,13 @@ const boardConfigs = {
 init();
 
 function init() {
+  const settingsScreenRef = document.getElementById('settings-screen');
+  const settingsFormRef = document.querySelector<HTMLFormElement>('#settings-form');
+  const settingsStartButtonRef = document.querySelector<HTMLButtonElement>('#settings-start');
+  const settingsStepsRef = document.querySelector<HTMLElement>('.settings-steps');
+  const selectedThemeRef = document.getElementById('selected-theme');
+  const selectedPlayerRef = document.getElementById('selected-player');
+  const selectedBoardSizeRef = document.getElementById('selected-board-size');
   const fieldRef = document.getElementById('field');
   const blueScoreRef = document.getElementById('blue-score');
   const orangeScoreRef = document.getElementById('orange-score');
@@ -61,6 +72,13 @@ function init() {
   const currentPlayerMarkerRef = document.querySelector<HTMLElement>('.current-player__marker');
 
   if (
+    settingsScreenRef &&
+    settingsFormRef &&
+    settingsStartButtonRef &&
+    settingsStepsRef &&
+    selectedThemeRef &&
+    selectedPlayerRef &&
+    selectedBoardSizeRef &&
     fieldRef &&
     blueScoreRef &&
     orangeScoreRef &&
@@ -72,87 +90,38 @@ function init() {
     winnerImageRef &&
     currentPlayerMarkerRef
   ) {
-    let flippedCards: HTMLElement[] = [];
-    let isLocked = false;
-    let currentPlayer: Player = 'blue';
-    let blueScore = 0;
-    let orangeScore = 0;
-    let matchedPairs = 0;
-    const boardSize = getBoardSize();
-    const boardConfig = boardConfigs[boardSize];
-    const selectedImages = cardImages.slice(0, boardConfig.pairCount);
-    const shuffledImages = shuffleCards([...selectedImages, ...selectedImages]);
+    initSettingsSteps(
+      settingsFormRef,
+      settingsStartButtonRef,
+      settingsStepsRef,
+      selectedThemeRef,
+      selectedPlayerRef,
+      selectedBoardSizeRef,
+    );
 
-    setBoardSize(fieldRef, boardConfig.fieldClass);
-    renderCards(fieldRef, shuffledImages);
-    updateCurrentPlayerMarker(currentPlayerMarkerRef, currentPlayer);
+    settingsFormRef.addEventListener('submit', (e) => {
+      e.preventDefault();
 
-    fieldRef.addEventListener('click', (e) => {
-      const card = (e.target as HTMLElement).closest('.card');
-
-      if (
-        !(card instanceof HTMLElement) ||
-        isLocked ||
-        card.classList.contains('is-flipped') ||
-        card.classList.contains('is-matched')
-      ) {
+      if (!hasCompleteSettings(settingsFormRef)) {
         return;
       }
 
-      card.classList.add('is-flipped');
-      flippedCards.push(card);
+      settingsScreenRef.hidden = true;
+      gameContentRef.hidden = false;
 
-      if (flippedCards.length === 2) {
-        isLocked = true;
-        const [firstCard, secondCard] = flippedCards;
-        const isMatch = firstCard.dataset.cardImage === secondCard.dataset.cardImage;
-
-        if (isMatch) {
-          flippedCards.forEach((flippedCard) => {
-            flippedCard.classList.add('is-matched');
-          });
-
-          if (currentPlayer === 'blue') {
-            blueScore++;
-          } else {
-            orangeScore++;
-          }
-
-          updateScore(blueScoreRef, blueScore);
-          updateScore(orangeScoreRef, orangeScore);
-          matchedPairs++;
-          flippedCards = [];
-          isLocked = false;
-
-          if (matchedPairs === boardConfig.pairCount) {
-            setTimeout(() => {
-              showGameOver(
-                gameContentRef,
-                gameOverRef,
-                winnerScreenRef,
-                winnerImageRef,
-                finalBlueScoreRef,
-                finalOrangeScoreRef,
-                blueScore,
-                orangeScore,
-              );
-            }, 1600);
-          }
-
-          return;
-        }
-
-        setTimeout(() => {
-          flippedCards.forEach((flippedCard) => {
-            flippedCard.classList.remove('is-flipped');
-          });
-
-          currentPlayer = switchPlayer(currentPlayer);
-          updateCurrentPlayerMarker(currentPlayerMarkerRef, currentPlayer);
-          flippedCards = [];
-          isLocked = false;
-        }, 1000);
-      }
+      startGame({
+        fieldRef,
+        blueScoreRef,
+        orangeScoreRef,
+        finalBlueScoreRef,
+        finalOrangeScoreRef,
+        gameContentRef,
+        gameOverRef,
+        winnerScreenRef,
+        winnerImageRef,
+        currentPlayerMarkerRef,
+        settings: getGameSettings(settingsFormRef),
+      });
     });
   }
 
@@ -160,18 +129,199 @@ function init() {
   initWinnerScreen();
 }
 
-function getBoardSize(): BoardSize {
-  const cardsParam = Number(new URLSearchParams(window.location.search).get('cards'));
+function initSettingsSteps(
+  settingsFormRef: HTMLFormElement,
+  settingsStartButtonRef: HTMLButtonElement,
+  settingsStepsRef: HTMLElement,
+  selectedThemeRef: HTMLElement,
+  selectedPlayerRef: HTMLElement,
+  selectedBoardSizeRef: HTMLElement,
+) {
+  updateSettingsSteps(
+    settingsFormRef,
+    settingsStartButtonRef,
+    settingsStepsRef,
+    selectedThemeRef,
+    selectedPlayerRef,
+    selectedBoardSizeRef,
+  );
 
-  if (isBoardSize(cardsParam)) {
-    return cardsParam;
-  }
+  settingsFormRef.addEventListener('change', () => {
+    updateSettingsSteps(
+      settingsFormRef,
+      settingsStartButtonRef,
+      settingsStepsRef,
+      selectedThemeRef,
+      selectedPlayerRef,
+      selectedBoardSizeRef,
+    );
+  });
+}
 
-  return 16;
+function updateSettingsSteps(
+  settingsFormRef: HTMLFormElement,
+  settingsStartButtonRef: HTMLButtonElement,
+  settingsStepsRef: HTMLElement,
+  selectedThemeRef: HTMLElement,
+  selectedPlayerRef: HTMLElement,
+  selectedBoardSizeRef: HTMLElement,
+) {
+  const isComplete = hasCompleteSettings(settingsFormRef);
+  const hasSelection = hasAnySettings(settingsFormRef);
+
+  selectedThemeRef.textContent = getSelectedLabel(settingsFormRef, 'theme') ?? 'Theme';
+  selectedPlayerRef.textContent = getSelectedLabel(settingsFormRef, 'first-player') ?? 'Player';
+  selectedBoardSizeRef.textContent = getSelectedLabel(settingsFormRef, 'board-size') ?? 'Board size';
+  settingsStepsRef.classList.toggle('settings-steps--has-selection', hasSelection);
+  settingsStepsRef.classList.toggle('settings-steps--complete', isComplete);
+  settingsStartButtonRef.disabled = !isComplete;
+}
+
+function getSelectedLabel(settingsFormRef: HTMLFormElement, fieldName: string) {
+  const selectedInputRef = settingsFormRef.querySelector<HTMLInputElement>(`input[name="${fieldName}"]:checked`);
+
+  return selectedInputRef?.dataset.label;
+}
+
+function hasCompleteSettings(settingsFormRef: HTMLFormElement) {
+  const formData = new FormData(settingsFormRef);
+
+  return Boolean(formData.get('theme') && formData.get('first-player') && formData.get('board-size'));
+}
+
+function hasAnySettings(settingsFormRef: HTMLFormElement) {
+  const formData = new FormData(settingsFormRef);
+
+  return Boolean(formData.get('theme') || formData.get('first-player') || formData.get('board-size'));
+}
+
+function startGame({
+  fieldRef,
+  blueScoreRef,
+  orangeScoreRef,
+  finalBlueScoreRef,
+  finalOrangeScoreRef,
+  gameContentRef,
+  gameOverRef,
+  winnerScreenRef,
+  winnerImageRef,
+  currentPlayerMarkerRef,
+  settings,
+}: {
+  fieldRef: HTMLElement;
+  blueScoreRef: HTMLElement;
+  orangeScoreRef: HTMLElement;
+  finalBlueScoreRef: HTMLElement;
+  finalOrangeScoreRef: HTMLElement;
+  gameContentRef: HTMLElement;
+  gameOverRef: HTMLElement;
+  winnerScreenRef: HTMLElement;
+  winnerImageRef: HTMLImageElement;
+  currentPlayerMarkerRef: HTMLElement;
+  settings: GameSettings;
+}) {
+  let flippedCards: HTMLElement[] = [];
+  let isLocked = false;
+  let currentPlayer = settings.firstPlayer;
+  let blueScore = 0;
+  let orangeScore = 0;
+  let matchedPairs = 0;
+  const boardConfig = boardConfigs[settings.boardSize];
+  const selectedImages = cardImages.slice(0, boardConfig.pairCount);
+  const shuffledImages = shuffleCards([...selectedImages, ...selectedImages]);
+
+  updateScore(blueScoreRef, blueScore);
+  updateScore(orangeScoreRef, orangeScore);
+  setBoardSize(fieldRef, boardConfig.fieldClass);
+  renderCards(fieldRef, shuffledImages);
+  updateCurrentPlayerMarker(currentPlayerMarkerRef, currentPlayer);
+
+  fieldRef.addEventListener('click', (e) => {
+    const card = (e.target as HTMLElement).closest('.card');
+
+    if (
+      !(card instanceof HTMLElement) ||
+      isLocked ||
+      card.classList.contains('is-flipped') ||
+      card.classList.contains('is-matched')
+    ) {
+      return;
+    }
+
+    card.classList.add('is-flipped');
+    flippedCards.push(card);
+
+    if (flippedCards.length === 2) {
+      isLocked = true;
+      const [firstCard, secondCard] = flippedCards;
+      const isMatch = firstCard.dataset.cardImage === secondCard.dataset.cardImage;
+
+      if (isMatch) {
+        flippedCards.forEach((flippedCard) => {
+          flippedCard.classList.add('is-matched');
+        });
+
+        if (currentPlayer === 'blue') {
+          blueScore++;
+        } else {
+          orangeScore++;
+        }
+
+        updateScore(blueScoreRef, blueScore);
+        updateScore(orangeScoreRef, orangeScore);
+        matchedPairs++;
+        flippedCards = [];
+        isLocked = false;
+
+        if (matchedPairs === boardConfig.pairCount) {
+          setTimeout(() => {
+            showGameOver(
+              gameContentRef,
+              gameOverRef,
+              winnerScreenRef,
+              winnerImageRef,
+              finalBlueScoreRef,
+              finalOrangeScoreRef,
+              blueScore,
+              orangeScore,
+            );
+          }, 1600);
+        }
+
+        return;
+      }
+
+      setTimeout(() => {
+        flippedCards.forEach((flippedCard) => {
+          flippedCard.classList.remove('is-flipped');
+        });
+
+        currentPlayer = switchPlayer(currentPlayer);
+        updateCurrentPlayerMarker(currentPlayerMarkerRef, currentPlayer);
+        flippedCards = [];
+        isLocked = false;
+      }, 1000);
+    }
+  });
+}
+
+function getGameSettings(settingsFormRef: HTMLFormElement): GameSettings {
+  const formData = new FormData(settingsFormRef);
+  const boardSize = Number(formData.get('board-size'));
+  const firstPlayer = formData.get('first-player');
+
+  return {
+    boardSize: isBoardSize(boardSize) ? boardSize : 16,
+    firstPlayer: isPlayer(firstPlayer) ? firstPlayer : 'blue',
+  };
 }
 
 function isBoardSize(value: number): value is BoardSize {
   return value === 16 || value === 24 || value === 36;
+}
+
+function isPlayer(value: FormDataEntryValue | null): value is Player {
+  return value === 'blue' || value === 'orange';
 }
 
 function setBoardSize(fieldRef: HTMLElement, fieldClass: string) {
