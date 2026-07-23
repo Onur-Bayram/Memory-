@@ -167,13 +167,16 @@ function updateSettingsSteps(
   selectedBoardSizeRef: HTMLElement,
 ) {
   const isComplete = hasCompleteSettings(settingsFormRef);
-  const hasSelection = hasAnySettings(settingsFormRef);
+  const themeLabel = getSelectedLabel(settingsFormRef, 'theme');
+  const playerLabel = getSelectedLabel(settingsFormRef, 'first-player');
+  const boardSizeLabel = getSelectedLabel(settingsFormRef, 'board-size');
 
-  selectedThemeRef.textContent = getSelectedLabel(settingsFormRef, 'theme') ?? 'Theme';
-  selectedPlayerRef.textContent = getSelectedLabel(settingsFormRef, 'first-player') ?? 'Player';
-  selectedBoardSizeRef.textContent = getSelectedLabel(settingsFormRef, 'board-size') ?? 'Board size';
-  settingsStepsRef.classList.toggle('settings-steps--has-selection', hasSelection);
-  settingsStepsRef.classList.toggle('settings-steps--complete', isComplete);
+  selectedThemeRef.textContent = themeLabel ?? 'Theme';
+  selectedPlayerRef.textContent = playerLabel ?? 'Player';
+  selectedBoardSizeRef.textContent = boardSizeLabel ?? 'Board size';
+  settingsStepsRef.classList.toggle('settings-steps--has-theme', Boolean(themeLabel));
+  settingsStepsRef.classList.toggle('settings-steps--has-player', Boolean(playerLabel));
+  settingsStepsRef.classList.toggle('settings-steps--has-board', Boolean(boardSizeLabel));
   settingsStartButtonRef.disabled = !isComplete;
 }
 
@@ -187,12 +190,6 @@ function hasCompleteSettings(settingsFormRef: HTMLFormElement) {
   const formData = new FormData(settingsFormRef);
 
   return Boolean(formData.get('theme') && formData.get('first-player') && formData.get('board-size'));
-}
-
-function hasAnySettings(settingsFormRef: HTMLFormElement) {
-  const formData = new FormData(settingsFormRef);
-
-  return Boolean(formData.get('theme') || formData.get('first-player') || formData.get('board-size'));
 }
 
 function startGame({
