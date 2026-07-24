@@ -64,36 +64,30 @@ body {
 
   &__title {
     position: relative;
+    width: 220px;
+    height: 36px;
     margin: 0 0 14px;
-    padding-left: 32px;
-    font-size: 30px;
-    font-weight: 800;
-
-    &::before {
-      position: absolute;
-      left: 0;
-      top: 4px;
-      width: 26px;
-      text-align: center;
-      font-size: 26px;
-      line-height: 1;
-    }
+    overflow: hidden;
+    background-image: url('/assets/game_themes.png');
+    background-repeat: no-repeat;
+    background-size: 315px 540px;
+    text-indent: -9999px;
   }
 
-  &__title--themes::before {
-    content: '◉';
-    color: #ff2ec4;
+  &__title--themes {
+    background-position: 0 0;
   }
 
-  &__title--player::before {
-    content: '♙';
-    color: #00d9bd;
+  &__title--player {
+    background-position: 0 -233px;
   }
 
-  &__title--board::before {
-    content: '▱';
-    color: #245dff;
+  &__title--board {
+    width: 180px;
+    height: 32px;
+    background-position: 0 -397px;
   }
+
 }
 
 .settings-option {
@@ -101,7 +95,7 @@ body {
   align-items: center;
   gap: 8px;
   width: max-content;
-  margin-left: 0;
+  margin-left: 28px;
   font-size: 20px;
   line-height: 1.6;
   cursor: pointer;
