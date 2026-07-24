@@ -107,8 +107,35 @@ body {
     accent-color: #303131;
   }
 
+  span {
+    position: relative;
+    display: inline-block;
+  }
+
   input:checked + span {
     font-weight: 800;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: calc(100% + 12px);
+      top: 50%;
+      width: 40px;
+      height: 3px;
+      background: #f2ee62;
+      transform: translateY(-50%);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: calc(100% + 48px);
+      top: 50%;
+      width: 13px;
+      height: 13px;
+      background: #f2ee62;
+      transform: translateY(-50%) rotate(45deg);
+    }
   }
 }
 
