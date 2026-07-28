@@ -274,6 +274,10 @@ body {
   position: absolute;
   top: 14px;
   left: 514px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   width: 126px;
   height: 54px;
   padding: 0;
@@ -284,27 +288,33 @@ body {
   font: inherit;
   transition: transform 160ms ease-in-out;
 
-  &::before {
-    content: '';
-    position: absolute;
-    left: 20px;
-    top: 50%;
+  &__icon {
+    position: relative;
+    display: block;
     width: 20px;
     height: 14px;
     border: 2px solid currentColor;
     border-radius: 1px;
-    transform: translateY(-50%);
+    box-sizing: border-box;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 50%;
+      width: 0;
+      height: 0;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-left: 6px solid currentColor;
+      transform: translateY(-50%);
+    }
   }
 
-  &::after {
-    content: 'Start';
-    position: absolute;
-    left: 52px;
-    top: 50%;
+  &__text {
     font-size: 21px;
     font-weight: 800;
     line-height: 1;
-    transform: translateY(-50%);
   }
 
   &:disabled {
@@ -646,25 +656,25 @@ body {
 }
 
 .field--24 {
-  --card-size: 85px;
+  --card-size: 104px;
 
   grid-template-columns: repeat(6, var(--card-size));
   grid-template-rows: repeat(4, var(--card-size));
-  gap: 4px;
-  width: 530px;
-  height: 352px;
-  transform: translate(36px, 36px);
+  gap: 8px;
+  width: 664px;
+  height: 440px;
+  transform: translate(0, 18px);
 }
 
 .field--36 {
-  --card-size: 76px;
+  --card-size: 88px;
 
   grid-template-columns: repeat(6, var(--card-size));
   grid-template-rows: repeat(6, var(--card-size));
-  gap: 8px;
-  width: 496px;
-  height: 496px;
-  transform: translate(36px, 0);
+  gap: 6px;
+  width: 558px;
+  height: 558px;
+  transform: translate(18px, -20px);
 }
 
 .card {
