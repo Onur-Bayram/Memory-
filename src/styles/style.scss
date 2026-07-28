@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+:root {
+  --settings-content-max: 1664px;
+  --game-content-max: 1217px;
+  --winner-confetti-max: 1050px;
+}
+
 body {
   margin: 0;
   position: relative;
@@ -29,7 +35,8 @@ body {
   height: 100%;
 
   &__inner {
-    width: min(1664px, calc(100% - 256px));
+    width: calc(100% - 256px);
+    max-width: var(--settings-content-max);
     height: 100%;
     margin: 0 auto;
     padding-top: 150px;
@@ -341,7 +348,8 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 54px;
-  width: 1217px;
+  width: calc(100% - 224px);
+  max-width: var(--game-content-max);
   height: 644px;
   transform: translateX(-50%);
 }
@@ -350,7 +358,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 1217px;
+  width: 100%;
   height: 62px;
 }
 
@@ -440,7 +448,7 @@ body {
   }
 
   &__content {
-    width: 539px;
+    width: min(539px, calc(100% - 48px));
     height: 270px;
     padding-top: 45px;
     background: #f4f4f5;
@@ -525,6 +533,7 @@ body {
 
   &__title {
     margin: 0;
+    max-width: calc(100% - 48px);
     color: #54dfce;
     font-family: Georgia, 'Times New Roman', serif;
     font-size: 132px;
@@ -541,6 +550,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 22px;
+    max-width: calc(100% - 48px);
   }
 
   &__label {
@@ -576,7 +586,7 @@ body {
   }
 
   &__confetti {
-    width: 1050px;
+    width: min(var(--winner-confetti-max), calc(100% - 48px));
     height: 278px;
     object-fit: contain;
     margin-top: 62px;
@@ -584,7 +594,7 @@ body {
 
   &__content {
     position: relative;
-    width: 426px;
+    width: min(426px, calc(100% - 48px));
     height: 573px;
     margin-top: -8px;
   }
@@ -619,7 +629,7 @@ body {
 
   &--orange {
     .winner-screen__content {
-      width: 522px;
+      width: min(522px, calc(100% - 48px));
     }
 
     .winner-screen__back-button {
@@ -629,7 +639,7 @@ body {
 
   &--draw {
     .winner-screen__content {
-      width: 432px;
+      width: min(432px, calc(100% - 48px));
       height: 603px;
     }
 
