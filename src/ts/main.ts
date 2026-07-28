@@ -53,6 +53,8 @@ const boardConfigs = {
 init();
 
 function init() {
+  const homeScreenRef = document.getElementById('home-screen');
+  const homeStartButtonRef = document.querySelector<HTMLButtonElement>('#home-start');
   const settingsScreenRef = document.getElementById('settings-screen');
   const settingsFormRef = document.querySelector<HTMLFormElement>('#settings-form');
   const settingsStartButtonRef = document.querySelector<HTMLButtonElement>('#settings-start');
@@ -72,6 +74,8 @@ function init() {
   const currentPlayerMarkerRef = document.querySelector<HTMLElement>('.current-player__marker');
 
   if (
+    homeScreenRef &&
+    homeStartButtonRef &&
     settingsScreenRef &&
     settingsFormRef &&
     settingsStartButtonRef &&
@@ -90,6 +94,11 @@ function init() {
     winnerImageRef &&
     currentPlayerMarkerRef
   ) {
+    homeStartButtonRef.addEventListener('click', () => {
+      homeScreenRef.hidden = true;
+      settingsScreenRef.hidden = false;
+    });
+
     initSettingsSteps(
       settingsFormRef,
       settingsStartButtonRef,
