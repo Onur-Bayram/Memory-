@@ -9,6 +9,7 @@
   --home-button-width: 250px;
   --home-controller-width: 280px;
   --settings-content-max: 1664px;
+  --settings-content-side-space: 256px;
   --settings-page-space: 128px;
   --settings-top-space: 150px;
   --settings-layout-gap: 180px;
@@ -24,6 +25,22 @@
   --settings-option-arrow-line: 40px;
   --settings-option-arrow-size: 13px;
   --game-content-max: 1217px;
+  --game-content-side-space: 224px;
+  --game-top-space: 41px;
+  --game-layout-gap: 54px;
+  --game-header-height: 62px;
+  --score-board-width: 295px;
+  --score-board-height: 62px;
+  --score-board-gap: 16px;
+  --score-board-font-size: 22px;
+  --score-board-marker-width: 20px;
+  --score-board-marker-height: 14px;
+  --current-player-gap: 12px;
+  --current-player-font-size: 28px;
+  --current-player-marker-width: 31px;
+  --current-player-marker-height: 24px;
+  --exit-game-width: 207px;
+  --exit-game-height: 62px;
   --winner-confetti-max: 1050px;
 }
 
@@ -127,7 +144,7 @@ body {
   min-height: 100%;
 
   &__inner {
-    width: calc(100% - (var(--settings-page-space) * 2));
+    width: calc(100% - var(--settings-content-side-space));
     max-width: var(--settings-content-max);
     min-height: 100%;
     margin: 0 auto;
@@ -437,6 +454,7 @@ body {
   :root {
     --home-button-width: 230px;
     --home-controller-width: 220px;
+    --settings-content-side-space: 112px;
     --settings-page-space: 56px;
     --settings-top-space: 72px;
     --settings-layout-gap: 80px;
@@ -471,6 +489,7 @@ body {
   :root {
     --home-button-width: 210px;
     --home-controller-width: 160px;
+    --settings-content-side-space: 48px;
     --settings-page-space: 24px;
     --settings-top-space: 48px;
     --settings-heading-width: 184px;
@@ -530,6 +549,7 @@ body {
   :root {
     --home-button-width: 190px;
     --home-controller-width: 120px;
+    --settings-content-side-space: 32px;
     --settings-page-space: 16px;
     --settings-top-space: 40px;
     --settings-heading-width: 170px;
@@ -573,15 +593,14 @@ body {
 
 .game-content {
   position: absolute;
-  top: 41px;
+  top: var(--game-top-space);
   left: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 54px;
-  width: calc(100% - 224px);
+  gap: var(--game-layout-gap);
+  width: calc(100% - var(--game-content-side-space));
   max-width: var(--game-content-max);
-  height: 644px;
   transform: translateX(-50%);
 }
 
@@ -590,18 +609,18 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 62px;
+  height: var(--game-header-height);
 }
 
 .score-board {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  width: 295px;
-  height: 62px;
+  gap: var(--score-board-gap);
+  width: var(--score-board-width);
+  height: var(--score-board-height);
   background: rgb(84 122 114 / 62%);
-  font-size: 22px;
+  font-size: var(--score-board-font-size);
   font-weight: 700;
 
   &__player {
@@ -619,8 +638,8 @@ body {
   }
 
   &__marker {
-    width: 20px;
-    height: 14px;
+    width: var(--score-board-marker-width);
+    height: var(--score-board-marker-height);
     border-radius: 2px 8px 8px 2px;
     background: currentColor;
   }
@@ -629,22 +648,22 @@ body {
 .current-player {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 28px;
+  gap: var(--current-player-gap);
+  font-size: var(--current-player-font-size);
   font-weight: 700;
   color: white;
 
   &__marker {
-    width: 31px;
-    height: 24px;
+    width: var(--current-player-marker-width);
+    height: var(--current-player-marker-height);
     border-radius: 3px 14px 14px 3px;
     background: #2fb4ff;
   }
 }
 
 .exit-game {
-  width: 207px;
-  height: 62px;
+  width: var(--exit-game-width);
+  height: var(--exit-game-height);
   padding: 0;
   border: 0;
   background-color: transparent;
@@ -962,6 +981,470 @@ body {
 
   &.is-flipped .card__inner {
     transform: rotateY(180deg);
+  }
+}
+
+@media (max-width: 1120px) {
+  :root {
+    --game-content-side-space: 96px;
+    --game-top-space: 32px;
+    --game-layout-gap: 42px;
+    --game-header-height: 56px;
+    --score-board-width: 250px;
+    --score-board-height: 56px;
+    --score-board-font-size: 20px;
+    --score-board-marker-width: 18px;
+    --score-board-marker-height: 13px;
+    --current-player-font-size: 24px;
+    --current-player-marker-width: 28px;
+    --current-player-marker-height: 22px;
+    --exit-game-width: 180px;
+    --exit-game-height: 54px;
+  }
+
+  .field--16 {
+    --card-size: 112px;
+
+    gap: 14px;
+    width: 490px;
+    height: 490px;
+    transform: translate(24px, 16px);
+  }
+
+  .field--24 {
+    --card-size: 90px;
+
+    gap: 8px;
+    width: 580px;
+    height: 384px;
+    transform: translate(0, 16px);
+  }
+
+  .field--36 {
+    --card-size: 78px;
+
+    gap: 6px;
+    width: 498px;
+    height: 498px;
+    transform: translate(0, -10px);
+  }
+}
+
+@media (max-width: 850px) {
+  :root {
+    --game-content-side-space: 48px;
+    --game-top-space: 28px;
+    --game-layout-gap: 32px;
+    --score-board-width: 218px;
+    --score-board-height: 50px;
+    --score-board-font-size: 18px;
+    --current-player-font-size: 22px;
+    --current-player-marker-width: 26px;
+    --current-player-marker-height: 20px;
+    --exit-game-width: 156px;
+    --exit-game-height: 47px;
+  }
+
+  .field--16 {
+    --card-size: 96px;
+
+    gap: 12px;
+    width: 420px;
+    height: 420px;
+    transform: translate(18px, 12px);
+  }
+
+  .field--24 {
+    --card-size: 76px;
+
+    gap: 7px;
+    width: 491px;
+    height: 325px;
+    transform: translate(0, 10px);
+  }
+
+  .field--36 {
+    --card-size: 66px;
+
+    gap: 5px;
+    width: 421px;
+    height: 421px;
+    transform: translate(0, -8px);
+  }
+}
+
+@media (max-width: 700px) {
+  :root {
+    --game-content-side-space: 32px;
+    --game-top-space: 24px;
+    --game-layout-gap: 24px;
+    --game-header-height: auto;
+    --score-board-width: 190px;
+    --score-board-height: 46px;
+    --score-board-gap: 10px;
+    --score-board-font-size: 16px;
+    --score-board-marker-width: 17px;
+    --score-board-marker-height: 12px;
+    --current-player-gap: 10px;
+    --current-player-font-size: 20px;
+    --current-player-marker-width: 24px;
+    --current-player-marker-height: 18px;
+    --exit-game-width: 138px;
+    --exit-game-height: 41px;
+  }
+
+  .game-header {
+    display: grid;
+    grid-template-areas:
+      'score exit'
+      'player player';
+    grid-template-columns: 1fr auto;
+    row-gap: 16px;
+  }
+
+  .score-board {
+    grid-area: score;
+  }
+
+  .current-player {
+    grid-area: player;
+    justify-self: center;
+  }
+
+  .exit-game {
+    grid-area: exit;
+    justify-self: end;
+  }
+
+  .field--16 {
+    --card-size: 78px;
+
+    gap: 8px;
+    width: 336px;
+    height: 336px;
+    transform: none;
+  }
+
+  .field--24 {
+    --card-size: 52px;
+
+    gap: 6px;
+    width: 342px;
+    height: 226px;
+    transform: none;
+  }
+
+  .field--36 {
+    --card-size: 52px;
+
+    gap: 5px;
+    width: 337px;
+    height: 337px;
+    transform: none;
+  }
+}
+
+@media (max-width: 420px) {
+  :root {
+    --game-content-side-space: 24px;
+    --game-top-space: 20px;
+    --game-layout-gap: 20px;
+    --score-board-width: 166px;
+    --score-board-height: 44px;
+    --score-board-gap: 8px;
+    --current-player-font-size: 18px;
+    --current-player-marker-width: 22px;
+    --current-player-marker-height: 16px;
+    --exit-game-width: 126px;
+    --exit-game-height: 38px;
+  }
+
+  .game-header {
+    row-gap: 14px;
+  }
+
+  .field--16 {
+    --card-size: 72px;
+
+    gap: 7px;
+    width: 309px;
+    height: 309px;
+  }
+
+  .field--24 {
+    --card-size: 48px;
+
+    gap: 5px;
+    width: 313px;
+    height: 207px;
+  }
+
+  .field--36 {
+    --card-size: 48px;
+
+    gap: 4px;
+    width: 308px;
+    height: 308px;
+  }
+}
+
+@media (max-width: 340px) {
+  :root {
+    --game-content-side-space: 20px;
+    --score-board-width: 150px;
+    --exit-game-width: 116px;
+    --exit-game-height: 35px;
+    --current-player-font-size: 16px;
+  }
+
+  .field--16 {
+    --card-size: 66px;
+
+    gap: 6px;
+    width: 282px;
+    height: 282px;
+  }
+
+  .field--24 {
+    --card-size: 44px;
+
+    gap: 4px;
+    width: 284px;
+    height: 188px;
+  }
+
+  .field--36 {
+    --card-size: 44px;
+
+    gap: 4px;
+    width: 284px;
+    height: 284px;
+  }
+}
+
+@media (max-height: 760px) and (min-width: 701px) {
+  :root {
+    --game-top-space: 28px;
+    --game-layout-gap: 30px;
+    --game-header-height: 54px;
+    --score-board-width: 245px;
+    --score-board-height: 54px;
+    --score-board-font-size: 20px;
+    --current-player-font-size: 24px;
+    --exit-game-width: 180px;
+    --exit-game-height: 54px;
+  }
+
+  .field--16 {
+    --card-size: 104px;
+
+    gap: 12px;
+    width: 452px;
+    height: 452px;
+    transform: translate(24px, 0);
+  }
+
+  .field--24 {
+    --card-size: 84px;
+
+    gap: 7px;
+    width: 539px;
+    height: 357px;
+    transform: none;
+  }
+
+  .field--36 {
+    --card-size: 72px;
+
+    gap: 5px;
+    width: 457px;
+    height: 457px;
+    transform: none;
+  }
+}
+
+@media (max-height: 620px) and (min-width: 701px) {
+  :root {
+    --game-top-space: 20px;
+    --game-layout-gap: 20px;
+    --game-header-height: 48px;
+    --score-board-width: 220px;
+    --score-board-height: 48px;
+    --score-board-font-size: 18px;
+    --current-player-font-size: 22px;
+    --exit-game-width: 156px;
+    --exit-game-height: 47px;
+  }
+
+  .field--16 {
+    --card-size: 88px;
+
+    gap: 10px;
+    width: 382px;
+    height: 382px;
+    transform: translate(16px, 0);
+  }
+
+  .field--24 {
+    --card-size: 70px;
+
+    gap: 6px;
+    width: 450px;
+    height: 298px;
+  }
+
+  .field--36 {
+    --card-size: 62px;
+
+    gap: 4px;
+    width: 392px;
+    height: 392px;
+  }
+}
+
+@media (max-height: 520px) and (min-width: 701px) {
+  :root {
+    --game-top-space: 16px;
+    --game-layout-gap: 14px;
+    --game-header-height: 42px;
+    --score-board-width: 190px;
+    --score-board-height: 42px;
+    --score-board-font-size: 16px;
+    --current-player-font-size: 18px;
+    --exit-game-width: 138px;
+    --exit-game-height: 41px;
+  }
+
+  .field--16 {
+    --card-size: 74px;
+
+    gap: 8px;
+    width: 320px;
+    height: 320px;
+    transform: none;
+  }
+
+  .field--24 {
+    --card-size: 58px;
+
+    gap: 5px;
+    width: 373px;
+    height: 247px;
+  }
+
+  .field--36 {
+    --card-size: 52px;
+
+    gap: 4px;
+    width: 332px;
+    height: 332px;
+  }
+}
+
+@media (max-height: 430px) and (min-width: 701px) {
+  :root {
+    --game-top-space: 10px;
+    --game-layout-gap: 10px;
+    --game-header-height: 38px;
+    --score-board-width: 154px;
+    --score-board-height: 38px;
+    --score-board-gap: 8px;
+    --current-player-font-size: 16px;
+    --exit-game-width: 118px;
+    --exit-game-height: 35px;
+  }
+
+  .field--16 {
+    --card-size: 64px;
+
+    gap: 6px;
+    width: 274px;
+    height: 274px;
+  }
+
+  .field--24 {
+    --card-size: 50px;
+
+    gap: 3px;
+    width: 315px;
+    height: 209px;
+  }
+
+  .field--36 {
+    --card-size: 46px;
+
+    gap: 3px;
+    width: 291px;
+    height: 291px;
+  }
+}
+
+@media (max-width: 700px) and (max-height: 540px) {
+  :root {
+    --game-top-space: 16px;
+    --game-layout-gap: 16px;
+  }
+
+  .field--16 {
+    --card-size: 68px;
+
+    gap: 6px;
+    width: 290px;
+    height: 290px;
+  }
+
+  .field--24 {
+    --card-size: 48px;
+
+    gap: 4px;
+    width: 308px;
+    height: 204px;
+  }
+
+  .field--36 {
+    --card-size: 46px;
+
+    gap: 4px;
+    width: 296px;
+    height: 296px;
+  }
+}
+
+@media (max-width: 700px) and (max-height: 440px) {
+  :root {
+    --game-top-space: 10px;
+    --game-layout-gap: 10px;
+    --score-board-height: 38px;
+    --current-player-font-size: 16px;
+    --exit-game-height: 34px;
+  }
+
+  .game-header {
+    row-gap: 10px;
+  }
+
+  .field--16 {
+    --card-size: 58px;
+
+    gap: 5px;
+    width: 247px;
+    height: 247px;
+  }
+
+  .field--24 {
+    --card-size: 42px;
+
+    gap: 4px;
+    width: 272px;
+    height: 180px;
+  }
+
+  .field--36 {
+    --card-size: 38px;
+
+    gap: 3px;
+    width: 243px;
+    height: 243px;
   }
 }
 
