@@ -6,6 +6,8 @@
 
 :root {
   --home-content-max: 991px;
+  --home-button-width: clamp(170px, 25%, 250px);
+  --home-controller-width: clamp(96px, min(16vw, 24vh), 280px);
   --settings-content-max: 1664px;
   --game-content-max: 1217px;
   --winner-confetti-max: 1050px;
@@ -34,21 +36,20 @@ body {
     position: absolute;
     left: -6px;
     bottom: -6px;
-    width: 363px;
-    height: 410px;
+    width: var(--home-controller-width);
+    height: auto;
     opacity: 0.13;
   }
 
   &__content {
     position: absolute;
     left: 50%;
-    top: 65%;
+    top: 57%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 102px;
-    width: calc(100% - 96px);
-    max-width: var(--home-content-max);
+    gap: clamp(44px, 8vh, 96px);
+    width: min(var(--home-content-max), calc(100vw - 48px), calc(100vh * 1.25));
     transform: translate(-50%, -50%);
   }
 
@@ -61,22 +62,23 @@ body {
 }
 
 .home-start {
-  width: 270px;
-  height: 104px;
+  display: block;
+  width: var(--home-button-width);
+  aspect-ratio: 270 / 104;
   padding: 0;
   border: 0;
   background-color: transparent;
   background-image: url('/assets/play_button_oben.png');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 250px 99px;
+  background-size: 92.6% 95.2%;
   cursor: pointer;
   transition: background-size 160ms ease-in-out, filter 160ms ease-in-out, transform 160ms ease-in-out;
 
   &:hover,
   &:focus-visible {
     background-image: url('/assets/play_button_unten.png');
-    background-size: 270px 104px;
+    background-size: 100% 100%;
     filter: brightness(1.03);
     transform: scale(1.03);
   }
