@@ -6,17 +6,35 @@
 
 :root {
   --home-content-max: 991px;
-  --home-button-width: clamp(170px, 25%, 250px);
-  --home-controller-width: clamp(96px, min(16vw, 24vh), 280px);
+  --home-button-width: 250px;
+  --home-controller-width: 280px;
   --settings-content-max: 1664px;
+  --settings-page-space: 128px;
+  --settings-top-space: 150px;
+  --settings-layout-gap: 180px;
+  --settings-heading-width: 220px;
+  --settings-heading-height: 36px;
+  --settings-heading-board-width: 180px;
+  --settings-heading-board-height: 32px;
+  --settings-heading-bg-width: 315px;
+  --settings-heading-bg-height: 540px;
+  --settings-heading-player-y: -233px;
+  --settings-heading-board-y: -397px;
+  --settings-option-arrow-gap: 12px;
+  --settings-option-arrow-line: 40px;
+  --settings-option-arrow-size: 13px;
   --game-content-max: 1217px;
   --winner-confetti-max: 1050px;
+}
+
+html {
+  min-height: 100%;
 }
 
 body {
   margin: 0;
   position: relative;
-  min-height: 100vh;
+  min-height: 100%;
   background: #303131;
   font-family: Arial, sans-serif;
 }
@@ -48,8 +66,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: clamp(44px, 8vh, 96px);
-    width: min(var(--home-content-max), calc(100vw - 48px), calc(100vh * 1.25));
+    gap: 96px;
+    width: calc(100% - 48px);
+    max-width: var(--home-content-max);
     transform: translate(-50%, -50%);
   }
 
@@ -97,20 +116,23 @@ body {
   position: fixed;
   inset: 0;
   z-index: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: white;
   color: #303131;
 }
 
 .settings-panel {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 
   &__inner {
-    width: calc(100% - 256px);
+    width: calc(100% - (var(--settings-page-space) * 2));
     max-width: var(--settings-content-max);
-    height: 100%;
+    min-height: 100%;
     margin: 0 auto;
-    padding-top: 150px;
+    padding-top: var(--settings-top-space);
+    padding-bottom: 48px;
   }
 }
 
@@ -120,35 +142,38 @@ body {
   &__image {
     display: block;
     width: 263px;
-    height: 79px;
+    height: auto;
   }
 }
 
 .settings-layout {
-  display: flex;
-  justify-content: flex-start;
-  gap: 230px;
+  display: grid;
+  grid-template-columns: minmax(300px, 390px) minmax(600px, 660px);
+  align-items: start;
+  column-gap: var(--settings-layout-gap);
+  row-gap: 48px;
   margin-top: 38px;
 }
 
 .settings-form {
   width: 390px;
+  max-width: 100%;
 }
 
 .settings-group {
-  margin: 0 0 36px;
+  margin: 0 0 32px;
   padding: 0;
   border: 0;
 
   &__title {
     position: relative;
-    width: 220px;
-    height: 36px;
+    width: var(--settings-heading-width);
+    height: var(--settings-heading-height);
     margin: 0 0 14px;
     overflow: hidden;
     background-image: url('/assets/game_themes.png');
     background-repeat: no-repeat;
-    background-size: 315px 540px;
+    background-size: var(--settings-heading-bg-width) var(--settings-heading-bg-height);
     text-indent: -9999px;
   }
 
@@ -157,13 +182,13 @@ body {
   }
 
   &__title--player {
-    background-position: 0 -233px;
+    background-position: 0 var(--settings-heading-player-y);
   }
 
   &__title--board {
-    width: 180px;
-    height: 32px;
-    background-position: 0 -397px;
+    width: var(--settings-heading-board-width);
+    height: var(--settings-heading-board-height);
+    background-position: 0 var(--settings-heading-board-y);
   }
 
 }
@@ -196,9 +221,9 @@ body {
     &::before {
       content: '';
       position: absolute;
-      left: calc(100% + 12px);
+      left: calc(100% + var(--settings-option-arrow-gap));
       top: 50%;
-      width: 40px;
+      width: var(--settings-option-arrow-line);
       height: 3px;
       background: #f2ee62;
       transform: translateY(-50%);
@@ -207,10 +232,10 @@ body {
     &::after {
       content: '';
       position: absolute;
-      left: calc(100% + 48px);
+      left: calc(100% + var(--settings-option-arrow-gap) + var(--settings-option-arrow-line));
       top: 50%;
-      width: 13px;
-      height: 13px;
+      width: var(--settings-option-arrow-size);
+      height: var(--settings-option-arrow-size);
       background: #f2ee62;
       transform: translateY(-50%) rotate(45deg);
     }
@@ -222,14 +247,16 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 66px;
-  width: 660px;
+  width: 100%;
+  max-width: 660px;
   padding-top: 0;
 }
 
 .theme-preview {
   align-self: flex-end;
-  width: 410px;
-  height: 367px;
+  width: 100%;
+  max-width: 410px;
+  aspect-ratio: 461 / 412;
   overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 10px 20px rgb(0 0 0 / 24%);
@@ -244,17 +271,20 @@ body {
 
 .settings-steps {
   position: relative;
-  width: 660px;
-  height: 80px;
+  display: grid;
+  grid-template-areas: 'theme divider-theme player divider-player board start';
+  grid-template-columns: minmax(112px, 1fr) 18px minmax(126px, 1fr) 18px minmax(136px, 1fr) auto;
+  align-items: center;
+  column-gap: 16px;
+  width: 100%;
+  min-height: 80px;
+  padding: 13px 20px;
   background: #f5f5f5;
   border: 1px solid #dedede;
-  box-sizing: border-box;
   font-size: 16px;
   color: #303131;
 
   &__text {
-    position: absolute;
-    top: 27px;
     display: block;
     color: #aaa;
     line-height: 28px;
@@ -263,8 +293,7 @@ body {
   }
 
   &__divider {
-    position: absolute;
-    top: 15px;
+    position: relative;
     display: block;
     width: 8px;
     height: 55px;
@@ -288,26 +317,23 @@ body {
   }
 
   &__divider--theme {
-    left: 158px;
+    grid-area: divider-theme;
   }
 
   &__divider--player {
-    left: 324px;
+    grid-area: divider-player;
   }
 
   &__text--theme {
-    left: 20px;
-    width: 138px;
+    grid-area: theme;
   }
 
   &__text--player {
-    left: 178px;
-    width: 146px;
+    grid-area: player;
   }
 
   &__text--board {
-    left: 366px;
-    width: 155px;
+    grid-area: board;
   }
 
   &--has-theme {
@@ -316,7 +342,6 @@ body {
     }
 
     .settings-steps__divider--theme {
-      top: 18px;
       height: 45px;
 
       &::after {
@@ -331,7 +356,6 @@ body {
     }
 
     .settings-steps__divider--player {
-      top: 18px;
       height: 45px;
 
       &::after {
@@ -349,9 +373,7 @@ body {
 }
 
 .settings-start {
-  position: absolute;
-  top: 14px;
-  left: 514px;
+  grid-area: start;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -408,6 +430,144 @@ body {
   &:focus-visible {
     outline: 2px solid #303131;
     outline-offset: 3px;
+  }
+}
+
+@media (max-width: 1120px) {
+  :root {
+    --home-button-width: 230px;
+    --home-controller-width: 220px;
+    --settings-page-space: 56px;
+    --settings-top-space: 72px;
+    --settings-layout-gap: 80px;
+    --settings-heading-width: 202px;
+    --settings-heading-height: 33px;
+    --settings-heading-board-width: 165px;
+    --settings-heading-board-height: 29px;
+    --settings-heading-bg-width: 289px;
+    --settings-heading-bg-height: 496px;
+    --settings-heading-player-y: -214px;
+    --settings-heading-board-y: -365px;
+    --settings-option-arrow-line: 34px;
+  }
+
+  .settings-layout {
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+  }
+
+  .settings-form,
+  .settings-preview-column {
+    justify-self: center;
+  }
+
+  .theme-preview {
+    align-self: center;
+    max-width: 370px;
+  }
+}
+
+@media (max-width: 700px) {
+  :root {
+    --home-button-width: 210px;
+    --home-controller-width: 160px;
+    --settings-page-space: 24px;
+    --settings-top-space: 48px;
+    --settings-heading-width: 184px;
+    --settings-heading-height: 30px;
+    --settings-heading-board-width: 150px;
+    --settings-heading-board-height: 27px;
+    --settings-heading-bg-width: 263px;
+    --settings-heading-bg-height: 452px;
+    --settings-heading-player-y: -195px;
+    --settings-heading-board-y: -332px;
+    --settings-option-arrow-gap: 10px;
+    --settings-option-arrow-line: 28px;
+    --settings-option-arrow-size: 12px;
+  }
+
+  .settings-panel__inner {
+    padding-bottom: 36px;
+  }
+
+  .settings-layout {
+    row-gap: 32px;
+  }
+
+  .settings-group {
+    margin-bottom: 24px;
+  }
+
+  .settings-option {
+    margin-left: 22px;
+    line-height: 1.45;
+  }
+
+  .settings-preview-column {
+    gap: 28px;
+  }
+
+  .theme-preview {
+    max-width: 320px;
+  }
+
+  .settings-steps {
+    grid-template-areas:
+      'theme divider-theme player'
+      'board divider-player start';
+    grid-template-columns: minmax(0, 1fr) 18px minmax(0, 1fr);
+    row-gap: 16px;
+    min-height: 148px;
+    padding: 18px 16px;
+  }
+
+  .settings-start {
+    justify-self: end;
+  }
+}
+
+@media (max-width: 420px) {
+  :root {
+    --home-button-width: 190px;
+    --home-controller-width: 120px;
+    --settings-page-space: 16px;
+    --settings-top-space: 40px;
+    --settings-heading-width: 170px;
+    --settings-heading-height: 28px;
+    --settings-heading-board-width: 139px;
+    --settings-heading-board-height: 25px;
+    --settings-heading-bg-width: 244px;
+    --settings-heading-bg-height: 417px;
+    --settings-heading-player-y: -180px;
+    --settings-heading-board-y: -307px;
+    --settings-option-arrow-line: 22px;
+  }
+
+  .settings-title__image {
+    width: 190px;
+  }
+
+  .settings-group__title {
+    margin-bottom: 10px;
+  }
+
+  .settings-option {
+    margin-left: 20px;
+  }
+
+  .theme-preview {
+    max-width: 280px;
+  }
+
+  .settings-steps {
+    column-gap: 8px;
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .settings-start {
+    width: 112px;
+    gap: 8px;
   }
 }
 
@@ -519,7 +679,8 @@ body {
   }
 
   &__content {
-    width: min(539px, calc(100% - 48px));
+    width: calc(100% - 48px);
+    max-width: 539px;
     height: 270px;
     padding-top: 45px;
     background: #f4f4f5;
@@ -657,7 +818,8 @@ body {
   }
 
   &__confetti {
-    width: min(var(--winner-confetti-max), calc(100% - 48px));
+    width: calc(100% - 48px);
+    max-width: var(--winner-confetti-max);
     height: 278px;
     object-fit: contain;
     margin-top: 62px;
@@ -665,7 +827,8 @@ body {
 
   &__content {
     position: relative;
-    width: min(426px, calc(100% - 48px));
+    width: calc(100% - 48px);
+    max-width: 426px;
     height: 573px;
     margin-top: -8px;
   }
@@ -700,7 +863,7 @@ body {
 
   &--orange {
     .winner-screen__content {
-      width: min(522px, calc(100% - 48px));
+      max-width: 522px;
     }
 
     .winner-screen__back-button {
@@ -710,7 +873,7 @@ body {
 
   &--draw {
     .winner-screen__content {
-      width: min(432px, calc(100% - 48px));
+      max-width: 432px;
       height: 603px;
     }
 
