@@ -2,6 +2,7 @@ import '../styles/style.scss';
 import { getAppElements } from './app-elements';
 import { initExitPopup } from './exit-popup';
 import { startGame } from './game';
+import { showGameScreen, showSettingsScreen } from './screens';
 import { getGameSettings, hasCompleteSettings, initSettingsSteps } from './settings';
 import { initWinnerScreen } from './winner-screen';
 
@@ -34,8 +35,7 @@ function init() {
     } = appElements;
 
     homeStartButtonRef.addEventListener('click', () => {
-      homeScreenRef.hidden = true;
-      settingsScreenRef.hidden = false;
+      showSettingsScreen(homeScreenRef, settingsScreenRef);
     });
 
     initSettingsSteps(
@@ -54,8 +54,7 @@ function init() {
         return;
       }
 
-      settingsScreenRef.hidden = true;
-      gameContentRef.hidden = false;
+      showGameScreen(settingsScreenRef, gameContentRef);
 
       startGame({
         fieldRef,
