@@ -10,7 +10,13 @@ import {
   shuffleCards,
 } from './cards';
 import { boardConfigs, cardImages, type GameSettings } from './game-data';
-import { switchPlayer, updateCurrentPlayerMarker, updateScore } from './players';
+import {
+  addPoint,
+  createPlayerScore,
+  switchPlayer,
+  updateCurrentPlayerMarker,
+  updateScores,
+} from './players';
 import { showGameOver } from './winner-screen';
 
 type StartGameOptions = {
@@ -43,15 +49,13 @@ export function startGame({
   let flippedCards: HTMLElement[] = [];
   let isLocked = false;
   let currentPlayer = settings.firstPlayer;
-  let blueScore = 0;
-  let orangeScore = 0;
+  const score = createPlayerScore();
   let matchedPairs = 0;
   const boardConfig = boardConfigs[settings.boardSize];
   const selectedImages = cardImages.slice(0, boardConfig.pairCount);
   const shuffledImages = shuffleCards([...selectedImages, ...selectedImages]);
 
-  updateScore(blueScoreRef, blueScore);
-  updateScore(orangeScoreRef, orangeScore);
+  updateScores(blueScoreRef, orangeScoreRef, score);
   setBoardSize(fieldRef, boardConfig.fieldClass);
   renderCards(fieldRef, shuffledImages);
   updateCurrentPlayerMarker(currentPlayerMarkerRef, currentPlayer);
@@ -73,15 +77,8 @@ export function startGame({
 
       if (isMatch) {
         markCardsAsMatched(flippedCards);
-
-        if (currentPlayer === 'blue') {
-          blueScore++;
-        } else {
-          orangeScore++;
-        }
-
-        updateScore(blueScoreRef, blueScore);
-        updateScore(orangeScoreRef, orangeScore);
+        addPoint(score, currentPlayer);
+        updateScores(blueScoreRef, orangeScoreRef, score);
         matchedPairs++;
         flippedCards = [];
         isLocked = false;
@@ -95,8 +92,8 @@ export function startGame({
               winnerImageRef,
               finalBlueScoreRef,
               finalOrangeScoreRef,
-              blueScore,
-              orangeScore,
+              score.blue,
+              score.orange,
             );
           }, 1600);
         }
