@@ -17,7 +17,7 @@ import {
   updateCurrentPlayerMarker,
   updateScores,
 } from './players';
-import { showGameOver } from './winner-screen';
+import { showGameOverAfterDelay } from './winner-screen';
 
 type StartGameOptions = {
   fieldRef: HTMLElement;
@@ -84,18 +84,15 @@ export function startGame({
         isLocked = false;
 
         if (matchedPairs === boardConfig.pairCount) {
-          setTimeout(() => {
-            showGameOver(
-              gameContentRef,
-              gameOverRef,
-              winnerScreenRef,
-              winnerImageRef,
-              finalBlueScoreRef,
-              finalOrangeScoreRef,
-              score.blue,
-              score.orange,
-            );
-          }, 1600);
+          showGameOverAfterDelay(
+            gameContentRef,
+            gameOverRef,
+            winnerScreenRef,
+            winnerImageRef,
+            finalBlueScoreRef,
+            finalOrangeScoreRef,
+            score,
+          );
         }
 
         return;

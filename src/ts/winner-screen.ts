@@ -1,4 +1,7 @@
 import { assetPath, type Winner } from './game-data';
+import { type PlayerScore } from './players';
+
+const gameOverDelay = 1600;
 
 export function initWinnerScreen() {
   const backToStartButtonRef = document.querySelector<HTMLButtonElement>('.winner-screen__back-button');
@@ -29,6 +32,29 @@ export function showGameOver(
   setTimeout(() => {
     showWinner(gameOverRef, winnerScreenRef, winnerImageRef, blueScore, orangeScore);
   }, 2000);
+}
+
+export function showGameOverAfterDelay(
+  gameContentRef: HTMLElement,
+  gameOverRef: HTMLElement,
+  winnerScreenRef: HTMLElement,
+  winnerImageRef: HTMLImageElement,
+  finalBlueScoreRef: HTMLElement,
+  finalOrangeScoreRef: HTMLElement,
+  score: PlayerScore,
+) {
+  setTimeout(() => {
+    showGameOver(
+      gameContentRef,
+      gameOverRef,
+      winnerScreenRef,
+      winnerImageRef,
+      finalBlueScoreRef,
+      finalOrangeScoreRef,
+      score.blue,
+      score.orange,
+    );
+  }, gameOverDelay);
 }
 
 function showWinner(
