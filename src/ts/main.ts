@@ -1,13 +1,8 @@
 import '../styles/style.scss';
 import { renderCards, setBoardSize, shuffleCards } from './cards';
 import { initExitPopup } from './exit-popup';
-import {
-  boardConfigs,
-  cardImages,
-  playerColors,
-  type GameSettings,
-  type Player,
-} from './game-data';
+import { boardConfigs, cardImages, type GameSettings } from './game-data';
+import { switchPlayer, updateCurrentPlayerMarker, updateScore } from './players';
 import { getGameSettings, hasCompleteSettings, initSettingsSteps } from './settings';
 import { initWinnerScreen, showGameOver } from './winner-screen';
 
@@ -207,16 +202,4 @@ function startGame({
       }, 1000);
     }
   });
-}
-
-function switchPlayer(currentPlayer: Player) {
-  return currentPlayer === 'blue' ? 'orange' : 'blue';
-}
-
-function updateScore(scoreRef: HTMLElement, score: number) {
-  scoreRef.textContent = score.toString();
-}
-
-function updateCurrentPlayerMarker(markerRef: HTMLElement, currentPlayer: Player) {
-  markerRef.style.background = playerColors[currentPlayer];
 }
