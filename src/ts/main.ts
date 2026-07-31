@@ -1,7 +1,7 @@
 import '../styles/style.scss';
+import { renderCards, setBoardSize, shuffleCards } from './cards';
 import { initExitPopup } from './exit-popup';
 import {
-  assetPath,
   boardConfigs,
   cardImages,
   playerColors,
@@ -207,37 +207,6 @@ function startGame({
       }, 1000);
     }
   });
-}
-
-function setBoardSize(fieldRef: HTMLElement, fieldClass: string) {
-  fieldRef.classList.remove('field--16', 'field--24', 'field--36');
-  fieldRef.classList.add(fieldClass);
-}
-
-function renderCards(fieldRef: HTMLElement, shuffledImages: string[]) {
-  fieldRef.innerHTML = '';
-
-  shuffledImages.forEach((cardImage) => {
-    const cardRef = document.createElement('button');
-
-    cardRef.classList.add('card');
-    cardRef.type = 'button';
-    cardRef.ariaLabel = 'Memory Karte';
-    cardRef.dataset.cardImage = cardImage;
-    cardRef.style.setProperty('--card-image', `url('${assetPath}${cardImage}')`);
-    cardRef.innerHTML = `
-      <span class="card__inner">
-        <span class="card__face card__face--front"></span>
-        <span class="card__face card__face--back"></span>
-      </span>
-    `;
-
-    fieldRef.appendChild(cardRef);
-  });
-}
-
-function shuffleCards(cards: string[]) {
-  return cards.sort(() => Math.random() - 0.5);
 }
 
 function switchPlayer(currentPlayer: Player) {
