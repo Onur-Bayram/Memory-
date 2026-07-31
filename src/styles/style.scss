@@ -3,7 +3,9 @@
 @use './home-responsive';
 @use './settings';
 @use './settings-responsive';
-@use './game';
+@use './game-layout';
+@use './game-results';
+@use './game-board';
 @use './game-responsive-width';
 @use './game-responsive-height';
 
