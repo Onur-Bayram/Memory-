@@ -5,11 +5,9 @@ import {
   haveSameCardImage,
   hideCards,
   markCardsAsMatched,
-  renderCards,
-  setBoardSize,
-  shuffleCards,
 } from './cards';
-import { boardConfigs, cardImages, type GameSettings } from './game-data';
+import { setupGameBoard } from './game-board';
+import { type GameSettings } from './game-data';
 import {
   addPoint,
   createPlayerScore,
@@ -51,13 +49,9 @@ export function startGame({
   let currentPlayer = settings.firstPlayer;
   const score = createPlayerScore();
   let matchedPairs = 0;
-  const boardConfig = boardConfigs[settings.boardSize];
-  const selectedImages = cardImages.slice(0, boardConfig.pairCount);
-  const shuffledImages = shuffleCards([...selectedImages, ...selectedImages]);
+  const boardConfig = setupGameBoard(fieldRef, settings.boardSize);
 
   updateScores(blueScoreRef, orangeScoreRef, score);
-  setBoardSize(fieldRef, boardConfig.fieldClass);
-  renderCards(fieldRef, shuffledImages);
   updateCurrentPlayerMarker(currentPlayerMarkerRef, currentPlayer);
 
   fieldRef.addEventListener('click', (e) => {

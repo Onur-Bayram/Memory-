@@ -7,7 +7,7 @@ export type GameSettings = {
   firstPlayer: Player;
 };
 
-type BoardConfig = {
+export type BoardConfig = {
   pairCount: number;
   fieldClass: string;
 };
