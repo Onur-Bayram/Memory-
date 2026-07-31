@@ -129,6 +129,14 @@ body {
   }
 }
 
+@media (min-width: 1440px) {
+  .home-screen {
+    &__content {
+      width: var(--home-content-max);
+    }
+  }
+}
+
 .settings-screen {
   position: fixed;
   inset: 0;
