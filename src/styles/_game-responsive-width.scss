@@ -1,0 +1,237 @@
+@media (max-width: 1120px) {
+  :root {
+    --game-content-side-space: 96px;
+    --game-top-space: 32px;
+    --game-layout-gap: 42px;
+    --game-header-height: 56px;
+    --score-board-width: 250px;
+    --score-board-height: 56px;
+    --score-board-font-size: 20px;
+    --score-board-marker-width: 18px;
+    --score-board-marker-height: 13px;
+    --current-player-font-size: 24px;
+    --current-player-marker-width: 28px;
+    --current-player-marker-height: 22px;
+    --exit-game-width: 180px;
+    --exit-game-height: 54px;
+  }
+
+  .field--16 {
+    --card-size: 112px;
+
+    gap: 14px;
+    width: 490px;
+    height: 490px;
+    transform: translate(24px, 16px);
+  }
+
+  .field--24 {
+    --card-size: 90px;
+
+    gap: 8px;
+    width: 580px;
+    height: 384px;
+    transform: translate(0, 16px);
+  }
+
+  .field--36 {
+    --card-size: 78px;
+
+    gap: 6px;
+    width: 498px;
+    height: 498px;
+    transform: translate(0, -10px);
+  }
+}
+
+@media (max-width: 850px) {
+  :root {
+    --game-content-side-space: 48px;
+    --game-top-space: 28px;
+    --game-layout-gap: 32px;
+    --score-board-width: 218px;
+    --score-board-height: 50px;
+    --score-board-font-size: 18px;
+    --current-player-font-size: 22px;
+    --current-player-marker-width: 26px;
+    --current-player-marker-height: 20px;
+    --exit-game-width: 156px;
+    --exit-game-height: 47px;
+  }
+
+  .field--16 {
+    --card-size: 96px;
+
+    gap: 12px;
+    width: 420px;
+    height: 420px;
+    transform: translate(18px, 12px);
+  }
+
+  .field--24 {
+    --card-size: 76px;
+
+    gap: 7px;
+    width: 491px;
+    height: 325px;
+    transform: translate(0, 10px);
+  }
+
+  .field--36 {
+    --card-size: 66px;
+
+    gap: 5px;
+    width: 421px;
+    height: 421px;
+    transform: translate(0, -8px);
+  }
+}
+
+@media (max-width: 700px) {
+  :root {
+    --game-content-side-space: 32px;
+    --game-top-space: 24px;
+    --game-layout-gap: 24px;
+    --game-header-height: auto;
+    --score-board-width: 190px;
+    --score-board-height: 46px;
+    --score-board-gap: 10px;
+    --score-board-font-size: 16px;
+    --score-board-marker-width: 17px;
+    --score-board-marker-height: 12px;
+    --current-player-gap: 10px;
+    --current-player-font-size: 20px;
+    --current-player-marker-width: 24px;
+    --current-player-marker-height: 18px;
+    --exit-game-width: 138px;
+    --exit-game-height: 41px;
+  }
+
+  .game-header {
+    display: grid;
+    grid-template-areas:
+      'score exit'
+      'player player';
+    grid-template-columns: 1fr auto;
+    row-gap: 16px;
+  }
+
+  .score-board {
+    grid-area: score;
+  }
+
+  .current-player {
+    grid-area: player;
+    justify-self: center;
+  }
+
+  .exit-game {
+    grid-area: exit;
+    justify-self: end;
+  }
+
+  .field--16 {
+    --card-size: 78px;
+
+    gap: 8px;
+    width: 336px;
+    height: 336px;
+    transform: none;
+  }
+
+  .field--24 {
+    --card-size: 52px;
+
+    gap: 6px;
+    width: 342px;
+    height: 226px;
+    transform: none;
+  }
+
+  .field--36 {
+    --card-size: 52px;
+
+    gap: 5px;
+    width: 337px;
+    height: 337px;
+    transform: none;
+  }
+}
+
+@media (max-width: 420px) {
+  :root {
+    --game-content-side-space: 24px;
+    --game-top-space: 20px;
+    --game-layout-gap: 20px;
+    --score-board-width: 166px;
+    --score-board-height: 44px;
+    --score-board-gap: 8px;
+    --current-player-font-size: 18px;
+    --current-player-marker-width: 22px;
+    --current-player-marker-height: 16px;
+    --exit-game-width: 126px;
+    --exit-game-height: 38px;
+  }
+
+  .game-header {
+    row-gap: 14px;
+  }
+
+  .field--16 {
+    --card-size: 72px;
+
+    gap: 7px;
+    width: 309px;
+    height: 309px;
+  }
+
+  .field--24 {
+    --card-size: 48px;
+
+    gap: 5px;
+    width: 313px;
+    height: 207px;
+  }
+
+  .field--36 {
+    --card-size: 48px;
+
+    gap: 4px;
+    width: 308px;
+    height: 308px;
+  }
+}
+
+@media (max-width: 340px) {
+  :root {
+    --game-content-side-space: 20px;
+    --score-board-width: 150px;
+    --exit-game-width: 116px;
+    --exit-game-height: 35px;
+    --current-player-font-size: 16px;
+  }
+
+  .field--16 {
+    --card-size: 66px;
+
+    gap: 6px;
+    width: 282px;
+    height: 282px;
+  }
+
+  .field--24 {
+    --card-size: 44px;
+
+    gap: 4px;
+    width: 284px;
+    height: 188px;
+  }
+
+  .field--36 {
+    --card-size: 44px;
+
+    gap: 4px;
+    width: 284px;
+    height: 284px;
+  }
+}
