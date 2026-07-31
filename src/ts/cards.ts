@@ -27,6 +27,44 @@ export function renderCards(fieldRef: HTMLElement, shuffledImages: string[]) {
   });
 }
 
+export function getClickedCard(target: EventTarget | null) {
+  if (!(target instanceof HTMLElement)) {
+    return null;
+  }
+
+  const cardRef = target.closest('.card');
+
+  return cardRef instanceof HTMLElement ? cardRef : null;
+}
+
+export function canFlipCard(cardRef: HTMLElement, isLocked: boolean) {
+  return (
+    !isLocked &&
+    !cardRef.classList.contains('is-flipped') &&
+    !cardRef.classList.contains('is-matched')
+  );
+}
+
+export function flipCard(cardRef: HTMLElement) {
+  cardRef.classList.add('is-flipped');
+}
+
+export function hideCards(cards: HTMLElement[]) {
+  cards.forEach((card) => {
+    card.classList.remove('is-flipped');
+  });
+}
+
+export function markCardsAsMatched(cards: HTMLElement[]) {
+  cards.forEach((card) => {
+    card.classList.add('is-matched');
+  });
+}
+
+export function haveSameCardImage(firstCard: HTMLElement, secondCard: HTMLElement) {
+  return firstCard.dataset.cardImage === secondCard.dataset.cardImage;
+}
+
 export function shuffleCards(cards: string[]) {
   return cards.sort(() => Math.random() - 0.5);
 }

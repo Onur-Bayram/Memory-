@@ -1,4 +1,14 @@
-import { renderCards, setBoardSize, shuffleCards } from './cards';
+import {
+  canFlipCard,
+  flipCard,
+  getClickedCard,
+  haveSameCardImage,
+  hideCards,
+  markCardsAsMatched,
+  renderCards,
+  setBoardSize,
+  shuffleCards,
+} from './cards';
 import { boardConfigs, cardImages, type GameSettings } from './game-data';
 import { switchPlayer, updateCurrentPlayerMarker, updateScore } from './players';
 import { showGameOver } from './winner-screen';
@@ -47,29 +57,22 @@ export function startGame({
   updateCurrentPlayerMarker(currentPlayerMarkerRef, currentPlayer);
 
   fieldRef.addEventListener('click', (e) => {
-    const card = (e.target as HTMLElement).closest('.card');
+    const card = getClickedCard(e.target);
 
-    if (
-      !(card instanceof HTMLElement) ||
-      isLocked ||
-      card.classList.contains('is-flipped') ||
-      card.classList.contains('is-matched')
-    ) {
+    if (!card || !canFlipCard(card, isLocked)) {
       return;
     }
 
-    card.classList.add('is-flipped');
+    flipCard(card);
     flippedCards.push(card);
 
     if (flippedCards.length === 2) {
       isLocked = true;
       const [firstCard, secondCard] = flippedCards;
-      const isMatch = firstCard.dataset.cardImage === secondCard.dataset.cardImage;
+      const isMatch = haveSameCardImage(firstCard, secondCard);
 
       if (isMatch) {
-        flippedCards.forEach((flippedCard) => {
-          flippedCard.classList.add('is-matched');
-        });
+        markCardsAsMatched(flippedCards);
 
         if (currentPlayer === 'blue') {
           blueScore++;
@@ -102,10 +105,7 @@ export function startGame({
       }
 
       setTimeout(() => {
-        flippedCards.forEach((flippedCard) => {
-          flippedCard.classList.remove('is-flipped');
-        });
-
+        hideCards(flippedCards);
         currentPlayer = switchPlayer(currentPlayer);
         updateCurrentPlayerMarker(currentPlayerMarkerRef, currentPlayer);
         flippedCards = [];
