@@ -1,0 +1,318 @@
+.settings-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: white;
+  color: #303131;
+}
+
+.settings-panel {
+  width: 100%;
+  min-height: 100%;
+
+  &__inner {
+    width: calc(100% - var(--settings-content-side-space));
+    max-width: var(--settings-content-max);
+    min-height: 100%;
+    margin: 0 auto;
+    padding-top: var(--settings-top-space);
+    padding-bottom: 48px;
+  }
+}
+
+.settings-title {
+  margin: 0;
+
+  &__image {
+    display: block;
+    width: 263px;
+    height: auto;
+  }
+}
+
+.settings-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 390px) minmax(600px, 660px);
+  align-items: start;
+  column-gap: var(--settings-layout-gap);
+  row-gap: 48px;
+  margin-top: 38px;
+}
+
+.settings-form {
+  width: 390px;
+  max-width: 100%;
+}
+
+.settings-group {
+  margin: 0 0 32px;
+  padding: 0;
+  border: 0;
+
+  &__title {
+    position: relative;
+    width: var(--settings-heading-width);
+    height: var(--settings-heading-height);
+    margin: 0 0 14px;
+    overflow: hidden;
+    background-image: url('/assets/game_themes.png');
+    background-repeat: no-repeat;
+    background-size: var(--settings-heading-bg-width) var(--settings-heading-bg-height);
+    text-indent: -9999px;
+  }
+
+  &__title--themes {
+    background-position: 0 0;
+  }
+
+  &__title--player {
+    background-position: 0 var(--settings-heading-player-y);
+  }
+
+  &__title--board {
+    width: var(--settings-heading-board-width);
+    height: var(--settings-heading-board-height);
+    background-position: 0 var(--settings-heading-board-y);
+  }
+}
+
+.settings-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  margin-left: 28px;
+  font-size: 20px;
+  line-height: 1.6;
+  cursor: pointer;
+
+  input {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    accent-color: #303131;
+  }
+
+  span {
+    position: relative;
+    display: inline-block;
+  }
+
+  input:checked + span {
+    font-weight: 800;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: calc(100% + var(--settings-option-arrow-gap));
+      top: 50%;
+      width: var(--settings-option-arrow-line);
+      height: 3px;
+      background: #f2ee62;
+      transform: translateY(-50%);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: calc(100% + var(--settings-option-arrow-gap) + var(--settings-option-arrow-line));
+      top: 50%;
+      width: var(--settings-option-arrow-size);
+      height: var(--settings-option-arrow-size);
+      background: #f2ee62;
+      transform: translateY(-50%) rotate(45deg);
+    }
+  }
+}
+
+.settings-preview-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 66px;
+  width: 100%;
+  max-width: 660px;
+  padding-top: 0;
+}
+
+.theme-preview {
+  align-self: flex-end;
+  width: 100%;
+  max-width: 410px;
+  aspect-ratio: 461 / 412;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgb(0 0 0 / 24%);
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.settings-steps {
+  position: relative;
+  display: grid;
+  grid-template-areas: 'theme divider-theme player divider-player board start';
+  grid-template-columns: minmax(112px, 1fr) 18px minmax(126px, 1fr) 18px minmax(136px, 1fr) auto;
+  align-items: center;
+  column-gap: 16px;
+  width: 100%;
+  min-height: 80px;
+  padding: 13px 20px;
+  background: #f5f5f5;
+  border: 1px solid #dedede;
+  font-size: 16px;
+  color: #303131;
+
+  &__text {
+    display: block;
+    color: #aaa;
+    line-height: 28px;
+    white-space: nowrap;
+    transition: color 160ms ease-in-out;
+  }
+
+  &__divider {
+    position: relative;
+    display: block;
+    width: 8px;
+    height: 55px;
+    background: #f2ee62;
+    transform: rotate(18deg);
+    transform-origin: center;
+    transition: top 160ms ease-in-out, height 160ms ease-in-out;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -9px;
+      width: 18px;
+      height: 18px;
+      background: #f2ee62;
+      opacity: 0;
+      transform: translateX(-50%) rotate(45deg);
+      transition: opacity 160ms ease-in-out;
+    }
+  }
+
+  &__divider--theme {
+    grid-area: divider-theme;
+  }
+
+  &__divider--player {
+    grid-area: divider-player;
+  }
+
+  &__text--theme {
+    grid-area: theme;
+  }
+
+  &__text--player {
+    grid-area: player;
+  }
+
+  &__text--board {
+    grid-area: board;
+  }
+
+  &--has-theme {
+    .settings-steps__text--theme {
+      color: #303131;
+    }
+
+    .settings-steps__divider--theme {
+      height: 45px;
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--has-player {
+    .settings-steps__text--player {
+      color: #303131;
+    }
+
+    .settings-steps__divider--player {
+      height: 45px;
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--has-board {
+    .settings-steps__text--board {
+      color: #303131;
+    }
+  }
+}
+
+.settings-start {
+  grid-area: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 126px;
+  height: 54px;
+  padding: 0;
+  border: 0;
+  background: #f2ee62;
+  color: #303131;
+  cursor: pointer;
+  font: inherit;
+  transition: transform 160ms ease-in-out;
+
+  &__icon {
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 14px;
+    border: 2px solid currentColor;
+    border-radius: 1px;
+    box-sizing: border-box;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 50%;
+      width: 0;
+      height: 0;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-left: 6px solid currentColor;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__text {
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  &:disabled {
+    background: #dbdbd8;
+    color: #aaa;
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled):hover {
+    transform: translateY(-2px) scale(1.04);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #303131;
+    outline-offset: 3px;
+  }
+}
