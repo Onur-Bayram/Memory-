@@ -1,54 +1,14 @@
 import '../styles/style.scss';
-
-const cardImages = [
-  'karte_1_kopie_unten.png',
-  'karte_2_unten.png',
-  'karte_3_unten.png',
-  'karte_4_unten.png',
-  'karte_5_unten.png',
-  'karte_6_unten.png',
-  'karte_7_unten.png',
-  'karte_8_unten.png',
-  'karte_9_unten.png',
-  'karte_10_unten.png',
-  'karte_11_unten.png',
-  'karte_12_unten.png',
-  'karte_13_unten.png',
-  'karte_14_unten.png',
-  'karte_15_unten.png',
-  'karte_16_unten.png',
-  'karte_17_unten.png',
-  'karte_18_unten.png',
-];
-
-type Player = 'blue' | 'orange';
-type Winner = Player | 'draw';
-type BoardSize = 16 | 24 | 36;
-type GameSettings = {
-  boardSize: BoardSize;
-  firstPlayer: Player;
-};
-
-const playerColors = {
-  blue: '#2fb4ff',
-  orange: '#ff8a2a',
-};
-
-const assetPath = '/dist/assets/';
-const boardConfigs = {
-  16: {
-    pairCount: 8,
-    fieldClass: 'field--16',
-  },
-  24: {
-    pairCount: 12,
-    fieldClass: 'field--24',
-  },
-  36: {
-    pairCount: 18,
-    fieldClass: 'field--36',
-  },
-};
+import {
+  assetPath,
+  boardConfigs,
+  cardImages,
+  playerColors,
+  type BoardSize,
+  type GameSettings,
+  type Player,
+  type Winner,
+} from './game-data';
 
 init();
 

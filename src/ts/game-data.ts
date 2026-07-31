@@ -1,0 +1,56 @@
+export type Player = 'blue' | 'orange';
+export type Winner = Player | 'draw';
+export type BoardSize = 16 | 24 | 36;
+
+export type GameSettings = {
+  boardSize: BoardSize;
+  firstPlayer: Player;
+};
+
+type BoardConfig = {
+  pairCount: number;
+  fieldClass: string;
+};
+
+export const cardImages = [
+  'karte_1_kopie_unten.png',
+  'karte_2_unten.png',
+  'karte_3_unten.png',
+  'karte_4_unten.png',
+  'karte_5_unten.png',
+  'karte_6_unten.png',
+  'karte_7_unten.png',
+  'karte_8_unten.png',
+  'karte_9_unten.png',
+  'karte_10_unten.png',
+  'karte_11_unten.png',
+  'karte_12_unten.png',
+  'karte_13_unten.png',
+  'karte_14_unten.png',
+  'karte_15_unten.png',
+  'karte_16_unten.png',
+  'karte_17_unten.png',
+  'karte_18_unten.png',
+];
+
+export const playerColors: Record<Player, string> = {
+  blue: '#2fb4ff',
+  orange: '#ff8a2a',
+};
+
+export const assetPath = '/dist/assets/';
+
+export const boardConfigs: Record<BoardSize, BoardConfig> = {
+  16: {
+    pairCount: 8,
+    fieldClass: 'field--16',
+  },
+  24: {
+    pairCount: 12,
+    fieldClass: 'field--24',
+  },
+  36: {
+    pairCount: 18,
+    fieldClass: 'field--36',
+  },
+};
