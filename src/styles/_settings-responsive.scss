@@ -1,0 +1,134 @@
+@media (max-width: 1120px) {
+  :root {
+    --settings-content-side-space: 112px;
+    --settings-page-space: 56px;
+    --settings-top-space: 72px;
+    --settings-layout-gap: 80px;
+    --settings-heading-width: 202px;
+    --settings-heading-height: 33px;
+    --settings-heading-board-width: 165px;
+    --settings-heading-board-height: 29px;
+    --settings-heading-bg-width: 289px;
+    --settings-heading-bg-height: 496px;
+    --settings-heading-player-y: -214px;
+    --settings-heading-board-y: -365px;
+    --settings-option-arrow-line: 34px;
+  }
+
+  .settings-layout {
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+  }
+
+  .settings-form,
+  .settings-preview-column {
+    justify-self: center;
+  }
+
+  .theme-preview {
+    align-self: center;
+    max-width: 370px;
+  }
+}
+
+@media (max-width: 700px) {
+  :root {
+    --settings-content-side-space: 48px;
+    --settings-page-space: 24px;
+    --settings-top-space: 48px;
+    --settings-heading-width: 184px;
+    --settings-heading-height: 30px;
+    --settings-heading-board-width: 150px;
+    --settings-heading-board-height: 27px;
+    --settings-heading-bg-width: 263px;
+    --settings-heading-bg-height: 452px;
+    --settings-heading-player-y: -195px;
+    --settings-heading-board-y: -332px;
+    --settings-option-arrow-gap: 10px;
+    --settings-option-arrow-line: 28px;
+    --settings-option-arrow-size: 12px;
+  }
+
+  .settings-panel__inner {
+    padding-bottom: 36px;
+  }
+
+  .settings-layout {
+    row-gap: 32px;
+  }
+
+  .settings-group {
+    margin-bottom: 24px;
+  }
+
+  .settings-option {
+    margin-left: 22px;
+    line-height: 1.45;
+  }
+
+  .settings-preview-column {
+    gap: 28px;
+  }
+
+  .theme-preview {
+    max-width: 320px;
+  }
+
+  .settings-steps {
+    grid-template-areas:
+      'theme divider-theme player'
+      'board divider-player start';
+    grid-template-columns: minmax(0, 1fr) 18px minmax(0, 1fr);
+    row-gap: 16px;
+    min-height: 148px;
+    padding: 18px 16px;
+  }
+
+  .settings-start {
+    justify-self: end;
+  }
+}
+
+@media (max-width: 420px) {
+  :root {
+    --settings-content-side-space: 32px;
+    --settings-page-space: 16px;
+    --settings-top-space: 40px;
+    --settings-heading-width: 170px;
+    --settings-heading-height: 28px;
+    --settings-heading-board-width: 139px;
+    --settings-heading-board-height: 25px;
+    --settings-heading-bg-width: 244px;
+    --settings-heading-bg-height: 417px;
+    --settings-heading-player-y: -180px;
+    --settings-heading-board-y: -307px;
+    --settings-option-arrow-line: 22px;
+  }
+
+  .settings-title__image {
+    width: 190px;
+  }
+
+  .settings-group__title {
+    margin-bottom: 10px;
+  }
+
+  .settings-option {
+    margin-left: 20px;
+  }
+
+  .theme-preview {
+    max-width: 280px;
+  }
+
+  .settings-steps {
+    column-gap: 8px;
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .settings-start {
+    width: 112px;
+    gap: 8px;
+  }
+}

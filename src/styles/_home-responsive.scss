@@ -1,0 +1,20 @@
+@media (max-width: 1120px) {
+  :root {
+    --home-button-width: 230px;
+    --home-controller-width: 220px;
+  }
+}
+
+@media (max-width: 700px) {
+  :root {
+    --home-button-width: 210px;
+    --home-controller-width: 160px;
+  }
+}
+
+@media (max-width: 420px) {
+  :root {
+    --home-button-width: 190px;
+    --home-controller-width: 120px;
+  }
+}
