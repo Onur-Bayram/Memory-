@@ -1,4 +1,4 @@
-import { type BoardSize, type GameSettings, type Player, type Theme } from './game-data';
+import { themePreviewImages, type BoardSize, type GameSettings, type Player, type Theme } from './game-data';
 
 export function initSettingsSteps(
   settingsFormRef: HTMLFormElement,
@@ -7,6 +7,7 @@ export function initSettingsSteps(
   selectedThemeRef: HTMLElement,
   selectedPlayerRef: HTMLElement,
   selectedBoardSizeRef: HTMLElement,
+  themePreviewImageRef: HTMLImageElement,
 ) {
   updateSettingsSteps(
     settingsFormRef,
@@ -15,6 +16,7 @@ export function initSettingsSteps(
     selectedThemeRef,
     selectedPlayerRef,
     selectedBoardSizeRef,
+    themePreviewImageRef,
   );
 
   settingsFormRef.addEventListener('change', () => {
@@ -25,6 +27,7 @@ export function initSettingsSteps(
       selectedThemeRef,
       selectedPlayerRef,
       selectedBoardSizeRef,
+      themePreviewImageRef,
     );
   });
 }
@@ -55,15 +58,19 @@ function updateSettingsSteps(
   selectedThemeRef: HTMLElement,
   selectedPlayerRef: HTMLElement,
   selectedBoardSizeRef: HTMLElement,
+  themePreviewImageRef: HTMLImageElement,
 ) {
   const isComplete = hasCompleteSettings(settingsFormRef);
   const themeLabel = getSelectedLabel(settingsFormRef, 'theme');
   const playerLabel = getSelectedLabel(settingsFormRef, 'first-player');
   const boardSizeLabel = getSelectedLabel(settingsFormRef, 'board-size');
+  const selectedTheme = getSelectedTheme(settingsFormRef);
 
   selectedThemeRef.textContent = themeLabel ?? 'Theme';
   selectedPlayerRef.textContent = playerLabel ?? 'Player';
   selectedBoardSizeRef.textContent = boardSizeLabel ?? 'Board size';
+  themePreviewImageRef.src = themePreviewImages[selectedTheme];
+  themePreviewImageRef.alt = `${themeLabel ?? 'Memory'} preview`;
   settingsStepsRef.classList.toggle('settings-steps--has-theme', Boolean(themeLabel));
   settingsStepsRef.classList.toggle('settings-steps--has-player', Boolean(playerLabel));
   settingsStepsRef.classList.toggle('settings-steps--has-board', Boolean(boardSizeLabel));
@@ -74,6 +81,13 @@ function getSelectedLabel(settingsFormRef: HTMLFormElement, fieldName: string) {
   const selectedInputRef = settingsFormRef.querySelector<HTMLInputElement>(`input[name="${fieldName}"]:checked`);
 
   return selectedInputRef?.dataset.label;
+}
+
+function getSelectedTheme(settingsFormRef: HTMLFormElement): Theme {
+  const formData = new FormData(settingsFormRef);
+  const theme = formData.get('theme');
+
+  return isTheme(theme) ? theme : 'code-vibes';
 }
 
 function isBoardSize(value: number): value is BoardSize {

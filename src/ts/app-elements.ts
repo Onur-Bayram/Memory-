@@ -8,6 +8,7 @@ export type AppElements = {
   selectedThemeRef: HTMLElement;
   selectedPlayerRef: HTMLElement;
   selectedBoardSizeRef: HTMLElement;
+  themePreviewImageRef: HTMLImageElement;
   fieldRef: HTMLElement;
   blueScoreRef: HTMLElement;
   orangeScoreRef: HTMLElement;
@@ -30,6 +31,7 @@ export function getAppElements(): AppElements | null {
   const selectedThemeRef = document.getElementById('selected-theme');
   const selectedPlayerRef = document.getElementById('selected-player');
   const selectedBoardSizeRef = document.getElementById('selected-board-size');
+  const themePreviewImageRef = document.querySelector<HTMLImageElement>('.theme-preview__image');
   const fieldRef = document.getElementById('field');
   const blueScoreRef = document.getElementById('blue-score');
   const orangeScoreRef = document.getElementById('orange-score');
@@ -51,6 +53,7 @@ export function getAppElements(): AppElements | null {
     !selectedThemeRef ||
     !selectedPlayerRef ||
     !selectedBoardSizeRef ||
+    !themePreviewImageRef ||
     !fieldRef ||
     !blueScoreRef ||
     !orangeScoreRef ||
@@ -75,6 +78,7 @@ export function getAppElements(): AppElements | null {
     selectedThemeRef,
     selectedPlayerRef,
     selectedBoardSizeRef,
+    themePreviewImageRef,
     fieldRef,
     blueScoreRef,
     orangeScoreRef,

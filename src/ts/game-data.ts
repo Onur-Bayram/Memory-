@@ -14,6 +14,13 @@ export type BoardConfig = {
   fieldClass: string;
 };
 
+export const themePreviewImages: Record<Theme, string> = {
+  'code-vibes': '/assets/memory_bild.png',
+  gaming: '/assets/gaming.png',
+  'da-projects': '/assets/memory_bild.png',
+  foods: '/assets/memory_bild.png',
+};
+
 export const cardImages = [
   'karte_1_kopie_unten.png',
   'karte_2_unten.png',

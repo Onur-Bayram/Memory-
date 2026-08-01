@@ -11,6 +11,7 @@ export function initGameStart({
   selectedThemeRef,
   selectedPlayerRef,
   selectedBoardSizeRef,
+  themePreviewImageRef,
   fieldRef,
   blueScoreRef,
   orangeScoreRef,
@@ -29,6 +30,7 @@ export function initGameStart({
     selectedThemeRef,
     selectedPlayerRef,
     selectedBoardSizeRef,
+    themePreviewImageRef,
   );
 
   settingsFormRef.addEventListener('submit', (e) => {
