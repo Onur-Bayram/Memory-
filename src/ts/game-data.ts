@@ -19,7 +19,7 @@ export const assetPath = '/dist/assets/';
 export const themePreviewImages: Record<Theme, string> = {
   'code-vibes': `${assetPath}memory_bild.png`,
   gaming: `${assetPath}gaming.png`,
-  'da-projects': `${assetPath}memory_bild.png`,
+  'da-projects': `${assetPath}da_projects.png`,
   foods: `${assetPath}memory_bild.png`,
 };
 
