@@ -14,11 +14,13 @@ export type BoardConfig = {
   fieldClass: string;
 };
 
+export const assetPath = '/dist/assets/';
+
 export const themePreviewImages: Record<Theme, string> = {
-  'code-vibes': '/assets/memory_bild.png',
-  gaming: '/assets/gaming.png',
-  'da-projects': '/assets/memory_bild.png',
-  foods: '/assets/memory_bild.png',
+  'code-vibes': `${assetPath}memory_bild.png`,
+  gaming: `${assetPath}gaming.png`,
+  'da-projects': `${assetPath}memory_bild.png`,
+  foods: `${assetPath}memory_bild.png`,
 };
 
 export const cardImages = [
@@ -46,8 +48,6 @@ export const playerColors: Record<Player, string> = {
   blue: '#2fb4ff',
   orange: '#ff8a2a',
 };
-
-export const assetPath = '/dist/assets/';
 
 export const boardConfigs: Record<BoardSize, BoardConfig> = {
   16: {
