@@ -1,8 +1,10 @@
 export type Player = 'blue' | 'orange';
 export type Winner = Player | 'draw';
 export type BoardSize = 16 | 24 | 36;
+export type Theme = 'code-vibes' | 'gaming' | 'da-projects' | 'foods';
 
 export type GameSettings = {
+  theme: Theme;
   boardSize: BoardSize;
   firstPlayer: Player;
 };

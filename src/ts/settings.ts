@@ -1,4 +1,4 @@
-import { type BoardSize, type GameSettings, type Player } from './game-data';
+import { type BoardSize, type GameSettings, type Player, type Theme } from './game-data';
 
 export function initSettingsSteps(
   settingsFormRef: HTMLFormElement,
@@ -37,10 +37,12 @@ export function hasCompleteSettings(settingsFormRef: HTMLFormElement) {
 
 export function getGameSettings(settingsFormRef: HTMLFormElement): GameSettings {
   const formData = new FormData(settingsFormRef);
+  const theme = formData.get('theme');
   const boardSize = Number(formData.get('board-size'));
   const firstPlayer = formData.get('first-player');
 
   return {
+    theme: isTheme(theme) ? theme : 'code-vibes',
     boardSize: isBoardSize(boardSize) ? boardSize : 16,
     firstPlayer: isPlayer(firstPlayer) ? firstPlayer : 'blue',
   };
@@ -80,4 +82,8 @@ function isBoardSize(value: number): value is BoardSize {
 
 function isPlayer(value: FormDataEntryValue | null): value is Player {
   return value === 'blue' || value === 'orange';
+}
+
+function isTheme(value: FormDataEntryValue | null): value is Theme {
+  return value === 'code-vibes' || value === 'gaming' || value === 'da-projects' || value === 'foods';
 }
