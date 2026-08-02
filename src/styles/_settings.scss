@@ -34,7 +34,7 @@
 
 .settings-layout {
   display: grid;
-  grid-template-columns: minmax(300px, 390px) minmax(600px, 660px);
+  grid-template-columns: minmax(300px, 390px) minmax(600px, 720px);
   align-items: start;
   column-gap: var(--settings-layout-gap);
   row-gap: 48px;
@@ -133,7 +133,7 @@
   align-items: center;
   gap: 66px;
   width: 100%;
-  max-width: 660px;
+  max-width: 720px;
   padding-top: 0;
 }
 
@@ -158,9 +158,9 @@
   position: relative;
   display: grid;
   grid-template-areas: 'theme divider-theme player divider-player board start';
-  grid-template-columns: minmax(112px, 1fr) 18px minmax(126px, 1fr) 18px minmax(136px, 1fr) auto;
+  grid-template-columns: minmax(160px, 1.25fr) 18px minmax(126px, 1fr) 18px minmax(136px, 1fr) auto;
   align-items: center;
-  column-gap: 16px;
+  column-gap: 14px;
   width: 100%;
   min-height: 80px;
   padding: 13px 20px;
@@ -173,6 +173,7 @@
     display: block;
     color: #aaa;
     line-height: 28px;
+    min-width: 0;
     white-space: nowrap;
     transition: color 160ms ease-in-out;
   }
