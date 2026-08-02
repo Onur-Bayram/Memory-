@@ -67,9 +67,29 @@ body[data-game-theme='gaming'] .exit-popup__back-button {
   &:hover {
     border-color: transparent;
     background-color: transparent;
-    background-image: url('/assets/back_to_game_unten.png');
     box-shadow: none;
     filter: brightness(1.04);
+    transform: translateY(-2px) scale(1.04);
+    background-image: url('/assets/back_to_game_unten.png');
+  }
+}
+
+body[data-game-theme='gaming'] .exit-popup__exit-button {
+  width: 202px;
+  height: 54px;
+  border: 2px solid #f41b86;
+  border-radius: 7px;
+  background: #f41b86;
+  color: white;
+  font-size: 19px;
+  font-weight: 700;
+  box-shadow: none;
+
+  &:hover {
+    border-color: #f41b86;
+    background: #fff5fb;
+    box-shadow: none;
+    color: #f41b86;
     transform: translateY(-2px) scale(1.04);
   }
 }

@@ -25,7 +25,7 @@ export const themePreviewImages: Record<Theme, string> = {
 
 export const cardBackImages: Record<Theme, string> = {
   'code-vibes': `${assetPath}bild1.png`,
-  gaming: `${assetPath}kartenrueckseite.png`,
+  gaming: `${assetPath}kartenrueckseite_sauber.png`,
   'da-projects': `${assetPath}bild1.png`,
   foods: `${assetPath}bild1.png`,
 };
@@ -71,24 +71,24 @@ const codeVibesCardImages = [
 ];
 
 const gamingCardImages = [
-  'motiv_01_kreis.png',
-  'motiv_02_quadrat.png',
-  'motiv_03_dreieck.png',
-  'motiv_04_labyrinth.png',
-  'motiv_05_creeper.png',
-  'motiv_06_pilz.png',
-  'motiv_07_wuerfel.png',
-  'motiv_08_banane.png',
-  'motiv_09_controller.png',
-  'motiv_10_pacman_geist.png',
-  'motiv_11_muenze.png',
-  'motiv_12_retro_bildschirm.png',
-  'motiv_13_level_up.png',
-  'motiv_14_pacman.png',
-  'motiv_15_gameboy.png',
-  'motiv_16_puzzleteile.png',
-  'motiv_17_spielkarte.png',
-  'motiv_18_play.png',
+  'motiv_01_kreis_sauber.png',
+  'motiv_02_quadrat_sauber.png',
+  'motiv_03_dreieck_sauber.png',
+  'motiv_04_labyrinth_sauber.png',
+  'motiv_05_creeper_sauber.png',
+  'motiv_06_pilz_sauber.png',
+  'motiv_07_wuerfel_sauber.png',
+  'motiv_08_banane_sauber.png',
+  'motiv_09_controller_sauber.png',
+  'motiv_10_pacman_geist_sauber.png',
+  'motiv_11_muenze_sauber.png',
+  'motiv_12_retro_bildschirm_sauber.png',
+  'motiv_13_level_up_sauber.png',
+  'motiv_14_pacman_sauber.png',
+  'motiv_15_gameboy_sauber.png',
+  'motiv_16_puzzleteile_sauber.png',
+  'motiv_17_spielkarte_sauber.png',
+  'motiv_18_play_sauber.png',
 ];
 
 const themeCardImages: Record<Theme, string[]> = {
