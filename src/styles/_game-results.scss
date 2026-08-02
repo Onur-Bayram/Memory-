@@ -114,6 +114,64 @@
     }
   }
 
+  // Diese Elemente werden nur fuer den Gaming-Blue-Winner-Screen eingeblendet.
+  &__gaming-blue {
+    display: none;
+  }
+
+  &__headline,
+  &__player-name,
+  &__trophy,
+  &__home-image {
+    display: block;
+  }
+
+  &__headline {
+    width: 233px;
+    height: 22px;
+  }
+
+  &__player-name {
+    width: 466px;
+    height: 72px;
+    margin-top: 20px;
+  }
+
+  &__trophy {
+    width: 308px;
+    height: 364px;
+    margin-top: 56px;
+  }
+
+  &__home-button {
+    width: 107px;
+    height: 49px;
+    margin-top: 48px;
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+
+    // Beim Home-Button soll nur die Farbe reagieren, keine Bewegung.
+    &:hover {
+      .winner-screen__home-image {
+        filter: brightness(1.55) saturate(1.35) contrast(1.15);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid #f41b86;
+      outline-offset: 4px;
+    }
+  }
+
+  &__home-image {
+    width: 100%;
+    height: 100%;
+    transition: filter 140ms ease-in-out;
+  }
+
   &--orange {
     .winner-screen__content {
       max-width: 522px;
@@ -133,5 +191,25 @@
     .winner-screen__back-button {
       left: 118px;
     }
+  }
+}
+
+// Spezialscreen: Gaming-Theme und Blue Player gewinnt.
+.winner-screen--gaming-blue {
+  background: #294f60;
+
+  .winner-screen__confetti,
+  .winner-screen__content {
+    display: none;
+  }
+
+  .winner-screen__gaming-blue {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    width: calc(100% - 48px);
+    height: 100%;
+    padding-top: 198px;
   }
 }

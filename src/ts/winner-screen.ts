@@ -4,14 +4,16 @@ import { type PlayerScore } from './players';
 const gameOverDelay = 1600;
 
 export function initWinnerScreen() {
-  const backToStartButtonRef = document.querySelector<HTMLButtonElement>('.winner-screen__back-button');
+  const backToStartButtonRefs = document.querySelectorAll<HTMLButtonElement>(
+    '.winner-screen__back-button, .winner-screen__home-button',
+  );
 
-  if (backToStartButtonRef) {
+  backToStartButtonRefs.forEach((buttonRef) => {
     // Der Button startet das Spiel komplett neu.
-    backToStartButtonRef.addEventListener('click', () => {
+    buttonRef.addEventListener('click', () => {
       window.location.reload();
     });
-  }
+  });
 }
 
 export function showGameOver(
@@ -69,9 +71,12 @@ function showWinner(
   orangeScore: number,
 ) {
   const winner = getWinner(blueScore, orangeScore);
+  // Diese Extra-Ansicht gehoert nur zum Gaming-Theme, wenn Blau gewinnt.
+  const isGamingBlueWinner = winner === 'blue' && document.body.dataset.gameTheme === 'gaming';
 
-  // Die Klassen passen das Design fuer Orange oder Unentschieden an.
+  // Die Klassen passen das Ergebnis-Design an.
   gameOverRef.hidden = true;
+  winnerScreenRef.classList.toggle('winner-screen--gaming-blue', isGamingBlueWinner);
   winnerScreenRef.classList.toggle('winner-screen--draw', winner === 'draw');
   winnerScreenRef.classList.toggle('winner-screen--orange', winner === 'orange');
   winnerImageRef.src = `${assetPath}${getWinnerImage(winner)}`;
