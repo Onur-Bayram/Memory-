@@ -7,7 +7,7 @@ import {
   markCardsAsMatched,
 } from './cards';
 import { setupGameBoard } from './game-board';
-import { type GameSettings } from './game-data';
+import { exitGameButtonImages, type GameSettings } from './game-data';
 import {
   addPoint,
   createPlayerScore,
@@ -49,8 +49,11 @@ export function startGame({
   let currentPlayer = settings.firstPlayer;
   const score = createPlayerScore();
   let matchedPairs = 0;
+  const exitGameButtonImage = exitGameButtonImages[settings.theme];
   const boardConfig = setupGameBoard(fieldRef, settings.boardSize, settings.theme);
 
+  gameContentRef.style.setProperty('--exit-game-image', `url('${exitGameButtonImage.normal}')`);
+  gameContentRef.style.setProperty('--exit-game-hover-image', `url('${exitGameButtonImage.hover}')`);
   updateScores(blueScoreRef, orangeScoreRef, score);
   updateCurrentPlayerMarker(currentPlayerMarkerRef, currentPlayer);
 

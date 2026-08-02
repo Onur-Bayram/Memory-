@@ -30,6 +30,25 @@ export const cardBackImages: Record<Theme, string> = {
   foods: `${assetPath}bild1.png`,
 };
 
+export const exitGameButtonImages: Record<Theme, { normal: string; hover: string }> = {
+  'code-vibes': {
+    normal: `${assetPath}exit_game_oben.png`,
+    hover: `${assetPath}exit_game_unten.png`,
+  },
+  gaming: {
+    normal: `${assetPath}exit_gamegame_oben.png`,
+    hover: `${assetPath}exit_gamegame_unten.png`,
+  },
+  'da-projects': {
+    normal: `${assetPath}exit_game_oben.png`,
+    hover: `${assetPath}exit_game_unten.png`,
+  },
+  foods: {
+    normal: `${assetPath}exit_game_oben.png`,
+    hover: `${assetPath}exit_game_unten.png`,
+  },
+};
+
 const codeVibesCardImages = [
   'karte_1_kopie_unten.png',
   'karte_2_unten.png',

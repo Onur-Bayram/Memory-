@@ -74,14 +74,14 @@
   padding: 0;
   border: 0;
   background-color: transparent;
-  background-image: url('/assets/exit_game_oben.png');
+  background-image: var(--exit-game-image, url('/assets/exit_game_oben.png'));
   background-size: cover;
   background-position: center;
   cursor: pointer;
   transition: transform 180ms ease-in-out, filter 180ms ease-in-out;
 
   &:hover {
-    background-image: url('/assets/exit_game_unten.png');
+    background-image: var(--exit-game-hover-image, url('/assets/exit_game_unten.png'));
     filter: brightness(1.08);
     transform: scale(1.05);
   }
