@@ -64,6 +64,7 @@ const gamingCardImages = [
   'motiv_10_pacman_geist.png',
   'motiv_11_muenze.png',
   'motiv_12_retro_bildschirm.png',
+  'motiv_13_level_up.png',
   'motiv_14_pacman.png',
   'motiv_15_gameboy.png',
   'motiv_16_puzzleteile.png',
