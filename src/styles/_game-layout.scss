@@ -52,6 +52,28 @@
   }
 }
 
+body[data-game-theme='gaming'] .exit-popup__back-button {
+  width: 202px;
+  height: 54px;
+  border: 0;
+  background-color: transparent;
+  background-image: url('/assets/back_to_game_oben.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  color: transparent;
+  font-size: 0;
+
+  &:hover {
+    border-color: transparent;
+    background-color: transparent;
+    background-image: url('/assets/back_to_game_unten.png');
+    box-shadow: none;
+    filter: brightness(1.04);
+    transform: translateY(-2px) scale(1.04);
+  }
+}
+
 .current-player {
   display: flex;
   align-items: center;

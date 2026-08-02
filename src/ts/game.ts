@@ -52,6 +52,7 @@ export function startGame({
   const exitGameButtonImage = exitGameButtonImages[settings.theme];
   const boardConfig = setupGameBoard(fieldRef, settings.boardSize, settings.theme);
 
+  document.body.dataset.gameTheme = settings.theme;
   gameContentRef.style.setProperty('--exit-game-image', `url('${exitGameButtonImage.normal}')`);
   gameContentRef.style.setProperty('--exit-game-hover-image', `url('${exitGameButtonImage.hover}')`);
   updateScores(blueScoreRef, orangeScoreRef, score);
