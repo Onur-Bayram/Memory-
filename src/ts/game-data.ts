@@ -20,7 +20,7 @@ export const themePreviewImages: Record<Theme, string> = {
   'code-vibes': `${assetPath}memory_bild.png`,
   gaming: `${assetPath}gaming.png`,
   'da-projects': `${assetPath}da_projects.png`,
-  foods: `${assetPath}memory_bild.png`,
+  foods: `${assetPath}foods.png`,
 };
 
 export const cardImages = [
