@@ -30,7 +30,7 @@ export const cardBackImages: Record<Theme, string> = {
   foods: `${assetPath}bild1.png`,
 };
 
-export const cardImages = [
+const codeVibesCardImages = [
   'karte_1_kopie_unten.png',
   'karte_2_unten.png',
   'karte_3_unten.png',
@@ -50,6 +50,45 @@ export const cardImages = [
   'karte_17_unten.png',
   'karte_18_unten.png',
 ];
+
+const gamingCardImages = [
+  'motiv_01_kreis.png',
+  'motiv_02_quadrat.png',
+  'motiv_03_dreieck.png',
+  'motiv_04_labyrinth.png',
+  'motiv_05_creeper.png',
+  'motiv_06_pilz.png',
+  'motiv_07_wuerfel.png',
+  'motiv_08_banane.png',
+  'motiv_09_controller.png',
+  'motiv_10_pacman_geist.png',
+  'motiv_11_muenze.png',
+  'motiv_12_retro_bildschirm.png',
+  'motiv_14_pacman.png',
+  'motiv_15_gameboy.png',
+  'motiv_16_puzzleteile.png',
+  'motiv_17_spielkarte.png',
+  'motiv_18_play.png',
+];
+
+const themeCardImages: Record<Theme, string[]> = {
+  'code-vibes': codeVibesCardImages,
+  gaming: gamingCardImages,
+  'da-projects': codeVibesCardImages,
+  foods: codeVibesCardImages,
+};
+
+export function getThemeCardImages(theme: Theme, pairCount: number) {
+  const cards = themeCardImages[theme];
+
+  if (cards.length >= pairCount) {
+    return cards.slice(0, pairCount);
+  }
+
+  const fallbackCards = codeVibesCardImages.filter((card) => !cards.includes(card));
+
+  return [...cards, ...fallbackCards].slice(0, pairCount);
+}
 
 export const playerColors: Record<Player, string> = {
   blue: '#2fb4ff',

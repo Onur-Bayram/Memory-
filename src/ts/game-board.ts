@@ -2,7 +2,7 @@ import { renderCards, setBoardSize, shuffleCards } from './cards';
 import {
   boardConfigs,
   cardBackImages,
-  cardImages,
+  getThemeCardImages,
   type BoardConfig,
   type BoardSize,
   type Theme,
@@ -10,7 +10,7 @@ import {
 
 export function setupGameBoard(fieldRef: HTMLElement, boardSize: BoardSize, theme: Theme): BoardConfig {
   const boardConfig = boardConfigs[boardSize];
-  const selectedImages = cardImages.slice(0, boardConfig.pairCount);
+  const selectedImages = getThemeCardImages(theme, boardConfig.pairCount);
   const shuffledImages = shuffleCards([...selectedImages, ...selectedImages]);
 
   setBoardSize(fieldRef, boardConfig.fieldClass);
