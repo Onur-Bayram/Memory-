@@ -8,9 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
     <title>Memory</title>
+    <!-- Vite startet die App ueber diese TypeScript-Datei. -->
     <script type="module" src="/src/ts/main.ts"></script>
   </head>
   <body>
+    <!-- Startseite: wird zuerst angezeigt und fuehrt zu den Settings. -->
     <main class="home-screen" id="home-screen">
       <img class="home-screen__controller" src="/assets/stadia_controller.png" alt="" />
 
@@ -20,6 +22,7 @@
       </section>
     </main>
 
+    <!-- Settings: hier werden Theme, Startspieler und Board-Groesse gewaehlt. -->
     <main class="settings-screen" id="settings-screen" hidden>
       <section class="settings-panel" aria-label="Memory Einstellungen">
         <div class="settings-panel__inner">
@@ -79,10 +82,12 @@
             </form>
 
             <div class="settings-preview-column">
+              <!-- Vorschau-Bild wechselt passend zum ausgewaehlten Theme. -->
               <section class="theme-preview" aria-label="Theme preview">
                 <img class="theme-preview__image" src="/assets/memory_bild.png" alt="Memory theme preview" />
               </section>
 
+              <!-- Die Schritt-Leiste zeigt, welche Auswahl noch fehlt. -->
               <div class="settings-steps" aria-label="Settings steps">
                 <span class="settings-steps__text settings-steps__text--theme" id="selected-theme">Theme</span>
                 <span class="settings-steps__divider settings-steps__divider--theme"></span>
@@ -100,8 +105,10 @@
       </section>
     </main>
 
+    <!-- Spielansicht: Header plus Kartenfeld. -->
     <main class="game-content" hidden>
       <header class="game-header">
+        <!-- Punktestand fuer beide Spieler. -->
         <section class="score-board" aria-label="Spielstand">
           <div class="score-board__player score-board__player--blue">
             <span class="score-board__marker"></span>
@@ -115,6 +122,7 @@
           </div>
         </section>
 
+        <!-- Anzeige, welcher Spieler aktuell am Zug ist. -->
         <section class="current-player" aria-label="Aktueller Spieler">
           <span class="current-player__label">Current player:</span>
           <span class="current-player__marker"></span>
@@ -126,6 +134,7 @@
       <section id="field" aria-label="Memory Karten"></section>
     </main>
 
+    <!-- Sicherheitsabfrage, wenn der Spieler das Spiel verlassen will. -->
     <section class="exit-popup" id="exit-popup" aria-label="Exit game popup" hidden>
       <div class="exit-popup__content" role="dialog" aria-modal="true">
         <h2 class="exit-popup__title">Are you sure you want to quit<br />the game?</h2>
@@ -136,6 +145,7 @@
       </div>
     </section>
 
+    <!-- Kurzer Zwischenbildschirm nach dem letzten gefundenen Paar. -->
     <section class="game-over" id="game-over" aria-label="Game over" hidden>
       <h1 class="game-over__title">Game Over</h1>
 
@@ -156,6 +166,7 @@
       </div>
     </section>
 
+    <!-- Gewinner- oder Unentschieden-Screen nach dem Game Over. -->
     <section class="winner-screen" id="winner-screen" aria-label="Winner" hidden>
       <img class="winner-screen__confetti" src="/dist/assets/Confetti.png" alt="" />
 
