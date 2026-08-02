@@ -14,8 +14,10 @@ export type BoardConfig = {
   fieldClass: string;
 };
 
+// Vite kopiert public/assets beim Build nach dist/assets.
 export const assetPath = '/dist/assets/';
 
+// Diese Bilder sieht man in den Settings als Vorschau fuer das gewaehlte Theme.
 export const themePreviewImages: Record<Theme, string> = {
   'code-vibes': `${assetPath}memory_bild.png`,
   gaming: `${assetPath}gaming.png`,
@@ -23,6 +25,7 @@ export const themePreviewImages: Record<Theme, string> = {
   foods: `${assetPath}foods.png`,
 };
 
+// Jede Theme kann ihre eigene Kartenrueckseite haben.
 export const cardBackImages: Record<Theme, string> = {
   'code-vibes': `${assetPath}bild1.png`,
   gaming: `${assetPath}kartenrueckseite_sauber.png`,
@@ -30,6 +33,7 @@ export const cardBackImages: Record<Theme, string> = {
   foods: `${assetPath}bild1.png`,
 };
 
+// Der normale und der Hover-Zustand vom Exit-Button werden per Theme gesetzt.
 export const exitGameButtonImages: Record<Theme, { normal: string; hover: string }> = {
   'code-vibes': {
     normal: `${assetPath}exit_game_oben.png`,
@@ -49,6 +53,7 @@ export const exitGameButtonImages: Record<Theme, { normal: string; hover: string
   },
 };
 
+// Code-vibes ist aktuell auch der Fallback fuer Themes, die noch keine eigenen Karten haben.
 const codeVibesCardImages = [
   'karte_1_kopie_unten.png',
   'karte_2_unten.png',
@@ -70,6 +75,7 @@ const codeVibesCardImages = [
   'karte_18_unten.png',
 ];
 
+// Diese Motive gehoeren zum Gaming-Theme.
 const gamingCardImages = [
   'motiv_01_kreis_sauber.png',
   'motiv_02_quadrat_sauber.png',
@@ -91,6 +97,7 @@ const gamingCardImages = [
   'motiv_18_play_sauber.png',
 ];
 
+// Hier wird festgelegt, welche Kartenbilder zu welchem Theme gehoeren.
 const themeCardImages: Record<Theme, string[]> = {
   'code-vibes': codeVibesCardImages,
   gaming: gamingCardImages,
@@ -98,6 +105,7 @@ const themeCardImages: Record<Theme, string[]> = {
   foods: codeVibesCardImages,
 };
 
+// Gibt nur so viele Kartenmotive zurueck, wie die gewaehlte Boardgroesse braucht.
 export function getThemeCardImages(theme: Theme, pairCount: number) {
   const cards = themeCardImages[theme];
 
@@ -107,14 +115,17 @@ export function getThemeCardImages(theme: Theme, pairCount: number) {
 
   const fallbackCards = codeVibesCardImages.filter((card) => !cards.includes(card));
 
+  // Falls ein Theme zu wenige Bilder hat, fuellen wir es mit Code-vibes-Bildern auf.
   return [...cards, ...fallbackCards].slice(0, pairCount);
 }
 
+// Diese Farben werden fuer Score und aktuellen Spieler benutzt.
 export const playerColors: Record<Player, string> = {
   blue: '#2fb4ff',
   orange: '#ff8a2a',
 };
 
+// pairCount ist die Anzahl der Paare, nicht die Anzahl aller Karten.
 export const boardConfigs: Record<BoardSize, BoardConfig> = {
   16: {
     pairCount: 8,

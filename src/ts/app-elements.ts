@@ -1,6 +1,8 @@
 export type AppElements = {
+  // Startseite
   homeScreenRef: HTMLElement;
   homeStartButtonRef: HTMLButtonElement;
+  // Settings-Seite
   settingsScreenRef: HTMLElement;
   settingsFormRef: HTMLFormElement;
   settingsStartButtonRef: HTMLButtonElement;
@@ -9,6 +11,7 @@ export type AppElements = {
   selectedPlayerRef: HTMLElement;
   selectedBoardSizeRef: HTMLElement;
   themePreviewImageRef: HTMLImageElement;
+  // Spielbereich
   fieldRef: HTMLElement;
   blueScoreRef: HTMLElement;
   orangeScoreRef: HTMLElement;
@@ -22,6 +25,7 @@ export type AppElements = {
 };
 
 export function getAppElements(): AppElements | null {
+  // Hier sammeln wir alle Elemente, die mehrere Module brauchen.
   const homeScreenRef = document.getElementById('home-screen');
   const homeStartButtonRef = document.querySelector<HTMLButtonElement>('#home-start');
   const settingsScreenRef = document.getElementById('settings-screen');
@@ -43,6 +47,7 @@ export function getAppElements(): AppElements | null {
   const winnerImageRef = document.querySelector<HTMLImageElement>('#winner-image');
   const currentPlayerMarkerRef = document.querySelector<HTMLElement>('.current-player__marker');
 
+  // Wenn ein Element fehlt, starten wir die App nicht halb kaputt.
   if (
     !homeScreenRef ||
     !homeStartButtonRef ||

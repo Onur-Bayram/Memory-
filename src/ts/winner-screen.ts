@@ -7,6 +7,7 @@ export function initWinnerScreen() {
   const backToStartButtonRef = document.querySelector<HTMLButtonElement>('.winner-screen__back-button');
 
   if (backToStartButtonRef) {
+    // Der Button startet das Spiel komplett neu.
     backToStartButtonRef.addEventListener('click', () => {
       window.location.reload();
     });
@@ -23,6 +24,7 @@ export function showGameOver(
   blueScore: number,
   orangeScore: number,
 ) {
+  // Die Game-Over-Seite zeigt zuerst nur den finalen Punktestand.
   updateScore(finalBlueScoreRef, blueScore);
   updateScore(finalOrangeScoreRef, orangeScore);
 
@@ -30,6 +32,7 @@ export function showGameOver(
   gameOverRef.hidden = false;
 
   setTimeout(() => {
+    // Danach folgt der Gewinner-Screen mit Animation.
     showWinner(gameOverRef, winnerScreenRef, winnerImageRef, blueScore, orangeScore);
   }, 2000);
 }
@@ -43,6 +46,7 @@ export function showGameOverAfterDelay(
   finalOrangeScoreRef: HTMLElement,
   score: PlayerScore,
 ) {
+  // Nach dem letzten gefundenen Paar warten wir kurz, bevor Game Over erscheint.
   setTimeout(() => {
     showGameOver(
       gameContentRef,
@@ -66,6 +70,7 @@ function showWinner(
 ) {
   const winner = getWinner(blueScore, orangeScore);
 
+  // Die Klassen passen das Design fuer Orange oder Unentschieden an.
   gameOverRef.hidden = true;
   winnerScreenRef.classList.toggle('winner-screen--draw', winner === 'draw');
   winnerScreenRef.classList.toggle('winner-screen--orange', winner === 'orange');
@@ -79,6 +84,7 @@ function updateScore(scoreRef: HTMLElement, score: number) {
 }
 
 function getWinnerImage(winner: Winner) {
+  // blue/orange werden zu bluewin.png oder orangewin.png.
   if (winner === 'draw') {
     return 'draw.png';
   }

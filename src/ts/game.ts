@@ -44,6 +44,7 @@ export function startGame({
   currentPlayerMarkerRef,
   settings,
 }: StartGameOptions) {
+  // Diese Variablen beschreiben den aktuellen Zustand der laufenden Runde.
   let flippedCards: HTMLElement[] = [];
   let isLocked = false;
   let currentPlayer = settings.firstPlayer;
@@ -52,6 +53,7 @@ export function startGame({
   const exitGameButtonImage = exitGameButtonImages[settings.theme];
   const boardConfig = setupGameBoard(fieldRef, settings.boardSize, settings.theme);
 
+  // Theme und Exit-Button-Bilder werden beim Spielstart passend gesetzt.
   document.body.dataset.gameTheme = settings.theme;
   gameContentRef.style.setProperty('--exit-game-image', `url('${exitGameButtonImage.normal}')`);
   gameContentRef.style.setProperty('--exit-game-hover-image', `url('${exitGameButtonImage.hover}')`);
@@ -61,6 +63,7 @@ export function startGame({
   fieldRef.addEventListener('click', (e) => {
     const card = getClickedCard(e.target);
 
+    // Ungueltige Klicks ignorieren wir, zum Beispiel auf bereits offene Karten.
     if (!card || !canFlipCard(card, isLocked)) {
       return;
     }
@@ -74,6 +77,7 @@ export function startGame({
       const isMatch = haveSameCardImage(firstCard, secondCard);
 
       if (isMatch) {
+        // Bei einem Paar bleiben die Karten offen und der Spieler bekommt einen Punkt.
         markCardsAsMatched(flippedCards);
         addPoint(score, currentPlayer);
         updateScores(blueScoreRef, orangeScoreRef, score);
@@ -82,6 +86,7 @@ export function startGame({
         isLocked = false;
 
         if (matchedPairs === boardConfig.pairCount) {
+          // Wenn alle Paare gefunden wurden, starten die Endscreen-Ablaufe.
           showGameOverAfterDelay(
             gameContentRef,
             gameOverRef,
@@ -97,6 +102,7 @@ export function startGame({
       }
 
       setTimeout(() => {
+        // Bei falschem Paar drehen sich die Karten zurueck und der Spieler wechselt.
         hideCards(flippedCards);
         currentPlayer = switchPlayer(currentPlayer);
         updateCurrentPlayerMarker(currentPlayerMarkerRef, currentPlayer);
