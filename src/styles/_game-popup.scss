@@ -1,0 +1,60 @@
+body[data-game-theme='gaming'] .exit-popup__actions {
+  align-items: center;
+  justify-content: space-between;
+  width: 401px;
+  height: 44px;
+  margin: 55px auto 0;
+  gap: 24px;
+}
+
+body[data-game-theme='gaming'] .exit-popup__back-button {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 201px;
+  height: 44px;
+  border: 2px solid #f41b86;
+  border-radius: 8px;
+  background-color: #f41b86;
+  font-family: var(--gaming-header-font);
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  transition: background-color 140ms ease-in-out, border-color 140ms ease-in-out, color 140ms ease-in-out;
+
+  &:hover {
+    border-color: #f41b86;
+    background-color: white;
+    color: #f41b86;
+  }
+}
+
+body[data-game-theme='gaming'] .exit-popup__exit-button {
+  width: 176px;
+  height: 44px;
+  border: 2px solid #f41b86;
+  border-radius: 8px;
+  background: white;
+  color: #f41b86;
+  font-family: var(--gaming-header-font);
+  font-size: 16px;
+  font-weight: 700;
+  transition: background-color 140ms ease-in-out, color 140ms ease-in-out;
+
+  &:hover {
+    border-color: #f41b86;
+    background-color: #f41b86;
+    color: white;
+  }
+}
+
+body[data-game-theme='gaming'] .exit-popup__title {
+  color: #294f60;
+  font-family: var(--gaming-header-font);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 40px;
+  text-align: center;
+}

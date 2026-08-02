@@ -36,8 +36,8 @@ export const exitGameButtonImages: Record<Theme, { normal: string; hover: string
     hover: `${assetPath}exit_game_unten.png`,
   },
   gaming: {
-    normal: `${assetPath}exit_gamegame_oben.png`,
-    hover: `${assetPath}exit_gamegame_unten.png`,
+    normal: `${assetPath}exit_game_oben_b.png`,
+    hover: `${assetPath}exit_game_unten_b.png`,
   },
   'da-projects': {
     normal: `${assetPath}exit_game_oben.png`,

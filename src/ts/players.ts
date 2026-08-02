@@ -30,5 +30,6 @@ function updateScore(scoreRef: HTMLElement, score: number) {
 }
 
 export function updateCurrentPlayerMarker(markerRef: HTMLElement, currentPlayer: Player) {
-  markerRef.style.background = playerColors[currentPlayer];
+  markerRef.dataset.currentPlayer = currentPlayer;
+  markerRef.style.backgroundColor = playerColors[currentPlayer];
 }

@@ -79,3 +79,113 @@
     transform: rotateY(180deg);
   }
 }
+
+body[data-game-theme='gaming'] {
+  .field--16 {
+    --gaming-card-width: 108px;
+    --gaming-card-height: 122px;
+
+    grid-template-columns: repeat(4, var(--gaming-card-width));
+    grid-template-rows: repeat(4, var(--gaming-card-height));
+    gap: 14px;
+    width: 474px;
+    height: 530px;
+    transform: none;
+  }
+
+  .field--24 {
+    --gaming-card-width: 82px;
+    --gaming-card-height: 94px;
+
+    grid-template-columns: repeat(6, var(--gaming-card-width));
+    grid-template-rows: repeat(4, var(--gaming-card-height));
+    gap: 10px;
+    width: 542px;
+    height: 406px;
+    transform: none;
+  }
+
+  .field--36 {
+    --gaming-card-width: 68px;
+    --gaming-card-height: 78px;
+
+    grid-template-columns: repeat(6, var(--gaming-card-width));
+    grid-template-rows: repeat(6, var(--gaming-card-height));
+    gap: 8px;
+    width: 448px;
+    height: 508px;
+    transform: none;
+  }
+
+  .card {
+    width: var(--gaming-card-width);
+    height: var(--gaming-card-height);
+  }
+
+  .card__face {
+    border-radius: 9px;
+    box-shadow: 7px 10px 0 rgb(19 22 29 / 58%), 0 12px 18px rgb(0 0 0 / 28%);
+  }
+}
+
+@media (max-width: 700px) {
+  body[data-game-theme='gaming'] {
+    .field--16 {
+      --gaming-card-width: 72px;
+      --gaming-card-height: 82px;
+
+      gap: 8px;
+      width: 312px;
+      height: 352px;
+    }
+
+    .field--24 {
+      --gaming-card-width: 48px;
+      --gaming-card-height: 56px;
+
+      gap: 6px;
+      width: 318px;
+      height: 242px;
+    }
+
+    .field--36 {
+      --gaming-card-width: 42px;
+      --gaming-card-height: 48px;
+
+      gap: 5px;
+      width: 277px;
+      height: 313px;
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  body[data-game-theme='gaming'] {
+    .field--16 {
+      --gaming-card-width: 64px;
+      --gaming-card-height: 72px;
+
+      gap: 7px;
+      width: 277px;
+      height: 309px;
+    }
+
+    .field--24 {
+      --gaming-card-width: 44px;
+      --gaming-card-height: 50px;
+
+      gap: 5px;
+      width: 289px;
+      height: 215px;
+    }
+
+    .field--36 {
+      --gaming-card-width: 38px;
+      --gaming-card-height: 44px;
+
+      gap: 4px;
+      width: 248px;
+      height: 284px;
+    }
+  }
+}

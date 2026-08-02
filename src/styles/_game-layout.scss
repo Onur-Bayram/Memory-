@@ -52,48 +52,6 @@
   }
 }
 
-body[data-game-theme='gaming'] .exit-popup__back-button {
-  width: 202px;
-  height: 54px;
-  border: 0;
-  background-color: transparent;
-  background-image: url('/assets/back_to_game_oben.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  color: transparent;
-  font-size: 0;
-
-  &:hover {
-    border-color: transparent;
-    background-color: transparent;
-    box-shadow: none;
-    filter: brightness(1.04);
-    transform: translateY(-2px) scale(1.04);
-    background-image: url('/assets/back_to_game_unten.png');
-  }
-}
-
-body[data-game-theme='gaming'] .exit-popup__exit-button {
-  width: 202px;
-  height: 54px;
-  border: 2px solid #f41b86;
-  border-radius: 7px;
-  background: #f41b86;
-  color: white;
-  font-size: 19px;
-  font-weight: 700;
-  box-shadow: none;
-
-  &:hover {
-    border-color: #f41b86;
-    background: #fff5fb;
-    box-shadow: none;
-    color: #f41b86;
-    transform: translateY(-2px) scale(1.04);
-  }
-}
-
 .current-player {
   display: flex;
   align-items: center;
@@ -117,8 +75,9 @@ body[data-game-theme='gaming'] .exit-popup__exit-button {
   border: 0;
   background-color: transparent;
   background-image: var(--exit-game-image, url('/assets/exit_game_oben.png'));
-  background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
   cursor: pointer;
   transition: transform 180ms ease-in-out, filter 180ms ease-in-out;
 
@@ -131,6 +90,189 @@ body[data-game-theme='gaming'] .exit-popup__exit-button {
   &:focus-visible {
     outline: 2px solid #54dfce;
     outline-offset: 4px;
+  }
+}
+
+body[data-game-theme='gaming'] {
+  --gaming-header-font: Orbitron, Bahnschrift, 'Segoe UI', Arial, sans-serif;
+
+  background: #2c5967;
+
+  .game-content {
+    top: var(--game-top-space);
+    gap: var(--game-layout-gap);
+    width: calc(100% - var(--game-content-side-space));
+    max-width: var(--game-content-max);
+  }
+
+  .game-header {
+    height: 102px;
+    padding: 0 24px;
+    border-radius: 9px;
+    background: #626a88;
+  }
+
+  .score-board {
+    position: relative;
+    justify-content: initial;
+    gap: 0;
+    width: 182px;
+    height: 55px;
+    padding: 0;
+    border-radius: 8px;
+    background: white;
+    font-family: var(--gaming-header-font);
+  }
+
+  .score-board__player {
+    position: absolute;
+    top: 49%;
+    gap: 6px;
+    min-width: 0;
+    transform: translateY(-50%);
+  }
+
+  .score-board__player--orange {
+    left: 18px;
+    color: #ef6700;
+  }
+
+  .score-board__player--blue {
+    left: 108px;
+    color: #097fc5;
+  }
+
+  .score-board__name {
+    display: none;
+  }
+
+  .score-board__points {
+    min-width: 31px;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .score-board__marker {
+    display: block;
+    width: 22px;
+    height: 28px;
+    border-radius: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .score-board__player--orange .score-board__marker {
+    background-image: url('/assets/chess_orange.png');
+  }
+
+  .score-board__player--blue .score-board__marker {
+    background-image: url('/assets/chess_blue.png');
+  }
+
+  .current-player {
+    gap: 16px;
+    color: white;
+    font-family: var(--gaming-header-font);
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .current-player__marker {
+    width: 41px;
+    height: 40px;
+    border-radius: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .current-player__marker[data-current-player='blue'] {
+    background-image: url('/assets/current_player_symbol.png');
+  }
+
+  .current-player__marker[data-current-player='orange'] {
+    background-image: url('/assets/current_player_orange.png');
+  }
+
+  .exit-game {
+    width: 195px;
+    height: 55px;
+  }
+}
+
+@media (max-width: 700px) {
+  body[data-game-theme='gaming'] {
+    .game-header {
+      height: auto;
+      padding: 14px;
+    }
+
+    .score-board {
+      width: 162px;
+      height: 49px;
+      padding: 0 10px;
+    }
+
+    .score-board__player {
+      min-width: 0;
+    }
+
+    .score-board__player--orange {
+      left: 16px;
+    }
+
+    .score-board__player--blue {
+      left: 97px;
+    }
+
+    .score-board__points {
+      min-width: 28px;
+      font-size: 27px;
+    }
+
+    .score-board__marker {
+      width: 20px;
+      height: 26px;
+    }
+
+    .current-player__marker {
+      width: 31px;
+      height: 30px;
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  body[data-game-theme='gaming'] {
+    .score-board {
+      width: 146px;
+      height: 46px;
+    }
+
+    .score-board__player--orange {
+      left: 15px;
+    }
+
+    .score-board__player--blue {
+      left: 88px;
+    }
+
+    .score-board__points {
+      min-width: 26px;
+      font-size: 25px;
+    }
+
+    .score-board__marker {
+      width: 18px;
+      height: 24px;
+    }
   }
 }
 
@@ -177,13 +319,10 @@ body[data-game-theme='gaming'] .exit-popup__exit-button {
     font-size: 19px;
     font-weight: 700;
     cursor: pointer;
-    transition: background 140ms ease-in-out, border-color 140ms ease-in-out, box-shadow 140ms ease-in-out,
-      color 140ms ease-in-out, transform 140ms ease-in-out;
+    transition: background 140ms ease-in-out, border-color 140ms ease-in-out, color 140ms ease-in-out;
 
     &:hover {
       border-color: #54dfce;
-      box-shadow: 0 10px 18px rgb(0 0 0 / 16%);
-      transform: translateY(-2px) scale(1.04);
     }
 
     &:focus-visible {
