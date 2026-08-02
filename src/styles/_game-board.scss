@@ -65,7 +65,7 @@
     box-shadow: 0 4px 8px rgb(0 0 0 / 20%);
 
     &--front {
-      background-image: url('/assets/bild1.png');
+      background-image: var(--card-back-image, url('/assets/bild1.png'));
     }
 
     &--back {

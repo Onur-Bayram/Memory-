@@ -49,7 +49,7 @@ export function startGame({
   let currentPlayer = settings.firstPlayer;
   const score = createPlayerScore();
   let matchedPairs = 0;
-  const boardConfig = setupGameBoard(fieldRef, settings.boardSize);
+  const boardConfig = setupGameBoard(fieldRef, settings.boardSize, settings.theme);
 
   updateScores(blueScoreRef, orangeScoreRef, score);
   updateCurrentPlayerMarker(currentPlayerMarkerRef, currentPlayer);
