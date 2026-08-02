@@ -1,3 +1,4 @@
+// Kurzer Game-Over-Screen mit finalem Punktestand.
 .game-over {
   position: fixed;
   inset: 0;
@@ -54,6 +55,7 @@
   }
 }
 
+// Danach kommt der Gewinner-Screen mit Konfetti und Gewinnerbild.
 .winner-screen {
   position: fixed;
   inset: 0;

@@ -1,3 +1,4 @@
+// Die Startseite wird auf kleineren Bildschirmen schrittweise kompakter.
 @media (max-width: 1120px) {
   :root {
     --home-button-width: 230px;
@@ -5,6 +6,7 @@
   }
 }
 
+// Mobile Ansicht.
 @media (max-width: 700px) {
   :root {
     --home-button-width: 210px;
@@ -12,6 +14,7 @@
   }
 }
 
+// Sehr kleine Handys.
 @media (max-width: 420px) {
   :root {
     --home-button-width: 190px;

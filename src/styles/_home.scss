@@ -1,3 +1,4 @@
+// Startseite liegt komplett ueber der App, bis Play gedrueckt wird.
 .home-screen {
   position: fixed;
   inset: 0;
@@ -5,6 +6,7 @@
   overflow: hidden;
   background: #303131;
 
+  // Der Controller sitzt bewusst unten links im Anschnitt.
   &__controller {
     position: absolute;
     left: -6px;
@@ -14,6 +16,7 @@
     opacity: 1;
   }
 
+  // Text und Button bleiben zusammen mittig im sichtbaren Bereich.
   &__content {
     position: absolute;
     left: 50%;
@@ -35,6 +38,7 @@
   }
 }
 
+// Der Play-Button nutzt zwei Bildzustaende: normal und hover.
 .home-start {
   display: block;
   width: var(--home-button-width);
@@ -67,6 +71,7 @@
   }
 }
 
+// Ab 1440px bleibt der Inhalt gleich breit und wird nur zentriert.
 @media (min-width: 1440px) {
   .home-screen {
     &__content {

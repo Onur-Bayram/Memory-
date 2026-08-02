@@ -1,8 +1,10 @@
+// Spielfeld wird je nach Board-Groesse als Grid aufgebaut.
 #field {
   display: grid;
   padding: 0;
 }
 
+// 4x4 Karten.
 .field--16 {
   --card-size: 120px;
 
@@ -14,6 +16,7 @@
   transform: translate(36px, 24px);
 }
 
+// 6x4 Karten.
 .field--24 {
   --card-size: 104px;
 
@@ -25,6 +28,7 @@
   transform: translate(0, 18px);
 }
 
+// 6x6 Karten.
 .field--36 {
   --card-size: 88px;
 
@@ -36,6 +40,7 @@
   transform: translate(18px, -20px);
 }
 
+// Eine Karte besteht aus Vorderseite, Rueckseite und innerem Flip-Element.
 .card {
   width: var(--card-size);
   height: var(--card-size);
@@ -80,6 +85,7 @@
   }
 }
 
+// Gaming-Theme nutzt andere Kartenproportionen und staerkere Schatten.
 body[data-game-theme='gaming'] {
   .field--16 {
     --gaming-card-width: 108px;
@@ -128,6 +134,7 @@ body[data-game-theme='gaming'] {
   }
 }
 
+// Karten werden auf kleinen Screens kleiner, damit das Spielfeld sichtbar bleibt.
 @media (max-width: 700px) {
   body[data-game-theme='gaming'] {
     .field--16 {
@@ -159,6 +166,7 @@ body[data-game-theme='gaming'] {
   }
 }
 
+// Sehr kleine Screens bekommen nochmals kleinere Gaming-Karten.
 @media (max-width: 420px) {
   body[data-game-theme='gaming'] {
     .field--16 {

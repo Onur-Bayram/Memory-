@@ -1,3 +1,4 @@
+// Settings ist eine eigene Ansicht und darf vertikal scrollen, falls es knapp wird.
 .settings-screen {
   position: fixed;
   inset: 0;
@@ -8,6 +9,7 @@
   color: #303131;
 }
 
+// Innencontainer begrenzt die Breite und zentriert den Inhalt.
 .settings-panel {
   width: 100%;
   min-height: 100%;
@@ -22,6 +24,7 @@
   }
 }
 
+// Die Ueberschrift kommt als Bild aus Figma.
 .settings-title {
   margin: 0;
 
@@ -32,6 +35,7 @@
   }
 }
 
+// Linke Spalte: Optionen. Rechte Spalte: Vorschau und Start-Leiste.
 .settings-layout {
   display: grid;
   grid-template-columns: minmax(300px, 390px) minmax(600px, 720px);
@@ -46,6 +50,7 @@
   max-width: 100%;
 }
 
+// Jede Gruppe hat ein Bild als Titel, damit es wie im Design aussieht.
 .settings-group {
   margin: 0 0 32px;
   padding: 0;
@@ -78,6 +83,7 @@
   }
 }
 
+// Optionszeilen sind normale Radio-Buttons mit Figma-Pfeil bei Auswahl.
 .settings-option {
   display: flex;
   align-items: center;
@@ -127,6 +133,7 @@
   }
 }
 
+// Rechts werden Theme-Vorschau und die Schritt-Leiste untereinander gezeigt.
 .settings-preview-column {
   display: flex;
   flex-direction: column;
@@ -154,6 +161,7 @@
   }
 }
 
+// Die Leiste zeigt, welche drei Einstellungen schon ausgewaehlt wurden.
 .settings-steps {
   position: relative;
   display: grid;
@@ -257,6 +265,7 @@
   }
 }
 
+// Start ist erst aktiv, wenn Theme, Spieler und Board-Groesse gewaehlt sind.
 .settings-start {
   grid-area: start;
   display: flex;

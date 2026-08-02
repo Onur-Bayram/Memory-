@@ -1,3 +1,4 @@
+// Hauptcontainer fuer Header und Spielfeld.
 .game-content {
   position: absolute;
   top: var(--game-top-space);
@@ -11,6 +12,7 @@
   transform: translateX(-50%);
 }
 
+// Header verteilt Score, aktuellen Spieler und Exit-Button.
 .game-header {
   display: flex;
   align-items: center;
@@ -19,6 +21,7 @@
   height: var(--game-header-height);
 }
 
+// Score links oben fuer beide Spieler.
 .score-board {
   display: flex;
   align-items: center;
@@ -52,6 +55,7 @@
   }
 }
 
+// Anzeige in der Mitte, wer gerade dran ist.
 .current-player {
   display: flex;
   align-items: center;
@@ -68,6 +72,7 @@
   }
 }
 
+// Exit-Button nutzt je nach Theme andere Bilder.
 .exit-game {
   width: var(--exit-game-width);
   height: var(--exit-game-height);
@@ -93,6 +98,7 @@
   }
 }
 
+// Gaming-Theme bekommt eigenes Farbschema und eigene Header-Grafiken.
 body[data-game-theme='gaming'] {
   --gaming-header-font: Orbitron, Bahnschrift, 'Segoe UI', Arial, sans-serif;
 
@@ -207,6 +213,7 @@ body[data-game-theme='gaming'] {
   }
 }
 
+// Auf kleinen Screens wird der Gaming-Header kompakter.
 @media (max-width: 700px) {
   body[data-game-theme='gaming'] {
     .game-header {
@@ -249,6 +256,7 @@ body[data-game-theme='gaming'] {
   }
 }
 
+// Noch kleiner: Score-Box und Symbole werden reduziert.
 @media (max-width: 420px) {
   body[data-game-theme='gaming'] {
     .score-board {

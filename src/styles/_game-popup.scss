@@ -1,3 +1,4 @@
+// Popup-Buttons im Gaming-Theme passen farblich zum pinken Design.
 body[data-game-theme='gaming'] .exit-popup__actions {
   align-items: center;
   justify-content: space-between;
@@ -7,6 +8,7 @@ body[data-game-theme='gaming'] .exit-popup__actions {
   gap: 24px;
 }
 
+// "No, back to game" startet pink und wird beim Hover weiss.
 body[data-game-theme='gaming'] .exit-popup__back-button {
   box-sizing: border-box;
   display: inline-flex;
@@ -30,6 +32,7 @@ body[data-game-theme='gaming'] .exit-popup__back-button {
   }
 }
 
+// "Yes, quit game" startet weiss und wird beim Hover pink.
 body[data-game-theme='gaming'] .exit-popup__exit-button {
   width: 176px;
   height: 44px;
@@ -49,6 +52,7 @@ body[data-game-theme='gaming'] .exit-popup__exit-button {
   }
 }
 
+// Gaming-Popup nutzt Orbitron wie der Gaming-Header.
 body[data-game-theme='gaming'] .exit-popup__title {
   color: #294f60;
   font-family: var(--gaming-header-font);
