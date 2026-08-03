@@ -97,11 +97,33 @@ const gamingCardImages = [
   'motiv_18_play_sauber.png',
 ];
 
+// Diese Motive gehoeren zum DA-Projects-Theme.
+const daProjectsCardImages = [
+  'da_project_card_01.png',
+  'da_project_card_02.png',
+  'da_project_card_03.png',
+  'da_project_card_04.png',
+  'da_project_card_05.png',
+  'da_project_card_06.png',
+  'da_project_card_07.png',
+  'da_project_card_08.png',
+  'da_project_card_09.png',
+  'da_project_card_10.png',
+  'da_project_card_11.png',
+  'da_project_card_12.png',
+  'da_project_card_13.png',
+  'da_project_card_14.png',
+  'da_project_card_15.png',
+  'da_project_card_16.png',
+  'da_project_card_17.png',
+  'da_project_card_18.png',
+];
+
 // Hier wird festgelegt, welche Kartenbilder zu welchem Theme gehoeren.
 const themeCardImages: Record<Theme, string[]> = {
   'code-vibes': codeVibesCardImages,
   gaming: gamingCardImages,
-  'da-projects': codeVibesCardImages,
+  'da-projects': daProjectsCardImages,
   foods: codeVibesCardImages,
 };
 
