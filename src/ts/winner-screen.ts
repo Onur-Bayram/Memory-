@@ -29,7 +29,9 @@ export function showGameOver(
   // The game-over screen first shows only the final score.
   updateScore(finalBlueScoreRef, blueScore);
   updateScore(finalOrangeScoreRef, orangeScore);
-  gameOverRef.classList.toggle('game-over--gaming', document.body.dataset.gameTheme === 'gaming');
+  const gameTheme = document.body.dataset.gameTheme;
+  gameOverRef.classList.toggle('game-over--gaming', gameTheme === 'gaming');
+  gameOverRef.classList.toggle('game-over--da-projects', gameTheme === 'da-projects');
 
   gameContentRef.hidden = true;
   gameOverRef.hidden = false;

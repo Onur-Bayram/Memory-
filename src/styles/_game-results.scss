@@ -30,7 +30,9 @@
   }
 
   &__gaming-title,
-  &__gaming-label {
+  &__gaming-label,
+  &__da-title,
+  &__da-label {
     display: none;
   }
 
@@ -147,6 +149,100 @@
     display: block;
     width: 22px;
     height: 28px;
+    border-radius: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .score-board__player--orange .score-board__marker {
+    background-image: url('/assets/chess_orange.png');
+  }
+
+  .score-board__player--blue .score-board__marker {
+    background-image: url('/assets/chess_blue.png');
+  }
+}
+
+// DA Projects uses its own Figma title images and a compact final score box.
+.game-over--da-projects {
+  box-sizing: border-box;
+  justify-content: flex-start;
+  gap: 104px;
+  padding-top: 292px;
+  background: #23839a;
+
+  .game-over__title,
+  .game-over__gaming-title,
+  .game-over__gaming-label,
+  .game-over__label {
+    display: none;
+  }
+
+  .game-over__da-title,
+  .game-over__final-score {
+    width: 969px;
+    max-width: calc(100% - 48px);
+  }
+
+  .game-over__da-title {
+    display: block;
+    height: auto;
+    filter: drop-shadow(0 4px 4px rgb(0 0 0 / 25%));
+  }
+
+  .game-over__final-score {
+    gap: 12px;
+  }
+
+  .game-over__da-label {
+    display: block;
+    width: 189px;
+    height: 30px;
+  }
+
+  .game-over__score-board {
+    justify-content: center;
+    gap: 40px;
+    width: 220px;
+    height: 76px;
+    padding: 0 16px;
+    border-radius: 10px;
+    background: white;
+    font-family: Figtree, Arial, sans-serif;
+  }
+
+  .score-board__player {
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .score-board__player--orange {
+    color: #ef6700;
+  }
+
+  .score-board__player--blue {
+    color: #097fc5;
+  }
+
+  .score-board__name {
+    display: none;
+  }
+
+  .score-board__points {
+    min-width: 31px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .score-board__marker {
+    display: block;
+    width: 20px;
+    height: 25px;
     border-radius: 0;
     background-color: transparent;
     background-repeat: no-repeat;
