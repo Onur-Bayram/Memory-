@@ -114,8 +114,8 @@
     }
   }
 
-  // Diese Elemente werden nur fuer den Gaming-Blue-Winner-Screen eingeblendet.
-  &__gaming-blue {
+  // Diese Elemente werden nur fuer den Gaming-Winner-Screen eingeblendet.
+  &__gaming-result {
     display: none;
   }
 
@@ -132,7 +132,8 @@
   }
 
   &__player-name {
-    width: 466px;
+    width: auto;
+    max-width: calc(100% - 48px);
     height: 72px;
     margin-top: 20px;
   }
@@ -194,8 +195,8 @@
   }
 }
 
-// Spezialscreen: Gaming-Theme und Blue Player gewinnt.
-.winner-screen--gaming-blue {
+// Spezialscreen: Gaming-Theme und ein Spieler gewinnt.
+.winner-screen--gaming-result {
   background: #294f60;
 
   .winner-screen__confetti,
@@ -203,7 +204,7 @@
     display: none;
   }
 
-  .winner-screen__gaming-blue {
+  .winner-screen__gaming-result {
     display: flex;
     flex-direction: column;
     align-items: center;
