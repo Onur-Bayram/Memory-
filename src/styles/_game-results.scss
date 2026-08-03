@@ -114,8 +114,9 @@
     }
   }
 
-  // Diese Elemente werden nur fuer den Gaming-Winner-Screen eingeblendet.
-  &__gaming-result {
+  // Diese Elemente werden nur fuer Gaming-Sonderergebnisse eingeblendet.
+  &__gaming-result,
+  &__gaming-draw {
     display: none;
   }
 
@@ -173,6 +174,37 @@
     transition: filter 140ms ease-in-out;
   }
 
+  &__draw-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__draw-small,
+  &__draw-title,
+  &__draw-icon {
+    display: block;
+  }
+
+  &__draw-small {
+    width: 79px;
+    height: 22px;
+  }
+
+  &__draw-title {
+    width: 488px;
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 4px 4px rgb(0 0 0 / 25%));
+  }
+
+  &__draw-icon {
+    width: 350px;
+    height: 281px;
+    filter: drop-shadow(0 4px 4px rgb(0 0 0 / 25%));
+  }
+
   &--orange {
     .winner-screen__content {
       max-width: 522px;
@@ -212,5 +244,35 @@
     width: calc(100% - 48px);
     height: 100%;
     padding-top: 198px;
+  }
+}
+
+// Spezialscreen: Gaming-Theme und beide Spieler haben gleich viele Punkte.
+.winner-screen--gaming-draw {
+  background: #294f60;
+
+  .winner-screen__confetti,
+  .winner-screen__content,
+  .winner-screen__gaming-result {
+    display: none;
+  }
+
+  .winner-screen__gaming-draw {
+    position: absolute;
+    top: 216px;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    width: 578px;
+    max-width: calc(100% - 48px);
+    min-height: 592px;
+    transform: translateX(-50%);
+  }
+
+  .winner-screen__draw-icon,
+  .winner-screen__home-button {
+    margin-top: 64px;
   }
 }

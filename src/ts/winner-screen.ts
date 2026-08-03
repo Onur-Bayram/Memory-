@@ -71,15 +71,20 @@ function showWinner(
   orangeScore: number,
 ) {
   const winner = getWinner(blueScore, orangeScore);
+  const isGamingTheme = document.body.dataset.gameTheme === 'gaming';
   // Diese Extra-Ansicht gehoert nur zum Gaming-Theme, wenn es einen Gewinner gibt.
-  const isGamingWinner = winner !== 'draw' && document.body.dataset.gameTheme === 'gaming';
+  const isGamingWinner = winner !== 'draw' && isGamingTheme;
+  const isGamingDraw = winner === 'draw' && isGamingTheme;
+  const isNormalResult = !isGamingWinner && !isGamingDraw;
 
   // Die Klassen passen das Ergebnis-Design an.
   gameOverRef.hidden = true;
   updateGamingWinnerPlayerImage(winner);
+  updateGamingDrawImages(isGamingDraw);
   winnerScreenRef.classList.toggle('winner-screen--gaming-result', isGamingWinner);
-  winnerScreenRef.classList.toggle('winner-screen--draw', winner === 'draw');
-  winnerScreenRef.classList.toggle('winner-screen--orange', winner === 'orange');
+  winnerScreenRef.classList.toggle('winner-screen--gaming-draw', isGamingDraw);
+  winnerScreenRef.classList.toggle('winner-screen--draw', winner === 'draw' && isNormalResult);
+  winnerScreenRef.classList.toggle('winner-screen--orange', winner === 'orange' && isNormalResult);
   winnerImageRef.src = `${assetPath}${getWinnerImage(winner)}`;
   winnerImageRef.alt = getWinnerAltText(winner);
   winnerScreenRef.hidden = false;
@@ -98,6 +103,29 @@ function updateGamingWinnerPlayerImage(winner: Winner) {
 
   gamingWinnerPlayerImageRef.src = encodeURI(`${assetPath}${imageName}`);
   gamingWinnerPlayerImageRef.alt = label;
+}
+
+function updateGamingDrawImages(isGamingDraw: boolean) {
+  if (!isGamingDraw) {
+    return;
+  }
+
+  const labelImageRef = document.querySelector<HTMLImageElement>('.winner-screen__draw-small');
+  const titleImageRef = document.querySelector<HTMLImageElement>('.winner-screen__draw-title');
+  const scaleImageRef = document.querySelector<HTMLImageElement>('.winner-screen__draw-icon');
+
+  // Die Draw-Bilder werden hier bewusst gesetzt, damit keine alten Dateinamen im Browser haengen bleiben.
+  if (labelImageRef) {
+    labelImageRef.src = `${assetPath}gaming_draw_label.png`;
+  }
+
+  if (titleImageRef) {
+    titleImageRef.src = `${assetPath}gaming_draw_title.png`;
+  }
+
+  if (scaleImageRef) {
+    scaleImageRef.src = `${assetPath}gaming_draw_scale.png`;
+  }
 }
 
 function updateScore(scoreRef: HTMLElement, score: number) {
