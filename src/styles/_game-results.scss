@@ -320,7 +320,8 @@
 
   // These elements are only shown for special Gaming result screens.
   &__gaming-result,
-  &__gaming-draw {
+  &__gaming-draw,
+  &__da-projects-result {
     display: none;
   }
 
@@ -478,5 +479,90 @@
   .winner-screen__draw-icon,
   .winner-screen__home-button {
     margin-top: 64px;
+  }
+}
+
+// Special screen: DA Projects theme and the orange player wins.
+.winner-screen--da-projects-result {
+  background: #1e7594;
+
+  .winner-screen__confetti,
+  .winner-screen__content,
+  .winner-screen__gaming-result,
+  .winner-screen__gaming-draw {
+    display: none;
+  }
+
+  .winner-screen__da-projects-result {
+    position: absolute;
+    top: 192px;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 64px;
+    width: 522px;
+    max-width: calc(100% - 48px);
+    min-height: 567px;
+    transform: translateX(-50%);
+  }
+
+  .winner-screen__da-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 522px;
+    max-width: 100%;
+    height: 141px;
+  }
+
+  .winner-screen__da-headline,
+  .winner-screen__da-player-name,
+  .winner-screen__da-player-icon,
+  .winner-screen__da-home-image {
+    display: block;
+  }
+
+  .winner-screen__da-headline {
+    width: 233px;
+    height: 30px;
+  }
+
+  .winner-screen__da-player-name {
+    width: 518px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .winner-screen__da-player-icon {
+    width: 212px;
+    height: 262px;
+  }
+
+  .winner-screen__da-home-button {
+    width: 96px;
+    height: 48px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+
+    &:hover {
+      .winner-screen__da-home-image {
+        filter: brightness(1.15);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid #ff5a50;
+      outline-offset: 4px;
+    }
+  }
+
+  .winner-screen__da-home-image {
+    width: 100%;
+    height: 100%;
+    transition: filter 140ms ease-in-out;
   }
 }

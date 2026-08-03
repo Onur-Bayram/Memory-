@@ -5,7 +5,7 @@ const gameOverDelay = 1600;
 
 export function initWinnerScreen() {
   const backToStartButtonRefs = document.querySelectorAll<HTMLButtonElement>(
-    '.winner-screen__back-button, .winner-screen__home-button',
+    '.winner-screen__back-button, .winner-screen__home-button, .winner-screen__da-home-button',
   );
 
   backToStartButtonRefs.forEach((buttonRef) => {
@@ -75,10 +75,12 @@ function showWinner(
 ) {
   const winner = getWinner(blueScore, orangeScore);
   const isGamingTheme = document.body.dataset.gameTheme === 'gaming';
+  const isDaProjectsTheme = document.body.dataset.gameTheme === 'da-projects';
   // This extra view belongs only to the Gaming theme when there is a winner.
   const isGamingWinner = winner !== 'draw' && isGamingTheme;
   const isGamingDraw = winner === 'draw' && isGamingTheme;
-  const isNormalResult = !isGamingWinner && !isGamingDraw;
+  const isDaProjectsOrangeWinner = winner === 'orange' && isDaProjectsTheme;
+  const isNormalResult = !isGamingWinner && !isGamingDraw && !isDaProjectsOrangeWinner;
 
   // These classes adjust the result design.
   gameOverRef.hidden = true;
@@ -86,6 +88,7 @@ function showWinner(
   updateGamingDrawImages(isGamingDraw);
   winnerScreenRef.classList.toggle('winner-screen--gaming-result', isGamingWinner);
   winnerScreenRef.classList.toggle('winner-screen--gaming-draw', isGamingDraw);
+  winnerScreenRef.classList.toggle('winner-screen--da-projects-result', isDaProjectsOrangeWinner);
   winnerScreenRef.classList.toggle('winner-screen--draw', winner === 'draw' && isNormalResult);
   winnerScreenRef.classList.toggle('winner-screen--orange', winner === 'orange' && isNormalResult);
   winnerImageRef.src = `${assetPath}${getWinnerImage(winner)}`;
