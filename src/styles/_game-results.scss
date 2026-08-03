@@ -29,6 +29,11 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  &__gaming-title,
+  &__gaming-label {
+    display: none;
+  }
+
   &__final-score {
     display: flex;
     flex-direction: column;
@@ -52,6 +57,109 @@
     gap: 42px;
     background: rgb(84 122 114 / 62%);
     font-size: 20px;
+  }
+}
+
+// Gaming-Theme nutzt fuer den Game-Over-Screen die Figma-Bilder.
+.game-over--gaming {
+  box-sizing: border-box;
+  justify-content: flex-start;
+  gap: 104px;
+  padding-top: 291px;
+  background: #294f60;
+
+  .game-over__title,
+  .game-over__final-score {
+    width: 969px;
+    max-width: calc(100% - 48px);
+  }
+
+  .game-over__title {
+    display: none;
+  }
+
+  .game-over__gaming-title {
+    display: block;
+    width: 933px;
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 4px 4px rgb(0 0 0 / 25%));
+  }
+
+  .game-over__final-score {
+    gap: 17px;
+  }
+
+  .game-over__label {
+    display: none;
+  }
+
+  .game-over__gaming-label {
+    display: block;
+    width: 191px;
+    height: 22px;
+  }
+
+  .game-over__score-board {
+    position: relative;
+    justify-content: initial;
+    gap: 0;
+    width: 182px;
+    height: 55px;
+    padding: 0;
+    border-radius: 8px;
+    background: white;
+    font-family: Orbitron, Bahnschrift, 'Segoe UI', Arial, sans-serif;
+  }
+
+  .score-board__player {
+    position: absolute;
+    top: 49%;
+    gap: 6px;
+    min-width: 0;
+    transform: translateY(-50%);
+  }
+
+  .score-board__player--orange {
+    left: 18px;
+    color: #ef6700;
+  }
+
+  .score-board__player--blue {
+    left: 108px;
+    color: #097fc5;
+  }
+
+  .score-board__name {
+    display: none;
+  }
+
+  .score-board__points {
+    min-width: 31px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .score-board__marker {
+    display: block;
+    width: 22px;
+    height: 28px;
+    border-radius: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .score-board__player--orange .score-board__marker {
+    background-image: url('/assets/chess_orange.png');
+  }
+
+  .score-board__player--blue .score-board__marker {
+    background-image: url('/assets/chess_blue.png');
   }
 }
 

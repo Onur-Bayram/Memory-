@@ -29,6 +29,7 @@ export function showGameOver(
   // Die Game-Over-Seite zeigt zuerst nur den finalen Punktestand.
   updateScore(finalBlueScoreRef, blueScore);
   updateScore(finalOrangeScoreRef, orangeScore);
+  gameOverRef.classList.toggle('game-over--gaming', document.body.dataset.gameTheme === 'gaming');
 
   gameContentRef.hidden = true;
   gameOverRef.hidden = false;
