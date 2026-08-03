@@ -9,7 +9,7 @@ export function initSettingsSteps(
   selectedBoardSizeRef: HTMLElement,
   themePreviewImageRef: HTMLImageElement,
 ) {
-  // Beim Laden sollen die Steps schon den aktuellen Formularzustand anzeigen.
+  // On load, the steps should already reflect the current form state.
   updateSettingsSteps(
     settingsFormRef,
     settingsStartButtonRef,
@@ -21,7 +21,7 @@ export function initSettingsSteps(
   );
 
   settingsFormRef.addEventListener('change', () => {
-    // Jede Auswahl aktualisiert die Step-Leiste, Preview und Startbutton.
+    // Every selection updates the step bar, preview and start button.
     updateSettingsSteps(
       settingsFormRef,
       settingsStartButtonRef,
@@ -35,20 +35,20 @@ export function initSettingsSteps(
 }
 
 export function hasCompleteSettings(settingsFormRef: HTMLFormElement) {
-  // Der Startbutton darf erst aktiv sein, wenn alle drei Bereiche gewaehlt sind.
+  // The start button is only active when all three areas are selected.
   const formData = new FormData(settingsFormRef);
 
   return Boolean(formData.get('theme') && formData.get('first-player') && formData.get('board-size'));
 }
 
 export function getGameSettings(settingsFormRef: HTMLFormElement): GameSettings {
-  // FormData liefert erst einmal allgemeine Werte, deshalb pruefen wir sie danach.
+  // FormData returns generic values first, so we validate them afterwards.
   const formData = new FormData(settingsFormRef);
   const theme = formData.get('theme');
   const boardSize = Number(formData.get('board-size'));
   const firstPlayer = formData.get('first-player');
 
-  // Falls etwas Unerwartetes im Formular steht, nehmen wir sichere Standardwerte.
+  // If the form contains something unexpected, safe defaults are used.
   return {
     theme: isTheme(theme) ? theme : 'code-vibes',
     boardSize: isBoardSize(boardSize) ? boardSize : 16,
@@ -66,7 +66,7 @@ function updateSettingsSteps(
   themePreviewImageRef: HTMLImageElement,
 ) {
   const isComplete = hasCompleteSettings(settingsFormRef);
-  // Die data-label Werte sind die Texte, die unten in der Step-Leiste erscheinen.
+  // The data-label values are the texts shown in the step bar below.
   const themeLabel = getSelectedLabel(settingsFormRef, 'theme');
   const playerLabel = getSelectedLabel(settingsFormRef, 'first-player');
   const boardSizeLabel = getSelectedLabel(settingsFormRef, 'board-size');
@@ -77,7 +77,7 @@ function updateSettingsSteps(
   selectedBoardSizeRef.textContent = boardSizeLabel ?? 'Board size';
   themePreviewImageRef.src = themePreviewImages[selectedTheme];
   themePreviewImageRef.alt = `${themeLabel ?? 'Memory'} preview`;
-  // Diese Klassen steuern die gelben Pfeile und aktiven Texte in der Step-Leiste.
+  // These classes control the yellow arrows and active texts in the step bar.
   settingsStepsRef.classList.toggle('settings-steps--has-theme', Boolean(themeLabel));
   settingsStepsRef.classList.toggle('settings-steps--has-player', Boolean(playerLabel));
   settingsStepsRef.classList.toggle('settings-steps--has-board', Boolean(boardSizeLabel));
@@ -85,14 +85,14 @@ function updateSettingsSteps(
 }
 
 function getSelectedLabel(settingsFormRef: HTMLFormElement, fieldName: string) {
-  // :checked findet die aktuell ausgewaehlte Radio-Option in einer Gruppe.
+  // :checked finds the currently selected radio option inside a group.
   const selectedInputRef = settingsFormRef.querySelector<HTMLInputElement>(`input[name="${fieldName}"]:checked`);
 
   return selectedInputRef?.dataset.label;
 }
 
 function getSelectedTheme(settingsFormRef: HTMLFormElement): Theme {
-  // Fuer die Preview brauchen wir auch dann ein Theme, wenn noch keins gewaehlt wurde.
+  // The preview needs a theme even when the user has not selected one yet.
   const formData = new FormData(settingsFormRef);
   const theme = formData.get('theme');
 
@@ -100,16 +100,16 @@ function getSelectedTheme(settingsFormRef: HTMLFormElement): Theme {
 }
 
 function isBoardSize(value: number): value is BoardSize {
-  // TypeScript weiss nach dieser Pruefung, dass value eine erlaubte BoardSize ist.
+  // After this check, TypeScript knows that value is an allowed BoardSize.
   return value === 16 || value === 24 || value === 36;
 }
 
 function isPlayer(value: FormDataEntryValue | null): value is Player {
-  // Nur diese zwei Werte duerfen als Spieler gespeichert werden.
+  // Only these two values are valid players.
   return value === 'blue' || value === 'orange';
 }
 
 function isTheme(value: FormDataEntryValue | null): value is Theme {
-  // Nur bekannte Themes werden akzeptiert.
+  // Only known themes are accepted.
   return value === 'code-vibes' || value === 'gaming' || value === 'da-projects' || value === 'foods';
 }

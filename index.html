@@ -8,11 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
     <title>Memory</title>
-    <!-- Vite startet die App ueber diese TypeScript-Datei. -->
+    <!-- Vite starts the app through this TypeScript entry file. -->
     <script type="module" src="/src/ts/main.ts"></script>
   </head>
   <body>
-    <!-- Startseite: wird zuerst angezeigt und fuehrt zu den Settings. -->
+    <!-- Home screen: shown first and leads to the settings screen. -->
     <main class="home-screen" id="home-screen">
       <img class="home-screen__controller" src="/assets/stadia_controller.png" alt="" />
 
@@ -22,7 +22,7 @@
       </section>
     </main>
 
-    <!-- Settings: hier werden Theme, Startspieler und Board-Groesse gewaehlt. -->
+    <!-- Settings: theme, first player and board size are selected here. -->
     <main class="settings-screen" id="settings-screen" hidden>
       <section class="settings-panel" aria-label="Memory Einstellungen">
         <div class="settings-panel__inner">
@@ -82,12 +82,12 @@
             </form>
 
             <div class="settings-preview-column">
-              <!-- Vorschau-Bild wechselt passend zum ausgewaehlten Theme. -->
+              <!-- Preview image changes to match the selected theme. -->
               <section class="theme-preview" aria-label="Theme preview">
                 <img class="theme-preview__image" src="/assets/memory_bild.png" alt="Memory theme preview" />
               </section>
 
-              <!-- Die Schritt-Leiste zeigt, welche Auswahl noch fehlt. -->
+              <!-- Step bar shows which selections are still missing. -->
               <div class="settings-steps" aria-label="Settings steps">
                 <span class="settings-steps__text settings-steps__text--theme" id="selected-theme">Theme</span>
                 <span class="settings-steps__divider settings-steps__divider--theme"></span>
@@ -105,10 +105,10 @@
       </section>
     </main>
 
-    <!-- Spielansicht: Header plus Kartenfeld. -->
+    <!-- Game screen: header plus card field. -->
     <main class="game-content" hidden>
       <header class="game-header">
-        <!-- Punktestand fuer beide Spieler. -->
+        <!-- Score for both players. -->
         <section class="score-board" aria-label="Spielstand">
           <div class="score-board__player score-board__player--blue">
             <span class="score-board__marker"></span>
@@ -122,7 +122,7 @@
           </div>
         </section>
 
-        <!-- Anzeige, welcher Spieler aktuell am Zug ist. -->
+        <!-- Shows which player is currently active. -->
         <section class="current-player" aria-label="Aktueller Spieler">
           <span class="current-player__label">Current player:</span>
           <span class="current-player__marker"></span>
@@ -134,7 +134,7 @@
       <section id="field" aria-label="Memory Karten"></section>
     </main>
 
-    <!-- Sicherheitsabfrage, wenn der Spieler das Spiel verlassen will. -->
+    <!-- Confirmation dialog shown before the player leaves the game. -->
     <section class="exit-popup" id="exit-popup" aria-label="Exit game popup" hidden>
       <div class="exit-popup__content" role="dialog" aria-modal="true">
         <h2 class="exit-popup__title">Are you sure you want to quit<br />the game?</h2>
@@ -145,7 +145,7 @@
       </div>
     </section>
 
-    <!-- Kurzer Zwischenbildschirm nach dem letzten gefundenen Paar. -->
+    <!-- Short transition screen after the final matched pair. -->
     <section class="game-over" id="game-over" aria-label="Game over" hidden>
       <h1 class="game-over__title">Game Over</h1>
       <img class="game-over__gaming-title" src="/assets/gaming_game_over_title.png" alt="GAME OVER" />
@@ -168,7 +168,7 @@
       </div>
     </section>
 
-    <!-- Gewinner- oder Unentschieden-Screen nach dem Game Over. -->
+    <!-- Winner or draw screen after the game-over screen. -->
     <section class="winner-screen" id="winner-screen" aria-label="Winner" hidden>
       <img class="winner-screen__confetti" src="/dist/assets/Confetti.png" alt="" />
 
@@ -177,7 +177,7 @@
         <button class="winner-screen__back-button" type="button" aria-label="Back to start"></button>
       </div>
 
-      <!-- Gaming-Theme: eigener Winner-Screen aus mehreren Figma-Bildern. -->
+      <!-- Gaming theme: custom winner screen made from several Figma images. -->
       <div class="winner-screen__gaming-result">
         <img class="winner-screen__headline" src="/dist/assets/The%20winner%20is.png" alt="The winner is" />
         <img
@@ -192,7 +192,7 @@
         </button>
       </div>
 
-      <!-- Gaming-Theme: eigener Draw-Screen aus den Figma-Bildern. -->
+      <!-- Gaming theme: custom draw screen made from Figma images. -->
       <div class="winner-screen__gaming-draw">
         <div class="winner-screen__draw-text">
           <img class="winner-screen__draw-small" src="/dist/assets/gaming_draw_label.png" alt="It's a" />

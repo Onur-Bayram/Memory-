@@ -1,4 +1,4 @@
-// Border und Padding werden in die Breite der Elemente eingerechnet.
+// Border and padding are included in element widths.
 *,
 *::before,
 *::after {
@@ -6,11 +6,11 @@
 }
 
 :root {
-  // Gemeinsame Layout-Werte fuer die Startseite.
+  // Shared layout values for the home screen.
   --home-content-max: 991px;
   --home-button-width: 250px;
   --home-controller-width: 280px;
-  // Gemeinsame Layout-Werte fuer die Settings-Seite.
+  // Shared layout values for the settings screen.
   --settings-content-max: 1664px;
   --settings-content-side-space: 256px;
   --settings-page-space: 128px;
@@ -27,7 +27,7 @@
   --settings-option-arrow-gap: 12px;
   --settings-option-arrow-line: 40px;
   --settings-option-arrow-size: 13px;
-  // Gemeinsame Layout-Werte fuer das Spielfeld.
+  // Shared layout values for the game field.
   --game-content-max: 1217px;
   --game-content-side-space: 224px;
   --game-top-space: 41px;
@@ -53,7 +53,7 @@ html {
 }
 
 body {
-  // Basis-Reset fuer die komplette App.
+  // Basic reset for the whole app.
   margin: 0;
   position: relative;
   min-height: 100%;
@@ -62,6 +62,6 @@ body {
 }
 
 [hidden] {
-  // Hidden soll immer wirklich ausgeblendet sein.
+  // Hidden should always really hide the element.
   display: none !important;
 }

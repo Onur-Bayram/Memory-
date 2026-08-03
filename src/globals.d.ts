@@ -1,2 +1,2 @@
-// Erlaubt TypeScript, SCSS-Dateien direkt in TS zu importieren.
+// Allows TypeScript to import SCSS files directly from TS.
 declare module '*.scss'

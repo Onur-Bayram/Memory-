@@ -5,16 +5,16 @@ import { initHomeStart } from './home';
 import { initWinnerScreen } from './winner-screen';
 
 export function initApp() {
-  // Alle wichtigen HTML-Elemente werden einmal gesucht und dann weitergegeben.
+  // All important HTML elements are collected once and passed to the modules.
   const appElements = getAppElements();
 
   if (appElements) {
-    // Diese Teile brauchen die gefundenen Elemente aus der Seite.
+    // These parts need the elements that were found on the page.
     initHomeStart(appElements);
     initGameStart(appElements);
   }
 
-  // Diese Initialisierungen suchen ihre wenigen Elemente selbst.
+  // These initializers only need a few elements and find them themselves.
   initExitPopup();
   initWinnerScreen();
 }

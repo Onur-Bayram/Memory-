@@ -3,7 +3,7 @@ import { showSettingsScreen } from './screens';
 
 export function initHomeStart({ homeScreenRef, homeStartButtonRef, settingsScreenRef }: AppElements) {
   homeStartButtonRef.addEventListener('click', () => {
-    // Der Play-Button bringt den Benutzer von der Startseite zu den Settings.
+    // The play button takes the user from the home screen to settings.
     showSettingsScreen(homeScreenRef, settingsScreenRef);
   });
 }

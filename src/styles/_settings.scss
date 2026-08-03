@@ -1,4 +1,4 @@
-// Settings ist eine eigene Ansicht und darf vertikal scrollen, falls es knapp wird.
+// Settings is its own screen and may scroll vertically when space is tight.
 .settings-screen {
   position: fixed;
   inset: 0;
@@ -9,7 +9,7 @@
   color: #303131;
 }
 
-// Innencontainer begrenzt die Breite und zentriert den Inhalt.
+// Inner container limits the width and centers the content.
 .settings-panel {
   width: 100%;
   min-height: 100%;
@@ -24,7 +24,7 @@
   }
 }
 
-// Die Ueberschrift kommt als Bild aus Figma.
+// The heading comes from a Figma image.
 .settings-title {
   margin: 0;
 
@@ -35,7 +35,7 @@
   }
 }
 
-// Linke Spalte: Optionen. Rechte Spalte: Vorschau und Start-Leiste.
+// Left column: options. Right column: preview and start bar.
 .settings-layout {
   display: grid;
   grid-template-columns: minmax(300px, 390px) minmax(600px, 720px);
@@ -50,7 +50,7 @@
   max-width: 100%;
 }
 
-// Jede Gruppe hat ein Bild als Titel, damit es wie im Design aussieht.
+// Each group uses an image title so it matches the design.
 .settings-group {
   margin: 0 0 32px;
   padding: 0;
@@ -83,7 +83,7 @@
   }
 }
 
-// Optionszeilen sind normale Radio-Buttons mit Figma-Pfeil bei Auswahl.
+// Option rows are normal radio buttons with a Figma arrow when selected.
 .settings-option {
   display: flex;
   align-items: center;
@@ -133,7 +133,7 @@
   }
 }
 
-// Rechts werden Theme-Vorschau und die Schritt-Leiste untereinander gezeigt.
+// On the right, theme preview and step bar are shown below each other.
 .settings-preview-column {
   display: flex;
   flex-direction: column;
@@ -161,7 +161,7 @@
   }
 }
 
-// Die Leiste zeigt, welche drei Einstellungen schon ausgewaehlt wurden.
+// The bar shows which of the three settings have already been selected.
 .settings-steps {
   position: relative;
   display: grid;
@@ -265,7 +265,7 @@
   }
 }
 
-// Start ist erst aktiv, wenn Theme, Spieler und Board-Groesse gewaehlt sind.
+// Start is only active when theme, player and board size are selected.
 .settings-start {
   grid-area: start;
   display: flex;

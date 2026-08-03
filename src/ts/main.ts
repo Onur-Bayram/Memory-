@@ -1,5 +1,5 @@
 import '../styles/style.scss';
 import { initApp } from './app';
 
-// Einstiegspunkt: Vite startet diese Datei zuerst.
+// Entry point: Vite starts this file first.
 initApp();

@@ -1,4 +1,4 @@
-// Breiten-Breakpoints: Board und Header werden schmaler.
+// Width breakpoints: board and header become narrower.
 @media (max-width: 1120px) {
   :root {
     --game-content-side-space: 96px;
@@ -45,7 +45,7 @@
   }
 }
 
-// Tablet-Breite: Spielfeld bleibt mittig, aber kleiner.
+// Tablet width: the field stays centered, but smaller.
 @media (max-width: 850px) {
   :root {
     --game-content-side-space: 48px;
@@ -89,7 +89,7 @@
   }
 }
 
-// Mobile Breite: Header springt in zwei Zeilen.
+// Mobile width: the header wraps into two rows.
 @media (max-width: 700px) {
   :root {
     --game-content-side-space: 32px;
@@ -161,7 +161,7 @@
   }
 }
 
-// Kleine Handys: alle Werte nochmals reduzieren.
+// Small phones: reduce all values again.
 @media (max-width: 420px) {
   :root {
     --game-content-side-space: 24px;
@@ -206,7 +206,7 @@
   }
 }
 
-// Sehr schmale Screens brauchen die kleinste Spielfeld-Version.
+// Very narrow screens need the smallest field version.
 @media (max-width: 340px) {
   :root {
     --game-content-side-space: 20px;

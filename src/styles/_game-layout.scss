@@ -1,4 +1,4 @@
-// Hauptcontainer fuer Header und Spielfeld.
+// Main container for header and game field.
 .game-content {
   position: absolute;
   top: var(--game-top-space);
@@ -12,7 +12,7 @@
   transform: translateX(-50%);
 }
 
-// Header verteilt Score, aktuellen Spieler und Exit-Button.
+// Header distributes score, current player and exit button.
 .game-header {
   display: flex;
   align-items: center;
@@ -21,7 +21,7 @@
   height: var(--game-header-height);
 }
 
-// Score links oben fuer beide Spieler.
+// Top-left score for both players.
 .score-board {
   display: flex;
   align-items: center;
@@ -55,7 +55,7 @@
   }
 }
 
-// Anzeige in der Mitte, wer gerade dran ist.
+// Center display for the current player.
 .current-player {
   display: flex;
   align-items: center;
@@ -72,7 +72,7 @@
   }
 }
 
-// Exit-Button nutzt je nach Theme andere Bilder.
+// Exit button uses different images depending on the theme.
 .exit-game {
   width: var(--exit-game-width);
   height: var(--exit-game-height);
@@ -98,7 +98,7 @@
   }
 }
 
-// Gaming-Theme bekommt eigenes Farbschema und eigene Header-Grafiken.
+// Gaming theme gets its own color scheme and header graphics.
 body[data-game-theme='gaming'] {
   --gaming-header-font: Orbitron, Bahnschrift, 'Segoe UI', Arial, sans-serif;
 
@@ -213,7 +213,121 @@ body[data-game-theme='gaming'] {
   }
 }
 
-// Auf kleinen Screens wird der Gaming-Header kompakter.
+// DA Projects uses a light game field and its own header graphics.
+body[data-game-theme='da-projects'] {
+  background: white;
+
+  .game-content {
+    top: 10px;
+    gap: 54px;
+    width: calc(100% - 222px);
+    max-width: 1219px;
+  }
+
+  .game-header {
+    height: 102px;
+    padding: 24px;
+    border-radius: 10px;
+    background: #f0f3f4;
+  }
+
+  .score-board {
+    width: 156px;
+    height: 54px;
+    gap: 40px;
+    padding: 0 16px;
+    border-radius: 10px;
+    background: white;
+    font-weight: 700;
+  }
+
+  .score-board__name {
+    display: none;
+  }
+
+  .score-board__player {
+    gap: 4px;
+  }
+
+  .score-board__points {
+    min-width: 18px;
+    font-family: Figtree, Arial, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: right;
+  }
+
+  .score-board__marker {
+    width: 20px;
+    height: 25px;
+    border-radius: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .score-board__player--orange .score-board__marker {
+    background-image: url('/assets/chess_orange.png');
+  }
+
+  .score-board__player--blue .score-board__marker {
+    background-image: url('/assets/chess_blue.png');
+  }
+
+  .current-player {
+    gap: 11px;
+  }
+
+  .current-player__label {
+    width: 220px;
+    height: 30px;
+    background-image: url('/assets/da_projects_current_player.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    font-size: 0;
+  }
+
+  .current-player__marker {
+    width: 41px;
+    height: 40px;
+    border-radius: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .current-player__marker[data-current-player='blue'] {
+    background-image: url('/assets/da_projects_current_player_blue.png');
+  }
+
+  .current-player__marker[data-current-player='orange'] {
+    background-image: url('/assets/da_projects_current_player_orange.png');
+  }
+
+  .exit-game {
+    width: 172px;
+    height: 54px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    background-size: 172px 54px;
+    overflow: hidden;
+
+    &:hover {
+      // The hover image is larger than the fixed button box, so it needs a small offset.
+      background-position: calc(50% + 3px) calc(50% + 3px);
+      background-size: 182px 64px;
+      filter: none;
+      transform: none;
+    }
+  }
+}
+
+// On small screens, the Gaming header becomes more compact.
 @media (max-width: 700px) {
   body[data-game-theme='gaming'] {
     .game-header {
@@ -256,7 +370,7 @@ body[data-game-theme='gaming'] {
   }
 }
 
-// Noch kleiner: Score-Box und Symbole werden reduziert.
+// Even smaller screens reduce the score box and symbols.
 @media (max-width: 420px) {
   body[data-game-theme='gaming'] {
     .score-board {

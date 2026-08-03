@@ -1,4 +1,4 @@
-// Tablet: Settings wird einspaltig, damit die Vorschau unter den Optionen sitzt.
+// Tablet: settings becomes one column so the preview sits below the options.
 @media (max-width: 1120px) {
   :root {
     --settings-content-side-space: 112px;
@@ -32,7 +32,7 @@
   }
 }
 
-// Kleine Screens: Leiste bricht auf zwei Zeilen um.
+// Small screens: the bar wraps into two rows.
 @media (max-width: 700px) {
   :root {
     --settings-content-side-space: 48px;
@@ -96,7 +96,7 @@
   }
 }
 
-// Sehr kleine Screens bekommen kleinere Bilder und engere Abstaende.
+// Very small screens get smaller images and tighter spacing.
 @media (max-width: 420px) {
   :root {
     --settings-content-side-space: 32px;

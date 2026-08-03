@@ -1,4 +1,4 @@
-// Hoehen-Breakpoints: bei flachen Screens wird alles niedriger.
+// Height breakpoints: shallow screens make everything lower.
 @media (max-height: 760px) and (min-width: 701px) {
   :root {
     --game-top-space: 28px;
@@ -40,7 +40,7 @@
   }
 }
 
-// Noch weniger Hoehe: Header und Karten schrumpfen weiter.
+// Less height: header and cards shrink further.
 @media (max-height: 620px) and (min-width: 701px) {
   :root {
     --game-top-space: 20px;
@@ -80,7 +80,7 @@
   }
 }
 
-// Sehr flache Desktop-Fenster.
+// Very shallow desktop windows.
 @media (max-height: 520px) and (min-width: 701px) {
   :root {
     --game-top-space: 16px;
@@ -120,7 +120,7 @@
   }
 }
 
-// Extrem flache Desktop-Fenster.
+// Extremely shallow desktop windows.
 @media (max-height: 430px) and (min-width: 701px) {
   :root {
     --game-top-space: 10px;
@@ -159,7 +159,7 @@
   }
 }
 
-// Mobile Geraete mit wenig Hoehe.
+// Mobile devices with little height.
 @media (max-width: 700px) and (max-height: 540px) {
   :root {
     --game-top-space: 16px;
@@ -191,7 +191,7 @@
   }
 }
 
-// Sehr flache mobile Ansicht.
+// Very shallow mobile view.
 @media (max-width: 700px) and (max-height: 440px) {
   :root {
     --game-top-space: 10px;

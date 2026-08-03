@@ -1,7 +1,7 @@
 import { assetPath } from './game-data';
 
 export function setBoardSize(fieldRef: HTMLElement, fieldClass: string) {
-  // Erst alle Boardklassen entfernen, damit immer nur eine Groesse aktiv ist.
+  // Remove all board size classes first, so only one size is active.
   fieldRef.classList.remove('field--16', 'field--24', 'field--36');
   fieldRef.classList.add(fieldClass);
 }
@@ -12,13 +12,13 @@ export function renderCards(fieldRef: HTMLElement, shuffledImages: string[]) {
   shuffledImages.forEach((cardImage) => {
     const cardRef = document.createElement('button');
 
-    // Das Bild speichern wir im dataset, damit wir spaeter zwei Karten vergleichen koennen.
+    // Store the image in the dataset, so two cards can be compared later.
     cardRef.classList.add('card');
     cardRef.type = 'button';
     cardRef.ariaLabel = 'Memory Karte';
     cardRef.dataset.cardImage = cardImage;
     cardRef.style.setProperty('--card-image', `url('${assetPath}${cardImage}')`);
-    // Die zwei Seiten der Karte bleiben im HTML getrennt, damit CSS die Karte drehen kann.
+    // The two card sides stay separate in HTML, so CSS can flip the card.
     cardRef.innerHTML = `
       <span class="card__inner">
         <span class="card__face card__face--front"></span>
@@ -31,7 +31,7 @@ export function renderCards(fieldRef: HTMLElement, shuffledImages: string[]) {
 }
 
 export function getClickedCard(target: EventTarget | null) {
-  // Ein Klick kann auch auf ein inneres span gehen, deshalb suchen wir die naechste Karte.
+  // A click can hit an inner span, so we look for the closest card element.
   if (!(target instanceof HTMLElement)) {
     return null;
   }
@@ -42,7 +42,7 @@ export function getClickedCard(target: EventTarget | null) {
 }
 
 export function canFlipCard(cardRef: HTMLElement, isLocked: boolean) {
-  // Keine neue Karte drehen, wenn gerade zwei Karten geprueft werden.
+  // Do not flip another card while two cards are being checked.
   return (
     !isLocked &&
     !cardRef.classList.contains('is-flipped') &&
@@ -67,11 +67,11 @@ export function markCardsAsMatched(cards: HTMLElement[]) {
 }
 
 export function haveSameCardImage(firstCard: HTMLElement, secondCard: HTMLElement) {
-  // Zwei Karten passen zusammen, wenn sie dasselbe gespeicherte Bild haben.
+  // Two cards match when they store the same image value.
   return firstCard.dataset.cardImage === secondCard.dataset.cardImage;
 }
 
 export function shuffleCards(cards: string[]) {
-  // Fuer unser kleines Spiel reicht diese einfache Zufalls-Sortierung.
+  // This simple random sort is enough for this small game.
   return cards.sort(() => Math.random() - 0.5);
 }

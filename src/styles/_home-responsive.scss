@@ -1,4 +1,4 @@
-// Die Startseite wird auf kleineren Bildschirmen schrittweise kompakter.
+// The home screen gets gradually more compact on smaller screens.
 @media (max-width: 1120px) {
   :root {
     --home-button-width: 230px;
@@ -6,7 +6,7 @@
   }
 }
 
-// Mobile Ansicht.
+// Mobile view.
 @media (max-width: 700px) {
   :root {
     --home-button-width: 210px;
@@ -14,7 +14,7 @@
   }
 }
 
-// Sehr kleine Handys.
+// Very small phones.
 @media (max-width: 420px) {
   :root {
     --home-button-width: 190px;

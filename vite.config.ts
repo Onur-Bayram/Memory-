@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  // Vite baut die fertige Seite so, dass sie spaeter unter /dist/ liegt.
+  // Vite builds the final site so it can later run from /dist/.
   base: '/dist/',
 });

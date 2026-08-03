@@ -1,11 +1,11 @@
 export function showSettingsScreen(homeScreenRef: HTMLElement, settingsScreenRef: HTMLElement) {
-  // hidden ist hier unsere einfache Navigation zwischen den Screens.
+  // hidden is our simple navigation between screens.
   homeScreenRef.hidden = true;
   settingsScreenRef.hidden = false;
 }
 
 export function showGameScreen(settingsScreenRef: HTMLElement, gameContentRef: HTMLElement) {
-  // Nach dem Start verschwindet Settings und das Spielfeld wird sichtbar.
+  // After starting, settings is hidden and the game field becomes visible.
   settingsScreenRef.hidden = true;
   gameContentRef.hidden = false;
 }

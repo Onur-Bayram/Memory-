@@ -23,7 +23,7 @@ export function initGameStart({
   winnerImageRef,
   currentPlayerMarkerRef,
 }: AppElements) {
-  // Die Settings-Leiste aktualisiert sich, sobald der Benutzer eine Option auswaehlt.
+  // The settings bar updates whenever the user chooses an option.
   initSettingsSteps(
     settingsFormRef,
     settingsStartButtonRef,
@@ -37,14 +37,14 @@ export function initGameStart({
   settingsFormRef.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    // Ohne vollstaendige Auswahl darf das Spiel nicht starten.
+    // The game must not start until every setting is selected.
     if (!hasCompleteSettings(settingsFormRef)) {
       return;
     }
 
     showGameScreen(settingsScreenRef, gameContentRef);
 
-    // Ab hier werden die gewaehlten Settings an die Spielrunde uebergeben.
+    // From here, the selected settings are passed to the game round.
     startGame({
       fieldRef,
       blueScoreRef,

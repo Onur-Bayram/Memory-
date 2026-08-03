@@ -1,4 +1,4 @@
-// Kurzer Game-Over-Screen mit finalem Punktestand.
+// Short game-over screen with the final score.
 .game-over {
   position: fixed;
   inset: 0;
@@ -60,7 +60,7 @@
   }
 }
 
-// Gaming-Theme nutzt fuer den Game-Over-Screen die Figma-Bilder.
+// Gaming theme uses Figma images for the game-over screen.
 .game-over--gaming {
   box-sizing: border-box;
   justify-content: flex-start;
@@ -163,7 +163,7 @@
   }
 }
 
-// Danach kommt der Gewinner-Screen mit Konfetti und Gewinnerbild.
+// After that, the winner screen shows confetti and the winner image.
 .winner-screen {
   position: fixed;
   inset: 0;
@@ -222,7 +222,7 @@
     }
   }
 
-  // Diese Elemente werden nur fuer Gaming-Sonderergebnisse eingeblendet.
+  // These elements are only shown for special Gaming result screens.
   &__gaming-result,
   &__gaming-draw {
     display: none;
@@ -263,7 +263,7 @@
     background: transparent;
     cursor: pointer;
 
-    // Beim Home-Button soll nur die Farbe reagieren, keine Bewegung.
+    // The Home button should only react with color, not movement.
     &:hover {
       .winner-screen__home-image {
         filter: brightness(1.55) saturate(1.35) contrast(1.15);
@@ -335,7 +335,7 @@
   }
 }
 
-// Spezialscreen: Gaming-Theme und ein Spieler gewinnt.
+// Special screen: Gaming theme and one player wins.
 .winner-screen--gaming-result {
   background: #294f60;
 
@@ -355,7 +355,7 @@
   }
 }
 
-// Spezialscreen: Gaming-Theme und beide Spieler haben gleich viele Punkte.
+// Special screen: Gaming theme and both players have the same score.
 .winner-screen--gaming-draw {
   background: #294f60;
 

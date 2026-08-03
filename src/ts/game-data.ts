@@ -14,10 +14,10 @@ export type BoardConfig = {
   fieldClass: string;
 };
 
-// Vite kopiert public/assets beim Build nach dist/assets.
+// Vite copies public/assets to dist/assets during the build.
 export const assetPath = '/dist/assets/';
 
-// Diese Bilder sieht man in den Settings als Vorschau fuer das gewaehlte Theme.
+// These images are shown in settings as the selected theme preview.
 export const themePreviewImages: Record<Theme, string> = {
   'code-vibes': `${assetPath}memory_bild.png`,
   gaming: `${assetPath}gaming.png`,
@@ -25,7 +25,7 @@ export const themePreviewImages: Record<Theme, string> = {
   foods: `${assetPath}foods.png`,
 };
 
-// Jede Theme kann ihre eigene Kartenrueckseite haben.
+// Each theme can use its own card back.
 export const cardBackImages: Record<Theme, string> = {
   'code-vibes': `${assetPath}bild1.png`,
   gaming: `${assetPath}kartenrueckseite_sauber.png`,
@@ -33,7 +33,7 @@ export const cardBackImages: Record<Theme, string> = {
   foods: `${assetPath}bild1.png`,
 };
 
-// Der normale und der Hover-Zustand vom Exit-Button werden per Theme gesetzt.
+// The normal and hover states of the exit button are set per theme.
 export const exitGameButtonImages: Record<Theme, { normal: string; hover: string }> = {
   'code-vibes': {
     normal: `${assetPath}exit_game_oben.png`,
@@ -44,8 +44,8 @@ export const exitGameButtonImages: Record<Theme, { normal: string; hover: string
     hover: `${assetPath}exit_game_unten_b.png`,
   },
   'da-projects': {
-    normal: `${assetPath}exit_game_oben.png`,
-    hover: `${assetPath}exit_game_unten.png`,
+    normal: `${assetPath}da_projects_exit_default.png`,
+    hover: `${assetPath}da_projects_exit_hover.png`,
   },
   foods: {
     normal: `${assetPath}exit_game_oben.png`,
@@ -53,7 +53,7 @@ export const exitGameButtonImages: Record<Theme, { normal: string; hover: string
   },
 };
 
-// Code-vibes ist aktuell auch der Fallback fuer Themes, die noch keine eigenen Karten haben.
+// Code vibes is also the fallback for themes that do not have enough cards yet.
 const codeVibesCardImages = [
   'karte_1_kopie_unten.png',
   'karte_2_unten.png',
@@ -75,7 +75,7 @@ const codeVibesCardImages = [
   'karte_18_unten.png',
 ];
 
-// Diese Motive gehoeren zum Gaming-Theme.
+// These images belong to the Gaming theme.
 const gamingCardImages = [
   'motiv_01_kreis_sauber.png',
   'motiv_02_quadrat_sauber.png',
@@ -97,7 +97,7 @@ const gamingCardImages = [
   'motiv_18_play_sauber.png',
 ];
 
-// Diese Motive gehoeren zum DA-Projects-Theme.
+// These images belong to the DA Projects theme.
 const daProjectsCardImages = [
   'da_project_card_01.png',
   'da_project_card_02.png',
@@ -119,7 +119,7 @@ const daProjectsCardImages = [
   'da_project_card_18.png',
 ];
 
-// Hier wird festgelegt, welche Kartenbilder zu welchem Theme gehoeren.
+// This maps each theme to its card images.
 const themeCardImages: Record<Theme, string[]> = {
   'code-vibes': codeVibesCardImages,
   gaming: gamingCardImages,
@@ -127,7 +127,7 @@ const themeCardImages: Record<Theme, string[]> = {
   foods: codeVibesCardImages,
 };
 
-// Gibt nur so viele Kartenmotive zurueck, wie die gewaehlte Boardgroesse braucht.
+// Returns only as many card images as the selected board size needs.
 export function getThemeCardImages(theme: Theme, pairCount: number) {
   const cards = themeCardImages[theme];
 
@@ -137,17 +137,11 @@ export function getThemeCardImages(theme: Theme, pairCount: number) {
 
   const fallbackCards = codeVibesCardImages.filter((card) => !cards.includes(card));
 
-  // Falls ein Theme zu wenige Bilder hat, fuellen wir es mit Code-vibes-Bildern auf.
+  // If a theme has too few images, code-vibes images fill the missing slots.
   return [...cards, ...fallbackCards].slice(0, pairCount);
 }
 
-// Diese Farben werden fuer Score und aktuellen Spieler benutzt.
-export const playerColors: Record<Player, string> = {
-  blue: '#2fb4ff',
-  orange: '#ff8a2a',
-};
-
-// pairCount ist die Anzahl der Paare, nicht die Anzahl aller Karten.
+// pairCount is the number of pairs, not the number of all cards.
 export const boardConfigs: Record<BoardSize, BoardConfig> = {
   16: {
     pairCount: 8,

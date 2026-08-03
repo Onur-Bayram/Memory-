@@ -9,7 +9,7 @@ export function initWinnerScreen() {
   );
 
   backToStartButtonRefs.forEach((buttonRef) => {
-    // Der Button startet das Spiel komplett neu.
+    // The button starts the game from the beginning.
     buttonRef.addEventListener('click', () => {
       window.location.reload();
     });
@@ -26,7 +26,7 @@ export function showGameOver(
   blueScore: number,
   orangeScore: number,
 ) {
-  // Die Game-Over-Seite zeigt zuerst nur den finalen Punktestand.
+  // The game-over screen first shows only the final score.
   updateScore(finalBlueScoreRef, blueScore);
   updateScore(finalOrangeScoreRef, orangeScore);
   gameOverRef.classList.toggle('game-over--gaming', document.body.dataset.gameTheme === 'gaming');
@@ -35,7 +35,7 @@ export function showGameOver(
   gameOverRef.hidden = false;
 
   setTimeout(() => {
-    // Danach folgt der Gewinner-Screen mit Animation.
+    // After that, the animated winner screen appears.
     showWinner(gameOverRef, winnerScreenRef, winnerImageRef, blueScore, orangeScore);
   }, 2000);
 }
@@ -49,7 +49,7 @@ export function showGameOverAfterDelay(
   finalOrangeScoreRef: HTMLElement,
   score: PlayerScore,
 ) {
-  // Nach dem letzten gefundenen Paar warten wir kurz, bevor Game Over erscheint.
+  // After the last matched pair, we wait briefly before showing game over.
   setTimeout(() => {
     showGameOver(
       gameContentRef,
@@ -73,12 +73,12 @@ function showWinner(
 ) {
   const winner = getWinner(blueScore, orangeScore);
   const isGamingTheme = document.body.dataset.gameTheme === 'gaming';
-  // Diese Extra-Ansicht gehoert nur zum Gaming-Theme, wenn es einen Gewinner gibt.
+  // This extra view belongs only to the Gaming theme when there is a winner.
   const isGamingWinner = winner !== 'draw' && isGamingTheme;
   const isGamingDraw = winner === 'draw' && isGamingTheme;
   const isNormalResult = !isGamingWinner && !isGamingDraw;
 
-  // Die Klassen passen das Ergebnis-Design an.
+  // These classes adjust the result design.
   gameOverRef.hidden = true;
   updateGamingWinnerPlayerImage(winner);
   updateGamingDrawImages(isGamingDraw);
@@ -98,7 +98,7 @@ function updateGamingWinnerPlayerImage(winner: Winner) {
     return;
   }
 
-  // Im Gaming-Theme kommt der Spielername als Figma-Bild.
+  // In the Gaming theme, the player name comes from a Figma image.
   const imageName = winner === 'blue' ? 'Blue Player.png' : 'Orange Player.png';
   const label = winner === 'blue' ? 'Blue Player' : 'Orange Player';
 
@@ -115,7 +115,7 @@ function updateGamingDrawImages(isGamingDraw: boolean) {
   const titleImageRef = document.querySelector<HTMLImageElement>('.winner-screen__draw-title');
   const scaleImageRef = document.querySelector<HTMLImageElement>('.winner-screen__draw-icon');
 
-  // Die Draw-Bilder werden hier bewusst gesetzt, damit keine alten Dateinamen im Browser haengen bleiben.
+  // Draw images are set here so old file names do not stay cached in the browser.
   if (labelImageRef) {
     labelImageRef.src = `${assetPath}gaming_draw_label.png`;
   }
@@ -134,7 +134,7 @@ function updateScore(scoreRef: HTMLElement, score: number) {
 }
 
 function getWinnerImage(winner: Winner) {
-  // blue/orange werden zu bluewin.png oder orangewin.png.
+  // blue/orange become bluewin.png or orangewin.png.
   if (winner === 'draw') {
     return 'draw.png';
   }

@@ -1,5 +1,5 @@
 export function initExitPopup() {
-  // Das Popup braucht den Exit-Button, den Zurueck-Button und den Bestaetigungs-Button.
+  // The popup needs the exit button, back button and confirm button.
   const exitGameButtonRef = document.querySelector<HTMLButtonElement>('.exit-game');
   const exitPopupRef = document.getElementById('exit-popup');
   const backToGameButtonRef = document.querySelector<HTMLButtonElement>('.exit-popup__back-button');
@@ -7,17 +7,17 @@ export function initExitPopup() {
 
   if (exitGameButtonRef && exitPopupRef && backToGameButtonRef && confirmExitButtonRef) {
     exitGameButtonRef.addEventListener('click', () => {
-      // Beim Klick auf Exit wird nur das Popup sichtbar.
+      // Clicking exit only shows the confirmation popup.
       exitPopupRef.hidden = false;
     });
 
     backToGameButtonRef.addEventListener('click', () => {
-      // Zurueck zum Spiel: Popup wieder verstecken.
+      // Back to the game: hide the popup again.
       exitPopupRef.hidden = true;
     });
 
     confirmExitButtonRef.addEventListener('click', () => {
-      // Fuer den Moment reicht ein Reload, weil dadurch alles auf Start zurueckgesetzt wird.
+      // For now a reload is enough because it resets the app to the start.
       window.location.reload();
     });
   }
