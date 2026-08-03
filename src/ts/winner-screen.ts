@@ -79,16 +79,17 @@ function showWinner(
   // This extra view belongs only to the Gaming theme when there is a winner.
   const isGamingWinner = winner !== 'draw' && isGamingTheme;
   const isGamingDraw = winner === 'draw' && isGamingTheme;
-  const isDaProjectsOrangeWinner = winner === 'orange' && isDaProjectsTheme;
-  const isNormalResult = !isGamingWinner && !isGamingDraw && !isDaProjectsOrangeWinner;
+  const isDaProjectsWinner = winner !== 'draw' && isDaProjectsTheme;
+  const isNormalResult = !isGamingWinner && !isGamingDraw && !isDaProjectsWinner;
 
   // These classes adjust the result design.
   gameOverRef.hidden = true;
   updateGamingWinnerPlayerImage(winner);
   updateGamingDrawImages(isGamingDraw);
+  updateDaProjectsWinnerImages(winner);
   winnerScreenRef.classList.toggle('winner-screen--gaming-result', isGamingWinner);
   winnerScreenRef.classList.toggle('winner-screen--gaming-draw', isGamingDraw);
-  winnerScreenRef.classList.toggle('winner-screen--da-projects-result', isDaProjectsOrangeWinner);
+  winnerScreenRef.classList.toggle('winner-screen--da-projects-result', isDaProjectsWinner);
   winnerScreenRef.classList.toggle('winner-screen--draw', winner === 'draw' && isNormalResult);
   winnerScreenRef.classList.toggle('winner-screen--orange', winner === 'orange' && isNormalResult);
   winnerImageRef.src = `${assetPath}${getWinnerImage(winner)}`;
@@ -132,6 +133,28 @@ function updateGamingDrawImages(isGamingDraw: boolean) {
   if (scaleImageRef) {
     scaleImageRef.src = `${assetPath}gaming_draw_scale.png`;
   }
+}
+
+function updateDaProjectsWinnerImages(winner: Winner) {
+  if (winner === 'draw') {
+    return;
+  }
+
+  const playerNameImageRef = document.getElementById('da-projects-winner-player-image') as HTMLImageElement | null;
+  const playerIconImageRef = document.getElementById('da-projects-winner-icon') as HTMLImageElement | null;
+
+  if (!playerNameImageRef || !playerIconImageRef) {
+    return;
+  }
+
+  // DA Projects uses exported Figma images, so we swap both player graphics here.
+  const playerNameImage = winner === 'blue' ? 'Bluep.png' : 'playero.png';
+  const playerIconImage = winner === 'blue' ? 'Playerb.png' : 'Player.png';
+  const label = winner === 'blue' ? 'Blue Player' : 'Orange Player';
+
+  playerNameImageRef.src = `${assetPath}${playerNameImage}`;
+  playerNameImageRef.alt = label;
+  playerIconImageRef.src = `${assetPath}${playerIconImage}`;
 }
 
 function updateScore(scoreRef: HTMLElement, score: number) {

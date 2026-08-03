@@ -482,7 +482,7 @@
   }
 }
 
-// Special screen: DA Projects theme and the orange player wins.
+// Special screen: DA Projects theme and one player wins.
 .winner-screen--da-projects-result {
   background: #1e7594;
 
@@ -511,6 +511,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     width: 522px;
     max-width: 100%;
@@ -530,7 +531,7 @@
   }
 
   .winner-screen__da-player-name {
-    width: 518px;
+    width: auto;
     max-width: 100%;
     height: auto;
   }
