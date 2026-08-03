@@ -80,21 +80,70 @@ function showWinner(
   const isGamingWinner = winner !== 'draw' && isGamingTheme;
   const isGamingDraw = winner === 'draw' && isGamingTheme;
   const isDaProjectsWinner = winner !== 'draw' && isDaProjectsTheme;
-  const isNormalResult = !isGamingWinner && !isGamingDraw && !isDaProjectsWinner;
+  const isDaProjectsDraw = winner === 'draw' && isDaProjectsTheme;
+  const isNormalResult = !isGamingWinner && !isGamingDraw && !isDaProjectsWinner && !isDaProjectsDraw;
 
   // These classes adjust the result design.
   gameOverRef.hidden = true;
+  resetWinnerScreenState(winnerScreenRef);
+  setWinnerScreenParts(winnerScreenRef, {
+    showDefault: isNormalResult,
+    showGamingResult: isGamingWinner,
+    showGamingDraw: isGamingDraw,
+    showDaProjectsResult: isDaProjectsWinner,
+    showDaProjectsDraw: isDaProjectsDraw,
+  });
   updateGamingWinnerPlayerImage(winner);
   updateGamingDrawImages(isGamingDraw);
   updateDaProjectsWinnerImages(winner);
+  updateDaProjectsDrawImages(isDaProjectsDraw);
   winnerScreenRef.classList.toggle('winner-screen--gaming-result', isGamingWinner);
   winnerScreenRef.classList.toggle('winner-screen--gaming-draw', isGamingDraw);
   winnerScreenRef.classList.toggle('winner-screen--da-projects-result', isDaProjectsWinner);
+  winnerScreenRef.classList.toggle('winner-screen--da-projects-draw', isDaProjectsDraw);
   winnerScreenRef.classList.toggle('winner-screen--draw', winner === 'draw' && isNormalResult);
   winnerScreenRef.classList.toggle('winner-screen--orange', winner === 'orange' && isNormalResult);
   winnerImageRef.src = `${assetPath}${getWinnerImage(winner)}`;
   winnerImageRef.alt = getWinnerAltText(winner);
   winnerScreenRef.hidden = false;
+}
+
+function resetWinnerScreenState(winnerScreenRef: HTMLElement) {
+  // Remove old result classes first, so a previous theme cannot leak into the next result.
+  winnerScreenRef.classList.remove(
+    'winner-screen--gaming-result',
+    'winner-screen--gaming-draw',
+    'winner-screen--da-projects-result',
+    'winner-screen--da-projects-draw',
+    'winner-screen--draw',
+    'winner-screen--orange',
+  );
+}
+
+function setWinnerScreenParts(
+  winnerScreenRef: HTMLElement,
+  visibility: {
+    showDefault: boolean;
+    showGamingResult: boolean;
+    showGamingDraw: boolean;
+    showDaProjectsResult: boolean;
+    showDaProjectsDraw: boolean;
+  },
+) {
+  // Hidden sections are controlled in TypeScript as a safety net beside the theme CSS.
+  setWinnerPartVisibility(winnerScreenRef, '.winner-screen__content', visibility.showDefault);
+  setWinnerPartVisibility(winnerScreenRef, '.winner-screen__gaming-result', visibility.showGamingResult);
+  setWinnerPartVisibility(winnerScreenRef, '.winner-screen__gaming-draw', visibility.showGamingDraw);
+  setWinnerPartVisibility(winnerScreenRef, '.winner-screen__da-projects-result', visibility.showDaProjectsResult);
+  setWinnerPartVisibility(winnerScreenRef, '.winner-screen__da-projects-draw', visibility.showDaProjectsDraw);
+}
+
+function setWinnerPartVisibility(winnerScreenRef: HTMLElement, selector: string, isVisible: boolean) {
+  const partRef = winnerScreenRef.querySelector<HTMLElement>(selector);
+
+  if (partRef) {
+    partRef.hidden = !isVisible;
+  }
 }
 
 function updateGamingWinnerPlayerImage(winner: Winner) {
@@ -155,6 +204,29 @@ function updateDaProjectsWinnerImages(winner: Winner) {
   playerNameImageRef.src = `${assetPath}${playerNameImage}`;
   playerNameImageRef.alt = label;
   playerIconImageRef.src = `${assetPath}${playerIconImage}`;
+}
+
+function updateDaProjectsDrawImages(isDaProjectsDraw: boolean) {
+  if (!isDaProjectsDraw) {
+    return;
+  }
+
+  const labelImageRef = document.querySelector<HTMLImageElement>('.winner-screen__da-draw-small');
+  const titleImageRef = document.querySelector<HTMLImageElement>('.winner-screen__da-draw-title');
+  const scaleImageRef = document.querySelector<HTMLImageElement>('.winner-screen__da-draw-icon');
+
+  // DA Projects draw uses its own exported Figma images.
+  if (labelImageRef) {
+    labelImageRef.src = `${assetPath}da_projects_draw_label.png`;
+  }
+
+  if (titleImageRef) {
+    titleImageRef.src = `${assetPath}da_projects_draw_title.png`;
+  }
+
+  if (scaleImageRef) {
+    scaleImageRef.src = `${assetPath}da_projects_draw_scale.png`;
+  }
 }
 
 function updateScore(scoreRef: HTMLElement, score: number) {

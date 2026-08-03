@@ -321,6 +321,7 @@
   // These elements are only shown for special Gaming result screens.
   &__gaming-result,
   &__gaming-draw,
+  &__da-projects-draw,
   &__da-projects-result {
     display: none;
   }
@@ -458,7 +459,8 @@
 
   .winner-screen__confetti,
   .winner-screen__content,
-  .winner-screen__gaming-result {
+  .winner-screen__gaming-result,
+  .winner-screen__da-projects-draw {
     display: none;
   }
 
@@ -489,7 +491,8 @@
   .winner-screen__confetti,
   .winner-screen__content,
   .winner-screen__gaming-result,
-  .winner-screen__gaming-draw {
+  .winner-screen__gaming-draw,
+  .winner-screen__da-projects-draw {
     display: none;
   }
 
@@ -544,6 +547,94 @@
   .winner-screen__da-home-button {
     width: 96px;
     height: 48px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+
+    &:hover {
+      .winner-screen__da-home-image {
+        filter: brightness(1.15);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid #ff5a50;
+      outline-offset: 4px;
+    }
+  }
+
+  .winner-screen__da-home-image {
+    width: 100%;
+    height: 100%;
+    transition: filter 140ms ease-in-out;
+  }
+}
+
+// Special screen: DA Projects theme and both players have the same score.
+.winner-screen--da-projects-draw {
+  background: #1e7594;
+
+  .winner-screen__confetti,
+  .winner-screen__content,
+  .winner-screen__gaming-result,
+  .winner-screen__gaming-draw,
+  .winner-screen__da-projects-result {
+    display: none;
+  }
+
+  .winner-screen__da-projects-draw {
+    position: absolute;
+    top: 216px;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    width: 578px;
+    max-width: calc(100% - 48px);
+    min-height: 592px;
+    transform: translateX(-50%);
+  }
+
+  .winner-screen__da-draw-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .winner-screen__da-draw-small,
+  .winner-screen__da-draw-title,
+  .winner-screen__da-draw-icon,
+  .winner-screen__da-home-image {
+    display: block;
+  }
+
+  .winner-screen__da-draw-small {
+    width: 74px;
+    height: 29px;
+  }
+
+  .winner-screen__da-draw-title {
+    width: 384px;
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 4px 4px rgb(0 0 0 / 25%));
+  }
+
+  .winner-screen__da-draw-icon {
+    width: 361px;
+    max-width: 100%;
+    height: auto;
+    margin-top: 64px;
+    filter: drop-shadow(0 4px 4px rgb(0 0 0 / 25%));
+  }
+
+  .winner-screen__da-home-button {
+    width: 96px;
+    height: 48px;
+    margin-top: 64px;
     padding: 0;
     border: 0;
     background: transparent;
