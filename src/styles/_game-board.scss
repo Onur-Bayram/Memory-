@@ -134,6 +134,51 @@ body[data-game-theme='gaming'] {
   }
 }
 
+// DA-Projects-Karten haben laut Figma eine 120x100-Proportion.
+body[data-game-theme='da-projects'] {
+  .field--16 {
+    --da-card-width: 120px;
+    --da-card-height: 100px;
+
+    grid-template-columns: repeat(4, var(--da-card-width));
+    grid-template-rows: repeat(4, var(--da-card-height));
+    width: 528px;
+    height: 448px;
+    transform: translate(36px, 64px);
+  }
+
+  .field--24 {
+    --da-card-width: 104px;
+    --da-card-height: 87px;
+
+    grid-template-columns: repeat(6, var(--da-card-width));
+    grid-template-rows: repeat(4, var(--da-card-height));
+    width: 664px;
+    height: 372px;
+    transform: translate(0, 52px);
+  }
+
+  .field--36 {
+    --da-card-width: 88px;
+    --da-card-height: 73px;
+
+    grid-template-columns: repeat(6, var(--da-card-width));
+    grid-template-rows: repeat(6, var(--da-card-height));
+    width: 558px;
+    height: 478px;
+    transform: translate(18px, 20px);
+  }
+
+  .card {
+    width: var(--da-card-width);
+    height: var(--da-card-height);
+  }
+
+  .card__face {
+    border-radius: 13px;
+  }
+}
+
 // Karten werden auf kleinen Screens kleiner, damit das Spielfeld sichtbar bleibt.
 @media (max-width: 700px) {
   body[data-game-theme='gaming'] {

@@ -29,7 +29,7 @@ export const themePreviewImages: Record<Theme, string> = {
 export const cardBackImages: Record<Theme, string> = {
   'code-vibes': `${assetPath}bild1.png`,
   gaming: `${assetPath}kartenrueckseite_sauber.png`,
-  'da-projects': `${assetPath}bild1.png`,
+  'da-projects': `${assetPath}da_projects_card_back.png`,
   foods: `${assetPath}bild1.png`,
 };
 
