@@ -424,7 +424,8 @@
   &__gaming-result,
   &__gaming-draw,
   &__da-projects-draw,
-  &__da-projects-result {
+  &__da-projects-result,
+  &__foods-result {
     display: none;
   }
 
@@ -498,6 +499,51 @@
   &__draw-small {
     width: 79px;
     height: 22px;
+  }
+
+  &__foods-text,
+  &__foods-illustration,
+  &__foods-home-image {
+    display: block;
+  }
+
+  &__foods-text {
+    width: 540px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  &__foods-illustration {
+    width: 272px;
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 5px 7px rgb(0 0 0 / 18%));
+  }
+
+  &__foods-home-button {
+    width: 107px;
+    height: 55px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+
+    &:hover {
+      .winner-screen__foods-home-image {
+        filter: brightness(1.04);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid #f3832d;
+      outline-offset: 4px;
+    }
+  }
+
+  &__foods-home-image {
+    width: 100%;
+    height: 100%;
+    transition: filter 140ms ease-in-out;
   }
 
   &__draw-title {
@@ -758,5 +804,42 @@
     width: 100%;
     height: 100%;
     transition: filter 140ms ease-in-out;
+  }
+}
+
+// Special screen: Foods theme and orange player wins.
+.winner-screen--foods-result {
+  background: #f6f6f6;
+  justify-content: flex-start;
+
+  .winner-screen__confetti,
+  .winner-screen__content,
+  .winner-screen__gaming-result,
+  .winner-screen__gaming-draw,
+  .winner-screen__da-projects-result,
+  .winner-screen__da-projects-draw {
+    display: none;
+  }
+
+  .winner-screen__foods-result {
+    position: absolute;
+    top: clamp(88px, 14vh, 205px);
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    width: 540px;
+    max-width: calc(100% - 48px);
+    min-height: 622px;
+    transform: translateX(-50%);
+  }
+
+  .winner-screen__foods-illustration {
+    margin-top: 96px;
+  }
+
+  .winner-screen__foods-home-button {
+    margin-top: 88px;
   }
 }

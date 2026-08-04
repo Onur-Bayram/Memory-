@@ -5,7 +5,7 @@ const gameOverDelay = 1600;
 
 export function initWinnerScreen() {
   const backToStartButtonRefs = document.querySelectorAll<HTMLButtonElement>(
-    '.winner-screen__back-button, .winner-screen__home-button, .winner-screen__da-home-button',
+    '.winner-screen__back-button, .winner-screen__home-button, .winner-screen__da-home-button, .winner-screen__foods-home-button',
   );
 
   backToStartButtonRefs.forEach((buttonRef) => {
@@ -77,12 +77,14 @@ function showWinner(
   const winner = getWinner(blueScore, orangeScore);
   const isGamingTheme = document.body.dataset.gameTheme === 'gaming';
   const isDaProjectsTheme = document.body.dataset.gameTheme === 'da-projects';
+  const isFoodsTheme = document.body.dataset.gameTheme === 'foods';
   // This extra view belongs only to the Gaming theme when there is a winner.
   const isGamingWinner = winner !== 'draw' && isGamingTheme;
   const isGamingDraw = winner === 'draw' && isGamingTheme;
   const isDaProjectsWinner = winner !== 'draw' && isDaProjectsTheme;
   const isDaProjectsDraw = winner === 'draw' && isDaProjectsTheme;
-  const isNormalResult = !isGamingWinner && !isGamingDraw && !isDaProjectsWinner && !isDaProjectsDraw;
+  const isFoodsOrangeWinner = winner === 'orange' && isFoodsTheme;
+  const isNormalResult = !isGamingWinner && !isGamingDraw && !isDaProjectsWinner && !isDaProjectsDraw && !isFoodsOrangeWinner;
 
   // These classes adjust the result design.
   gameOverRef.hidden = true;
@@ -93,6 +95,7 @@ function showWinner(
     showGamingDraw: isGamingDraw,
     showDaProjectsResult: isDaProjectsWinner,
     showDaProjectsDraw: isDaProjectsDraw,
+    showFoodsResult: isFoodsOrangeWinner,
   });
   updateGamingWinnerPlayerImage(winner);
   updateGamingDrawImages(isGamingDraw);
@@ -102,6 +105,7 @@ function showWinner(
   winnerScreenRef.classList.toggle('winner-screen--gaming-draw', isGamingDraw);
   winnerScreenRef.classList.toggle('winner-screen--da-projects-result', isDaProjectsWinner);
   winnerScreenRef.classList.toggle('winner-screen--da-projects-draw', isDaProjectsDraw);
+  winnerScreenRef.classList.toggle('winner-screen--foods-result', isFoodsOrangeWinner);
   winnerScreenRef.classList.toggle('winner-screen--draw', winner === 'draw' && isNormalResult);
   winnerScreenRef.classList.toggle('winner-screen--orange', winner === 'orange' && isNormalResult);
   winnerImageRef.src = `${assetPath}${getWinnerImage(winner)}`;
@@ -116,6 +120,7 @@ function resetWinnerScreenState(winnerScreenRef: HTMLElement) {
     'winner-screen--gaming-draw',
     'winner-screen--da-projects-result',
     'winner-screen--da-projects-draw',
+    'winner-screen--foods-result',
     'winner-screen--draw',
     'winner-screen--orange',
   );
@@ -129,6 +134,7 @@ function setWinnerScreenParts(
     showGamingDraw: boolean;
     showDaProjectsResult: boolean;
     showDaProjectsDraw: boolean;
+    showFoodsResult: boolean;
   },
 ) {
   // Hidden sections are controlled in TypeScript as a safety net beside the theme CSS.
@@ -137,6 +143,7 @@ function setWinnerScreenParts(
   setWinnerPartVisibility(winnerScreenRef, '.winner-screen__gaming-draw', visibility.showGamingDraw);
   setWinnerPartVisibility(winnerScreenRef, '.winner-screen__da-projects-result', visibility.showDaProjectsResult);
   setWinnerPartVisibility(winnerScreenRef, '.winner-screen__da-projects-draw', visibility.showDaProjectsDraw);
+  setWinnerPartVisibility(winnerScreenRef, '.winner-screen__foods-result', visibility.showFoodsResult);
 }
 
 function setWinnerPartVisibility(winnerScreenRef: HTMLElement, selector: string, isVisible: boolean) {
