@@ -1,6 +1,9 @@
 node_modules/
 dist/
 *.log
+*.err
+.codex/
+tmp_vite/
+tmp_preview/
 Thumbs.db
 .DS_Store
-

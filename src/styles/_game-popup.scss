@@ -155,7 +155,7 @@ body[data-game-theme='da-projects'] .exit-popup__exit-button {
   }
 }
 
-// Foods popup uses the Figma box size while keeping the existing button behavior.
+// Foods popup uses the delivered title and button images from the design export.
 body[data-game-theme='foods'] .exit-popup__content {
   box-sizing: border-box;
   display: flex;
@@ -170,6 +170,115 @@ body[data-game-theme='foods'] .exit-popup__content {
   background: #f6f6f6;
 }
 
+body[data-game-theme='foods'] .exit-popup__title {
+  width: 334px;
+  max-width: 100%;
+  height: 65px;
+  margin: 0;
+  background-image: url('/assets/Are you sure you want to quit the game_.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  font-size: 0;
+}
+
 body[data-game-theme='foods'] .exit-popup__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  height: 55px;
   margin-top: 0;
+  gap: 18px;
+}
+
+body[data-game-theme='foods'] .exit-popup__button {
+  flex: 0 0 auto;
+  position: relative;
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background-color: transparent;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+  transition: filter 160ms ease-in-out;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+    transition: opacity 160ms ease-in-out;
+  }
+
+  &:hover {
+    filter: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #dd8f3b;
+    outline-offset: 4px;
+  }
+}
+
+body[data-game-theme='foods'] .exit-popup__back-button {
+  width: 221px;
+  height: 55px;
+
+  &::before {
+    background-image: url('/assets/Property 1=Default.png');
+    background-size: 214px 48px;
+    opacity: 1;
+  }
+
+  &::after {
+    background-image: url('/assets/Property 1=hover.png');
+    background-position: calc(50% + 1px) 2px;
+    background-size: 224px 56px;
+    opacity: 0;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 0;
+    }
+
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+body[data-game-theme='foods'] .exit-popup__exit-button {
+  width: 144px;
+  height: 49px;
+  margin-top: 3px;
+
+  &::before {
+    background-image: url('/assets/button exit_04.png');
+    background-size: 144px 49px;
+    opacity: 1;
+  }
+
+  &::after {
+    background-image: url('/assets/button exit_04_hover.png');
+    background-size: 144px 49px;
+    opacity: 0;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 0;
+    }
+
+    &::after {
+      opacity: 1;
+    }
+  }
 }
