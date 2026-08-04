@@ -191,6 +191,19 @@ body[data-game-theme='da-projects'] {
   }
 }
 
+body[data-game-theme='foods'] .card.is-matched .card__face--back {
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/frond.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    pointer-events: none;
+  }
+}
+
 // Cards get smaller on small screens so the field stays visible.
 @media (max-width: 700px) {
   body[data-game-theme='gaming'] {
