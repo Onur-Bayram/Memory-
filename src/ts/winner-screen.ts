@@ -84,7 +84,9 @@ function showWinner(
   const isDaProjectsWinner = winner !== 'draw' && isDaProjectsTheme;
   const isDaProjectsDraw = winner === 'draw' && isDaProjectsTheme;
   const isFoodsWinner = winner !== 'draw' && isFoodsTheme;
-  const isNormalResult = !isGamingWinner && !isGamingDraw && !isDaProjectsWinner && !isDaProjectsDraw && !isFoodsWinner;
+  const isFoodsDraw = winner === 'draw' && isFoodsTheme;
+  const isNormalResult =
+    !isGamingWinner && !isGamingDraw && !isDaProjectsWinner && !isDaProjectsDraw && !isFoodsWinner && !isFoodsDraw;
 
   // These classes adjust the result design.
   gameOverRef.hidden = true;
@@ -96,6 +98,7 @@ function showWinner(
     showDaProjectsResult: isDaProjectsWinner,
     showDaProjectsDraw: isDaProjectsDraw,
     showFoodsResult: isFoodsWinner,
+    showFoodsDraw: isFoodsDraw,
   });
   updateGamingWinnerPlayerImage(winner);
   updateGamingDrawImages(isGamingDraw);
@@ -107,6 +110,7 @@ function showWinner(
   winnerScreenRef.classList.toggle('winner-screen--da-projects-result', isDaProjectsWinner);
   winnerScreenRef.classList.toggle('winner-screen--da-projects-draw', isDaProjectsDraw);
   winnerScreenRef.classList.toggle('winner-screen--foods-result', isFoodsWinner);
+  winnerScreenRef.classList.toggle('winner-screen--foods-draw', isFoodsDraw);
   winnerScreenRef.classList.toggle('winner-screen--draw', winner === 'draw' && isNormalResult);
   winnerScreenRef.classList.toggle('winner-screen--orange', winner === 'orange' && isNormalResult);
   winnerImageRef.src = `${assetPath}${getWinnerImage(winner)}`;
@@ -122,6 +126,7 @@ function resetWinnerScreenState(winnerScreenRef: HTMLElement) {
     'winner-screen--da-projects-result',
     'winner-screen--da-projects-draw',
     'winner-screen--foods-result',
+    'winner-screen--foods-draw',
     'winner-screen--draw',
     'winner-screen--orange',
   );
@@ -136,6 +141,7 @@ function setWinnerScreenParts(
     showDaProjectsResult: boolean;
     showDaProjectsDraw: boolean;
     showFoodsResult: boolean;
+    showFoodsDraw: boolean;
   },
 ) {
   // Hidden sections are controlled in TypeScript as a safety net beside the theme CSS.
@@ -145,6 +151,7 @@ function setWinnerScreenParts(
   setWinnerPartVisibility(winnerScreenRef, '.winner-screen__da-projects-result', visibility.showDaProjectsResult);
   setWinnerPartVisibility(winnerScreenRef, '.winner-screen__da-projects-draw', visibility.showDaProjectsDraw);
   setWinnerPartVisibility(winnerScreenRef, '.winner-screen__foods-result', visibility.showFoodsResult);
+  setWinnerPartVisibility(winnerScreenRef, '.winner-screen__foods-draw', visibility.showFoodsDraw);
 }
 
 function setWinnerPartVisibility(winnerScreenRef: HTMLElement, selector: string, isVisible: boolean) {
