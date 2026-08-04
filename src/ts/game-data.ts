@@ -19,10 +19,10 @@ export const assetPath = '/dist/assets/';
 
 // These images are shown in settings as the selected theme preview.
 export const themePreviewImages: Record<Theme, string> = {
-  'code-vibes': `${assetPath}memory_bild.png`,
-  gaming: `${assetPath}gaming.png`,
-  'da-projects': `${assetPath}da_projects.png`,
-  foods: `${assetPath}foods.png`,
+  'code-vibes': `${assetPath}codevibetheme.png`,
+  gaming: `${assetPath}gamingtheme.png`,
+  'da-projects': `${assetPath}daprotheme.png`,
+  foods: `${assetPath}foodtheme.png`,
 };
 
 // Each theme can use its own card back.
