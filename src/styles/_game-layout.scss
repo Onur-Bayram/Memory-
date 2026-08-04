@@ -70,6 +70,14 @@
     border-radius: 3px 14px 14px 3px;
     background: #2fb4ff;
   }
+
+  &__marker[data-current-player='blue'] {
+    background: #2fb4ff;
+  }
+
+  &__marker[data-current-player='orange'] {
+    background: #ff8a2a;
+  }
 }
 
 // Exit button uses different images depending on the theme.
