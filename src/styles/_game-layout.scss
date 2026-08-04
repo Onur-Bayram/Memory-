@@ -330,6 +330,18 @@ body[data-game-theme='da-projects'] {
 // Foods theme starts with a clean white game background.
 body[data-game-theme='foods'] {
   background: #ffffff;
+
+  .game-content {
+    width: calc(100% - 222px);
+    max-width: 1219px;
+  }
+
+  .game-header {
+    height: 102px;
+    padding: 24px;
+    border-radius: 10px;
+    background: #f0e5d9;
+  }
 }
 
 // On small screens, the Gaming header becomes more compact.
