@@ -1,4 +1,5 @@
-import { themePreviewImages, type BoardSize, type GameSettings, type Player, type Theme } from './game-data';
+import { themePreviewImages } from './assets';
+import { type BoardSize, type GameSettings, type Player, type Theme } from './game-data';
 
 export function initSettingsSteps(
   settingsFormRef: HTMLFormElement,

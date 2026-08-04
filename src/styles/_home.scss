@@ -46,7 +46,7 @@
   padding: 0;
   border: 0;
   background-color: transparent;
-  background-image: url('/assets/play_button_oben.png');
+  background-image: url('/assets/home/play_button_oben.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 92.6% 95.2%;
@@ -55,7 +55,7 @@
 
   &:hover,
   &:focus-visible {
-    background-image: url('/assets/play_button_unten.png');
+    background-image: url('/assets/home/play_button_unten.png');
     background-size: 100% 100%;
     filter: brightness(1.03);
     transform: scale(1.03);

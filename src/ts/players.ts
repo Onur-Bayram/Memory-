@@ -30,6 +30,7 @@ export function updateScores(blueScoreRef: HTMLElement, orangeScoreRef: HTMLElem
 }
 
 function updateScore(scoreRef: HTMLElement, score: number) {
+  // HTML only accepts strings, so numbers are converted before rendering.
   scoreRef.textContent = score.toString();
 }
 

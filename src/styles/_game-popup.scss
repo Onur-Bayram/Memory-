@@ -82,7 +82,7 @@ body[data-game-theme='da-projects'] .exit-popup__title {
   max-width: 100%;
   height: 66px;
   margin: 0;
-  background-image: url('/assets/da_projects_quit_title.png');
+  background-image: url('/assets/da-projects/da_projects_quit_title.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -175,7 +175,7 @@ body[data-game-theme='foods'] .exit-popup__title {
   max-width: 100%;
   height: 65px;
   margin: 0;
-  background-image: url('/assets/Are you sure you want to quit the game_.png');
+  background-image: url('/assets/foods/Are you sure you want to quit the game_.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -232,13 +232,13 @@ body[data-game-theme='foods'] .exit-popup__back-button {
   height: 55px;
 
   &::before {
-    background-image: url('/assets/Property 1=Default.png');
+    background-image: url('/assets/foods/Property 1=Default.png');
     background-size: 214px 48px;
     opacity: 1;
   }
 
   &::after {
-    background-image: url('/assets/Property 1=hover.png');
+    background-image: url('/assets/foods/Property 1=hover.png');
     background-position: calc(50% + 1px) 2px;
     background-size: 224px 56px;
     opacity: 0;
@@ -261,13 +261,13 @@ body[data-game-theme='foods'] .exit-popup__exit-button {
   margin-top: 3px;
 
   &::before {
-    background-image: url('/assets/button exit_04.png');
+    background-image: url('/assets/foods/button exit_04.png');
     background-size: 144px 49px;
     opacity: 1;
   }
 
   &::after {
-    background-image: url('/assets/button exit_04_hover.png');
+    background-image: url('/assets/foods/button exit_04_hover.png');
     background-size: 144px 49px;
     opacity: 0;
   }

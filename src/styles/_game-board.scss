@@ -70,7 +70,7 @@
     box-shadow: 0 4px 8px rgb(0 0 0 / 20%);
 
     &--front {
-      background-image: var(--card-back-image, url('/assets/bild1.png'));
+      background-image: var(--card-back-image, url('/assets/code-vibes/bild1.png'));
     }
 
     &--back {
@@ -196,7 +196,7 @@ body[data-game-theme='foods'] .card.is-matched .card__face--back {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('/assets/frond.png');
+    background-image: url('/assets/foods/frond.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;

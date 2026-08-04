@@ -1,4 +1,4 @@
-import { assetPath } from './game-data';
+import { getAssetUrl } from './assets';
 
 export function setBoardSize(fieldRef: HTMLElement, fieldClass: string) {
   // Remove all board size classes first, so only one size is active.
@@ -6,18 +6,20 @@ export function setBoardSize(fieldRef: HTMLElement, fieldClass: string) {
   fieldRef.classList.add(fieldClass);
 }
 
-export function renderCards(fieldRef: HTMLElement, shuffledImages: string[]) {
+export function renderCards(fieldRef: HTMLElement, shuffledImages: string[], cardBackImage: string) {
+  // Re-render the board whenever a new game starts.
   fieldRef.innerHTML = '';
 
   shuffledImages.forEach((cardImage) => {
     const cardRef = document.createElement('button');
+    const resolvedCardImage = getAssetUrl(cardImage);
 
     // Store the image in the dataset, so two cards can be compared later.
     cardRef.classList.add('card');
     cardRef.type = 'button';
     cardRef.ariaLabel = 'Memory Karte';
     cardRef.dataset.cardImage = cardImage;
-    cardRef.style.setProperty('--card-image', `url('${assetPath}${cardImage}')`);
+    cardRef.style.setProperty('--card-image', `url('${resolvedCardImage}')`);
     // The two card sides stay separate in HTML, so CSS can flip the card.
     cardRef.innerHTML = `
       <span class="card__inner">
@@ -25,6 +27,13 @@ export function renderCards(fieldRef: HTMLElement, shuffledImages: string[]) {
         <span class="card__face card__face--back"></span>
       </span>
     `;
+
+    // Set both images directly on the actual faces as a reliable runtime fallback.
+    const frontFaceRef = cardRef.querySelector<HTMLElement>('.card__face--front');
+    const backFaceRef = cardRef.querySelector<HTMLElement>('.card__face--back');
+
+    frontFaceRef?.style.setProperty('background-image', `url('${cardBackImage}')`);
+    backFaceRef?.style.setProperty('background-image', `url('${resolvedCardImage}')`);
 
     fieldRef.appendChild(cardRef);
   });
@@ -51,6 +60,7 @@ export function canFlipCard(cardRef: HTMLElement, isLocked: boolean) {
 }
 
 export function flipCard(cardRef: HTMLElement) {
+  // The visual flip is handled in CSS through the is-flipped class.
   cardRef.classList.add('is-flipped');
 }
 

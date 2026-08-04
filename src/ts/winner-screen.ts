@@ -1,4 +1,11 @@
-import { assetPath, type Winner } from './game-data';
+import {
+  daProjectsWinnerAssets,
+  defaultWinnerImages,
+  foodsWinnerAssets,
+  gamingWinnerAssets,
+  getAssetUrl,
+} from './assets';
+import { type Winner } from './game-data';
 import { type PlayerScore } from './players';
 
 const gameOverDelay = 1600;
@@ -113,7 +120,7 @@ function showWinner(
   winnerScreenRef.classList.toggle('winner-screen--foods-draw', isFoodsDraw);
   winnerScreenRef.classList.toggle('winner-screen--draw', winner === 'draw' && isNormalResult);
   winnerScreenRef.classList.toggle('winner-screen--orange', winner === 'orange' && isNormalResult);
-  winnerImageRef.src = `${assetPath}${getWinnerImage(winner)}`;
+  winnerImageRef.src = defaultWinnerImages[winner];
   winnerImageRef.alt = getWinnerAltText(winner);
   winnerScreenRef.hidden = false;
 }
@@ -170,10 +177,10 @@ function updateGamingWinnerPlayerImage(winner: Winner) {
   }
 
   // In the Gaming theme, the player name comes from a Figma image.
-  const imageName = winner === 'blue' ? 'Blue Player.png' : 'Orange Player.png';
+  const imageName = winner === 'blue' ? gamingWinnerAssets.bluePlayer : gamingWinnerAssets.orangePlayer;
   const label = winner === 'blue' ? 'Blue Player' : 'Orange Player';
 
-  gamingWinnerPlayerImageRef.src = encodeURI(`${assetPath}${imageName}`);
+  gamingWinnerPlayerImageRef.src = getAssetUrl(imageName);
   gamingWinnerPlayerImageRef.alt = label;
 }
 
@@ -188,15 +195,15 @@ function updateGamingDrawImages(isGamingDraw: boolean) {
 
   // Draw images are set here so old file names do not stay cached in the browser.
   if (labelImageRef) {
-    labelImageRef.src = `${assetPath}gaming_draw_label.png`;
+    labelImageRef.src = getAssetUrl(gamingWinnerAssets.drawLabel);
   }
 
   if (titleImageRef) {
-    titleImageRef.src = `${assetPath}gaming_draw_title.png`;
+    titleImageRef.src = getAssetUrl(gamingWinnerAssets.drawTitle);
   }
 
   if (scaleImageRef) {
-    scaleImageRef.src = `${assetPath}gaming_draw_scale.png`;
+    scaleImageRef.src = getAssetUrl(gamingWinnerAssets.drawScale);
   }
 }
 
@@ -213,13 +220,13 @@ function updateDaProjectsWinnerImages(winner: Winner) {
   }
 
   // DA Projects uses exported Figma images, so we swap both player graphics here.
-  const playerNameImage = winner === 'blue' ? 'Bluep.png' : 'playero.png';
-  const playerIconImage = winner === 'blue' ? 'Playerb.png' : 'Player.png';
+  const playerNameImage = winner === 'blue' ? daProjectsWinnerAssets.bluePlayerName : daProjectsWinnerAssets.orangePlayerName;
+  const playerIconImage = winner === 'blue' ? daProjectsWinnerAssets.bluePlayerIcon : daProjectsWinnerAssets.orangePlayerIcon;
   const label = winner === 'blue' ? 'Blue Player' : 'Orange Player';
 
-  playerNameImageRef.src = `${assetPath}${playerNameImage}`;
+  playerNameImageRef.src = getAssetUrl(playerNameImage);
   playerNameImageRef.alt = label;
-  playerIconImageRef.src = `${assetPath}${playerIconImage}`;
+  playerIconImageRef.src = getAssetUrl(playerIconImage);
 }
 
 function updateDaProjectsDrawImages(isDaProjectsDraw: boolean) {
@@ -233,15 +240,15 @@ function updateDaProjectsDrawImages(isDaProjectsDraw: boolean) {
 
   // DA Projects draw uses its own exported Figma images.
   if (labelImageRef) {
-    labelImageRef.src = `${assetPath}da_projects_draw_label.png`;
+    labelImageRef.src = getAssetUrl(daProjectsWinnerAssets.drawLabel);
   }
 
   if (titleImageRef) {
-    titleImageRef.src = `${assetPath}da_projects_draw_title.png`;
+    titleImageRef.src = getAssetUrl(daProjectsWinnerAssets.drawTitle);
   }
 
   if (scaleImageRef) {
-    scaleImageRef.src = `${assetPath}da_projects_draw_scale.png`;
+    scaleImageRef.src = getAssetUrl(daProjectsWinnerAssets.drawScale);
   }
 }
 
@@ -257,27 +264,19 @@ function updateFoodsWinnerImages(winner: Winner) {
     return;
   }
 
-  const textImage = winner === 'blue' ? 'Text bluefood.png' : 'Textfood.png';
-  const illustrationImage = winner === 'blue' ? 'Player illustration bluefood.png' : 'Player illustration.png';
+  const textImage = winner === 'blue' ? foodsWinnerAssets.blueWinnerText : foodsWinnerAssets.orangeWinnerText;
+  const illustrationImage =
+    winner === 'blue' ? foodsWinnerAssets.blueWinnerIllustration : foodsWinnerAssets.orangeWinnerIllustration;
   const playerLabel = winner === 'blue' ? 'Blue Player' : 'Orange Player';
 
-  textImageRef.src = `${assetPath}${textImage}`;
+  textImageRef.src = getAssetUrl(textImage);
   textImageRef.alt = `The winner is ${playerLabel}`;
-  illustrationImageRef.src = `${assetPath}${illustrationImage}`;
+  illustrationImageRef.src = getAssetUrl(illustrationImage);
   illustrationImageRef.alt = `${playerLabel} piece`;
 }
 
 function updateScore(scoreRef: HTMLElement, score: number) {
   scoreRef.textContent = score.toString();
-}
-
-function getWinnerImage(winner: Winner) {
-  // blue/orange become bluewin.png or orangewin.png.
-  if (winner === 'draw') {
-    return 'draw.png';
-  }
-
-  return `${winner}win.png`;
 }
 
 function getWinnerAltText(winner: Winner) {

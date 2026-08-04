@@ -87,7 +87,7 @@
   padding: 0;
   border: 0;
   background-color: transparent;
-  background-image: var(--exit-game-image, url('/assets/exit_game_oben.png'));
+  background-image: var(--exit-game-image, url('/assets/code-vibes/exit_game_oben.png'));
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -95,7 +95,7 @@
   transition: transform 180ms ease-in-out, filter 180ms ease-in-out;
 
   &:hover {
-    background-image: var(--exit-game-hover-image, url('/assets/exit_game_unten.png'));
+    background-image: var(--exit-game-hover-image, url('/assets/code-vibes/exit_game_unten.png'));
     filter: brightness(1.08);
     transform: scale(1.05);
   }
@@ -182,11 +182,11 @@ body[data-game-theme='gaming'] {
   }
 
   .score-board__player--orange .score-board__marker {
-    background-image: url('/assets/chess_orange.png');
+    background-image: url('/assets/shared/chess_orange.png');
   }
 
   .score-board__player--blue .score-board__marker {
-    background-image: url('/assets/chess_blue.png');
+    background-image: url('/assets/shared/chess_blue.png');
   }
 
   .current-player {
@@ -208,11 +208,11 @@ body[data-game-theme='gaming'] {
   }
 
   .current-player__marker[data-current-player='blue'] {
-    background-image: url('/assets/current_player_symbol.png');
+    background-image: url('/assets/shared/current_player_symbol.png');
   }
 
   .current-player__marker[data-current-player='orange'] {
-    background-image: url('/assets/current_player_orange.png');
+    background-image: url('/assets/shared/current_player_orange.png');
   }
 
   .exit-game {
@@ -278,11 +278,11 @@ body[data-game-theme='da-projects'] {
   }
 
   .score-board__player--orange .score-board__marker {
-    background-image: url('/assets/chess_orange.png');
+    background-image: url('/assets/shared/chess_orange.png');
   }
 
   .score-board__player--blue .score-board__marker {
-    background-image: url('/assets/chess_blue.png');
+    background-image: url('/assets/shared/chess_blue.png');
   }
 
   .current-player {
@@ -292,7 +292,7 @@ body[data-game-theme='da-projects'] {
   .current-player__label {
     width: 220px;
     height: 30px;
-    background-image: url('/assets/da_projects_current_player.png');
+    background-image: url('/assets/da-projects/da_projects_current_player.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -310,11 +310,11 @@ body[data-game-theme='da-projects'] {
   }
 
   .current-player__marker[data-current-player='blue'] {
-    background-image: url('/assets/da_projects_current_player_blue.png');
+    background-image: url('/assets/da-projects/da_projects_current_player_blue.png');
   }
 
   .current-player__marker[data-current-player='orange'] {
-    background-image: url('/assets/da_projects_current_player_orange.png');
+    background-image: url('/assets/da-projects/da_projects_current_player_orange.png');
   }
 
   .exit-game {
@@ -409,11 +409,11 @@ body[data-game-theme='foods'] {
   }
 
   .score-board__player--orange .score-board__marker {
-    background-image: url('/assets/chess_orange.png');
+    background-image: url('/assets/shared/chess_orange.png');
   }
 
   .score-board__player--blue .score-board__marker {
-    background-image: url('/assets/chess_blue.png');
+    background-image: url('/assets/shared/chess_blue.png');
   }
 
   .current-player {
@@ -423,7 +423,7 @@ body[data-game-theme='foods'] {
   .current-player__label {
     width: 226px;
     height: 29px;
-    background-image: url('/assets/foods_current_player.png');
+    background-image: url('/assets/foods/foods_current_player.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -442,11 +442,11 @@ body[data-game-theme='foods'] {
   }
 
   .current-player__marker[data-current-player='blue'] {
-    background-image: url('/assets/current_player_symbol.png');
+    background-image: url('/assets/shared/current_player_symbol.png');
   }
 
   .current-player__marker[data-current-player='orange'] {
-    background-image: url('/assets/current_player_orange.png');
+    background-image: url('/assets/shared/current_player_orange.png');
   }
 
   // Foods exit images have different source dimensions, so the button box stays fixed.
