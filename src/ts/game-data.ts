@@ -30,7 +30,7 @@ export const cardBackImages: Record<Theme, string> = {
   'code-vibes': `${assetPath}bild1.png`,
   gaming: `${assetPath}kartenrueckseite_sauber.png`,
   'da-projects': `${assetPath}da_projects_card_back.png`,
-  foods: `${assetPath}bild1.png`,
+  foods: `${assetPath}foods_card_back.png`,
 };
 
 // The normal and hover states of the exit button are set per theme.
@@ -119,12 +119,34 @@ const daProjectsCardImages = [
   'da_project_card_18.png',
 ];
 
+// These images belong to the Foods theme.
+const foodsCardImages = [
+  'food_card_01.png',
+  'food_card_02.png',
+  'food_card_03.png',
+  'food_card_04.png',
+  'food_card_05.png',
+  'food_card_06.png',
+  'food_card_07.png',
+  'food_card_08.png',
+  'food_card_09.png',
+  'food_card_10.png',
+  'food_card_11.png',
+  'food_card_12.png',
+  'food_card_13.png',
+  'food_card_14.png',
+  'food_card_15.png',
+  'food_card_16.png',
+  'food_card_17.png',
+  'food_card_18.png',
+];
+
 // This maps each theme to its card images.
 const themeCardImages: Record<Theme, string[]> = {
   'code-vibes': codeVibesCardImages,
   gaming: gamingCardImages,
   'da-projects': daProjectsCardImages,
-  foods: codeVibesCardImages,
+  foods: foodsCardImages,
 };
 
 // Returns only as many card images as the selected board size needs.
