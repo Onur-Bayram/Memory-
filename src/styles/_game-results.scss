@@ -32,7 +32,9 @@
   &__gaming-title,
   &__gaming-label,
   &__da-title,
-  &__da-label {
+  &__da-label,
+  &__foods-title,
+  &__foods-label {
     display: none;
   }
 
@@ -243,6 +245,106 @@
     display: block;
     width: 20px;
     height: 25px;
+    border-radius: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .score-board__player--orange .score-board__marker {
+    background-image: url('/assets/chess_orange.png');
+  }
+
+  .score-board__player--blue .score-board__marker {
+    background-image: url('/assets/chess_blue.png');
+  }
+}
+
+// Foods uses its own orange result screen with handwritten title artwork.
+.game-over--foods {
+  box-sizing: border-box;
+  justify-content: flex-start;
+  gap: clamp(88px, 11vh, 152px);
+  padding-top: clamp(180px, 31vh, 422px);
+  background: #f3832d;
+
+  .game-over__title,
+  .game-over__gaming-title,
+  .game-over__gaming-label,
+  .game-over__da-title,
+  .game-over__da-label,
+  .game-over__label {
+    display: none;
+  }
+
+  .game-over__foods-title {
+    display: block;
+    width: 772px;
+    max-width: calc(100% - 48px);
+    height: auto;
+    filter: drop-shadow(0 5px 4px rgb(0 0 0 / 22%));
+  }
+
+  .game-over__final-score {
+    gap: 18px;
+    width: 220px;
+    max-width: calc(100% - 48px);
+  }
+
+  .game-over__foods-label {
+    display: block;
+    width: 213px;
+    height: 31px;
+  }
+
+  .game-over__score-board {
+    justify-content: flex-start;
+    gap: 40px;
+    width: 220px;
+    height: 76px;
+    padding: 0 16px;
+    border-radius: 0;
+    background: white;
+    font-family: 'Delius Unicase', Arial, sans-serif;
+  }
+
+  .score-board__player {
+    flex: 0 0 auto;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .score-board__player--orange {
+    order: 1;
+    color: #ef6700;
+  }
+
+  .score-board__player--blue {
+    order: 2;
+    color: #097fc5;
+  }
+
+  .score-board__name {
+    display: none;
+  }
+
+  .score-board__points {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-width: 27px;
+    font-size: 54px;
+    font-weight: 700;
+    line-height: 1;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .score-board__marker {
+    display: block;
+    width: 22px;
+    height: 28px;
     border-radius: 0;
     background-color: transparent;
     background-repeat: no-repeat;

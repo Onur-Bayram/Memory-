@@ -32,6 +32,7 @@ export function showGameOver(
   const gameTheme = document.body.dataset.gameTheme;
   gameOverRef.classList.toggle('game-over--gaming', gameTheme === 'gaming');
   gameOverRef.classList.toggle('game-over--da-projects', gameTheme === 'da-projects');
+  gameOverRef.classList.toggle('game-over--foods', gameTheme === 'foods');
 
   gameContentRef.hidden = true;
   gameOverRef.hidden = false;
