@@ -440,6 +440,25 @@ body[data-game-theme='foods'] {
   .current-player__marker[data-current-player='orange'] {
     background-image: url('/assets/current_player_orange.png');
   }
+
+  // Foods exit images have different source dimensions, so the button box stays fixed.
+  .exit-game {
+    width: 173px;
+    height: 46px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    background-size: 173px 46px;
+    filter: none;
+    transform: none;
+    transition: none;
+
+    &:hover {
+      background-position: calc(50% + 1px) calc(50% + 2px);
+      background-size: 178px 51px;
+      filter: none;
+      transform: none;
+    }
+  }
 }
 
 // On small screens, the Gaming header becomes more compact.
