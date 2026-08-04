@@ -342,6 +342,39 @@ body[data-game-theme='foods'] {
     border-radius: 10px;
     background: #f0e5d9;
   }
+
+  .current-player {
+    gap: 11px;
+  }
+
+  .current-player__label {
+    width: 226px;
+    height: 29px;
+    background-image: url('/assets/foods_current_player.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    font-size: 0;
+  }
+
+  // Foods uses the existing player symbols beside the image label.
+  .current-player__marker {
+    width: 41px;
+    height: 40px;
+    border-radius: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .current-player__marker[data-current-player='blue'] {
+    background-image: url('/assets/current_player_symbol.png');
+  }
+
+  .current-player__marker[data-current-player='orange'] {
+    background-image: url('/assets/current_player_orange.png');
+  }
 }
 
 // On small screens, the Gaming header becomes more compact.
