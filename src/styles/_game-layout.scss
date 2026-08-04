@@ -343,6 +343,15 @@ body[data-game-theme='foods'] {
     background: #f0e5d9;
   }
 
+  .score-board {
+    width: 159px;
+    height: 54px;
+    gap: 40px;
+    padding: 0 16px;
+    border-radius: 10px;
+    background: #ffffff;
+  }
+
   .current-player {
     gap: 11px;
   }
