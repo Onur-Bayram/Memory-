@@ -83,8 +83,8 @@ function showWinner(
   const isGamingDraw = winner === 'draw' && isGamingTheme;
   const isDaProjectsWinner = winner !== 'draw' && isDaProjectsTheme;
   const isDaProjectsDraw = winner === 'draw' && isDaProjectsTheme;
-  const isFoodsOrangeWinner = winner === 'orange' && isFoodsTheme;
-  const isNormalResult = !isGamingWinner && !isGamingDraw && !isDaProjectsWinner && !isDaProjectsDraw && !isFoodsOrangeWinner;
+  const isFoodsWinner = winner !== 'draw' && isFoodsTheme;
+  const isNormalResult = !isGamingWinner && !isGamingDraw && !isDaProjectsWinner && !isDaProjectsDraw && !isFoodsWinner;
 
   // These classes adjust the result design.
   gameOverRef.hidden = true;
@@ -95,17 +95,18 @@ function showWinner(
     showGamingDraw: isGamingDraw,
     showDaProjectsResult: isDaProjectsWinner,
     showDaProjectsDraw: isDaProjectsDraw,
-    showFoodsResult: isFoodsOrangeWinner,
+    showFoodsResult: isFoodsWinner,
   });
   updateGamingWinnerPlayerImage(winner);
   updateGamingDrawImages(isGamingDraw);
   updateDaProjectsWinnerImages(winner);
   updateDaProjectsDrawImages(isDaProjectsDraw);
+  updateFoodsWinnerImages(winner);
   winnerScreenRef.classList.toggle('winner-screen--gaming-result', isGamingWinner);
   winnerScreenRef.classList.toggle('winner-screen--gaming-draw', isGamingDraw);
   winnerScreenRef.classList.toggle('winner-screen--da-projects-result', isDaProjectsWinner);
   winnerScreenRef.classList.toggle('winner-screen--da-projects-draw', isDaProjectsDraw);
-  winnerScreenRef.classList.toggle('winner-screen--foods-result', isFoodsOrangeWinner);
+  winnerScreenRef.classList.toggle('winner-screen--foods-result', isFoodsWinner);
   winnerScreenRef.classList.toggle('winner-screen--draw', winner === 'draw' && isNormalResult);
   winnerScreenRef.classList.toggle('winner-screen--orange', winner === 'orange' && isNormalResult);
   winnerImageRef.src = `${assetPath}${getWinnerImage(winner)}`;
@@ -235,6 +236,28 @@ function updateDaProjectsDrawImages(isDaProjectsDraw: boolean) {
   if (scaleImageRef) {
     scaleImageRef.src = `${assetPath}da_projects_draw_scale.png`;
   }
+}
+
+function updateFoodsWinnerImages(winner: Winner) {
+  if (winner === 'draw') {
+    return;
+  }
+
+  const textImageRef = document.getElementById('foods-winner-text-image') as HTMLImageElement | null;
+  const illustrationImageRef = document.getElementById('foods-winner-illustration-image') as HTMLImageElement | null;
+
+  if (!textImageRef || !illustrationImageRef) {
+    return;
+  }
+
+  const textImage = winner === 'blue' ? 'Text bluefood.png' : 'Textfood.png';
+  const illustrationImage = winner === 'blue' ? 'Player illustration bluefood.png' : 'Player illustration.png';
+  const playerLabel = winner === 'blue' ? 'Blue Player' : 'Orange Player';
+
+  textImageRef.src = `${assetPath}${textImage}`;
+  textImageRef.alt = `The winner is ${playerLabel}`;
+  illustrationImageRef.src = `${assetPath}${illustrationImage}`;
+  illustrationImageRef.alt = `${playerLabel} piece`;
 }
 
 function updateScore(scoreRef: HTMLElement, score: number) {
