@@ -154,3 +154,22 @@ body[data-game-theme='da-projects'] .exit-popup__exit-button {
     color: white;
   }
 }
+
+// Foods popup uses the Figma box size while keeping the existing button behavior.
+body[data-game-theme='foods'] .exit-popup__content {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 456px;
+  max-width: calc(100% - 48px);
+  height: 256px;
+  padding: 40px;
+  gap: 40px;
+  border-radius: 20px;
+  background: #f6f6f6;
+}
+
+body[data-game-theme='foods'] .exit-popup__actions {
+  margin-top: 0;
+}
