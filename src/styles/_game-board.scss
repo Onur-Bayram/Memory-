@@ -85,6 +85,10 @@
   }
 }
 
+body[data-game-theme='code-vibes'] .card.is-matched .card__face--back {
+  border: 5px solid #4dd5bc;
+}
+
 // Gaming theme uses different card proportions and stronger shadows.
 body[data-game-theme='gaming'] {
   .field--16 {
