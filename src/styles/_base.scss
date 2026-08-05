@@ -61,6 +61,11 @@ body {
   font-family: Arial, sans-serif;
 }
 
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+}
+
 [hidden] {
   // Hidden should always really hide the element.
   display: none !important;

@@ -1,8 +1,7 @@
-// Home screen covers the app until Play is clicked.
+// Home screen fills the app shell until Play is clicked.
 .home-screen {
-  position: fixed;
-  inset: 0;
-  z-index: 5;
+  position: relative;
+  min-height: 100vh;
   overflow: hidden;
   background: #303131;
 

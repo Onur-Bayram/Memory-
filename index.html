@@ -15,154 +15,156 @@
     <script type="module" src="/src/ts/main.ts"></script>
   </head>
   <body>
-    <!-- Home screen: shown first and leads to the settings screen. -->
-    <main class="home-screen" id="home-screen">
-      <img class="home-screen__controller" src="/assets/shared/stadia_controller.png" alt="" />
+    <main class="app-shell">
+      <!-- Home screen: shown first and leads to the settings screen. -->
+      <section class="home-screen" id="home-screen" aria-label="Startseite">
+        <img class="home-screen__controller" src="/assets/shared/stadia_controller.png" alt="" />
 
-      <section class="home-screen__content" aria-label="Startseite">
-        <div class="home-screen__headline">
-          <p class="home-screen__eyebrow">It&apos;s play time.</p>
-          <h1 class="home-screen__text">Ready to play?</h1>
-        </div>
-        <button class="home-start" id="home-start" type="button" aria-label="Play">
-          <span class="home-start__controller" aria-hidden="true">
-            <img
-              class="home-start__controller-image home-start__controller-image--default"
-              src="/assets/code-vibes/stadia_controller.png"
-              alt=""
-            />
-            <img
-              class="home-start__controller-image home-start__controller-image--hover"
-              src="/assets/code-vibes/stadia_controller (1).png"
-              alt=""
-            />
-          </span>
-          <span class="home-start__label">Play</span>
-          <span class="home-start__arrow" aria-hidden="true"></span>
-        </button>
-      </section>
-    </main>
-
-    <!-- Settings: theme, first player and board size are selected here. -->
-    <main class="settings-screen" id="settings-screen" hidden>
-      <section class="settings-panel" aria-label="Memory Einstellungen">
-        <div class="settings-panel__inner">
-          <div class="settings-heading">
-            <h1 class="settings-title">Settings</h1>
-            <img class="settings-heading__line" src="/assets/code-vibes/Line 3.png" alt="" />
+        <div class="home-screen__content">
+          <div class="home-screen__headline">
+            <p class="home-screen__eyebrow">It&apos;s play time.</p>
+            <h1 class="home-screen__text">Ready to play?</h1>
           </div>
+          <button class="home-start" id="home-start" type="button" aria-label="Play">
+            <span class="home-start__controller" aria-hidden="true">
+              <img
+                class="home-start__controller-image home-start__controller-image--default"
+                src="/assets/code-vibes/stadia_controller.png"
+                alt=""
+              />
+              <img
+                class="home-start__controller-image home-start__controller-image--hover"
+                src="/assets/code-vibes/stadia_controller (1).png"
+                alt=""
+              />
+            </span>
+            <span class="home-start__label">Play</span>
+            <span class="home-start__arrow" aria-hidden="true"></span>
+          </button>
+        </div>
+      </section>
 
-          <div class="settings-layout">
-            <form class="settings-form" id="settings-form">
-              <fieldset class="settings-group">
-                <legend class="settings-group__title settings-group__title--themes">
-                  <img class="settings-group__title-icon settings-group__title-icon--themes" src="/assets/code-vibes/palette.png" alt="" />
-                  <span class="settings-group__title-text settings-group__title-text--themes">Game themes</span>
-                </legend>
-                <label class="settings-option">
-                  <input type="radio" name="theme" value="code-vibes" data-label="Code vibes theme" />
-                  <span>Code vibes theme</span>
-                </label>
-                <label class="settings-option">
-                  <input type="radio" name="theme" value="gaming" data-label="Gaming theme" />
-                  <span>Gaming theme</span>
-                </label>
-                <label class="settings-option">
-                  <input type="radio" name="theme" value="da-projects" data-label="DA Projects theme" />
-                  <span>DA Projects theme</span>
-                </label>
-                <label class="settings-option">
-                  <input type="radio" name="theme" value="foods" data-label="Foods theme" />
-                  <span>Foods theme</span>
-                </label>
-              </fieldset>
+      <!-- Settings: theme, first player and board size are selected here. -->
+      <section class="settings-screen" id="settings-screen" aria-label="Memory Einstellungen" hidden>
+        <div class="settings-panel">
+          <div class="settings-panel__inner">
+            <div class="settings-heading">
+              <h1 class="settings-title">Settings</h1>
+              <img class="settings-heading__line" src="/assets/code-vibes/Line 3.png" alt="" />
+            </div>
 
-              <fieldset class="settings-group">
-                <legend class="settings-group__title settings-group__title--player">
-                  <img class="settings-group__title-icon settings-group__title-icon--player" src="/assets/code-vibes/chess_pawn.png" alt="" />
-                  <span class="settings-group__title-text settings-group__title-text--player">Choose player</span>
-                </legend>
-                <label class="settings-option">
-                  <input type="radio" name="first-player" value="blue" data-label="Blue Player" />
-                  <span>Blue</span>
-                </label>
-                <label class="settings-option">
-                  <input type="radio" name="first-player" value="orange" data-label="Orange Player" />
-                  <span>Orange</span>
-                </label>
-              </fieldset>
+            <div class="settings-layout">
+              <form class="settings-form" id="settings-form">
+                <fieldset class="settings-group">
+                  <legend class="settings-group__title settings-group__title--themes">
+                    <img class="settings-group__title-icon settings-group__title-icon--themes" src="/assets/code-vibes/palette.png" alt="" />
+                    <span class="settings-group__title-text settings-group__title-text--themes">Game themes</span>
+                  </legend>
+                  <label class="settings-option">
+                    <input type="radio" name="theme" value="code-vibes" data-label="Code vibes theme" />
+                    <span>Code vibes theme</span>
+                  </label>
+                  <label class="settings-option">
+                    <input type="radio" name="theme" value="gaming" data-label="Gaming theme" />
+                    <span>Gaming theme</span>
+                  </label>
+                  <label class="settings-option">
+                    <input type="radio" name="theme" value="da-projects" data-label="DA Projects theme" />
+                    <span>DA Projects theme</span>
+                  </label>
+                  <label class="settings-option">
+                    <input type="radio" name="theme" value="foods" data-label="Foods theme" />
+                    <span>Foods theme</span>
+                  </label>
+                </fieldset>
 
-              <fieldset class="settings-group">
-                <legend class="settings-group__title settings-group__title--board">
-                  <img class="settings-group__title-icon settings-group__title-icon--board" src="/assets/code-vibes/style.png" alt="" />
-                  <span class="settings-group__title-text settings-group__title-text--board">Board size</span>
-                </legend>
-                <label class="settings-option">
-                  <input type="radio" name="board-size" value="16" data-label="Board-16 Cards" />
-                  <span>16 cards</span>
-                </label>
-                <label class="settings-option">
-                  <input type="radio" name="board-size" value="24" data-label="Board-24 Cards" />
-                  <span>24 cards</span>
-                </label>
-                <label class="settings-option">
-                  <input type="radio" name="board-size" value="36" data-label="Board-36 Cards" />
-                  <span>36 cards</span>
-                </label>
-              </fieldset>
-            </form>
+                <fieldset class="settings-group">
+                  <legend class="settings-group__title settings-group__title--player">
+                    <img class="settings-group__title-icon settings-group__title-icon--player" src="/assets/code-vibes/chess_pawn.png" alt="" />
+                    <span class="settings-group__title-text settings-group__title-text--player">Choose player</span>
+                  </legend>
+                  <label class="settings-option">
+                    <input type="radio" name="first-player" value="blue" data-label="Blue Player" />
+                    <span>Blue</span>
+                  </label>
+                  <label class="settings-option">
+                    <input type="radio" name="first-player" value="orange" data-label="Orange Player" />
+                    <span>Orange</span>
+                  </label>
+                </fieldset>
 
-            <div class="settings-preview-column">
-              <!-- Preview image changes to match the selected theme. -->
-              <section class="theme-preview" aria-label="Theme preview">
-                <img class="theme-preview__image" src="/assets/code-vibes/codevibetheme.png" alt="Memory theme preview" />
-              </section>
+                <fieldset class="settings-group">
+                  <legend class="settings-group__title settings-group__title--board">
+                    <img class="settings-group__title-icon settings-group__title-icon--board" src="/assets/code-vibes/style.png" alt="" />
+                    <span class="settings-group__title-text settings-group__title-text--board">Board size</span>
+                  </legend>
+                  <label class="settings-option">
+                    <input type="radio" name="board-size" value="16" data-label="Board-16 Cards" />
+                    <span>16 cards</span>
+                  </label>
+                  <label class="settings-option">
+                    <input type="radio" name="board-size" value="24" data-label="Board-24 Cards" />
+                    <span>24 cards</span>
+                  </label>
+                  <label class="settings-option">
+                    <input type="radio" name="board-size" value="36" data-label="Board-36 Cards" />
+                    <span>36 cards</span>
+                  </label>
+                </fieldset>
+              </form>
 
-              <!-- Step bar shows which selections are still missing. -->
-              <div class="settings-steps" aria-label="Settings steps">
-                <span class="settings-steps__text settings-steps__text--theme" id="selected-theme">Theme</span>
-                <span class="settings-steps__divider settings-steps__divider--theme"></span>
-                <span class="settings-steps__text settings-steps__text--player" id="selected-player">Player</span>
-                <span class="settings-steps__divider settings-steps__divider--player"></span>
-                <span class="settings-steps__text settings-steps__text--board" id="selected-board-size">Board size</span>
-                <button class="settings-start" id="settings-start" type="submit" form="settings-form" disabled>
-                  <span class="settings-start__icon" aria-hidden="true"></span>
-                  <span class="settings-start__text">Start</span>
-                </button>
+              <div class="settings-preview-column">
+                <!-- Preview image changes to match the selected theme. -->
+                <section class="theme-preview" aria-label="Theme preview">
+                  <img class="theme-preview__image" src="/assets/code-vibes/codevibetheme.png" alt="Memory theme preview" />
+                </section>
+
+                <!-- Step bar shows which selections are still missing. -->
+                <div class="settings-steps" aria-label="Settings steps">
+                  <span class="settings-steps__text settings-steps__text--theme" id="selected-theme">Theme</span>
+                  <span class="settings-steps__divider settings-steps__divider--theme"></span>
+                  <span class="settings-steps__text settings-steps__text--player" id="selected-player">Player</span>
+                  <span class="settings-steps__divider settings-steps__divider--player"></span>
+                  <span class="settings-steps__text settings-steps__text--board" id="selected-board-size">Board size</span>
+                  <button class="settings-start" id="settings-start" type="submit" form="settings-form" disabled>
+                    <span class="settings-start__icon" aria-hidden="true"></span>
+                    <span class="settings-start__text">Start</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-    </main>
 
-    <!-- Game screen: header plus card field. -->
-    <main class="game-content" hidden>
-      <header class="game-header">
-        <!-- Score for both players. -->
-        <section class="score-board" aria-label="Spielstand">
-          <div class="score-board__player score-board__player--blue">
-            <span class="score-board__marker"></span>
-            <span class="score-board__name">Blue</span>
-            <span class="score-board__points" id="blue-score">0</span>
-          </div>
-          <div class="score-board__player score-board__player--orange">
-            <span class="score-board__marker"></span>
-            <span class="score-board__name">Orange</span>
-            <span class="score-board__points" id="orange-score">0</span>
-          </div>
-        </section>
+      <!-- Game screen: header plus card field. -->
+      <section class="game-content" id="game-screen" aria-label="Memory Spiel" hidden>
+        <header class="game-header">
+          <!-- Score for both players. -->
+          <section class="score-board" aria-label="Spielstand">
+            <div class="score-board__player score-board__player--blue">
+              <span class="score-board__marker"></span>
+              <span class="score-board__name">Blue</span>
+              <span class="score-board__points" id="blue-score">0</span>
+            </div>
+            <div class="score-board__player score-board__player--orange">
+              <span class="score-board__marker"></span>
+              <span class="score-board__name">Orange</span>
+              <span class="score-board__points" id="orange-score">0</span>
+            </div>
+          </section>
 
-        <!-- Shows which player is currently active. -->
-        <section class="current-player" aria-label="Aktueller Spieler">
-          <span class="current-player__label">Current player:</span>
-          <span class="current-player__marker"></span>
-        </section>
+          <!-- Shows which player is currently active. -->
+          <section class="current-player" aria-label="Aktueller Spieler">
+            <span class="current-player__label">Current player:</span>
+            <span class="current-player__marker"></span>
+          </section>
 
-        <button class="exit-game" type="button" aria-label="Exit game"></button>
-      </header>
+          <button class="exit-game" type="button" aria-label="Exit game"></button>
+        </header>
 
-      <section id="field" aria-label="Memory Karten"></section>
+        <section id="field" aria-label="Memory Karten"></section>
+      </section>
     </main>
 
     <!-- Confirmation dialog shown before the player leaves the game. -->

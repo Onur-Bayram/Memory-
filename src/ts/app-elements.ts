@@ -41,7 +41,7 @@ export function getAppElements(): AppElements | null {
   const orangeScoreRef = document.getElementById('orange-score');
   const finalBlueScoreRef = document.getElementById('final-blue-score');
   const finalOrangeScoreRef = document.getElementById('final-orange-score');
-  const gameContentRef = document.querySelector<HTMLElement>('.game-content');
+  const gameContentRef = document.getElementById('game-screen');
   const gameOverRef = document.getElementById('game-over');
   const winnerScreenRef = document.getElementById('winner-screen');
   const winnerImageRef = document.querySelector<HTMLImageElement>('#winner-image');

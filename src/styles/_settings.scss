@@ -1,10 +1,7 @@
-// Settings is its own screen and may scroll vertically when space is tight.
+// Settings is a full-height section and may scroll vertically when space is tight.
 .settings-screen {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
+  min-height: 100vh;
   overflow-x: hidden;
-  overflow-y: auto;
   background: white;
   color: #303131;
 }
@@ -12,12 +9,12 @@
 // Inner container limits the width and centers the content.
 .settings-panel {
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
 
   &__inner {
     width: calc(100% - var(--settings-content-side-space));
     max-width: var(--settings-content-max);
-    min-height: 100%;
+    min-height: 100vh;
     margin: 0 auto;
     padding-top: var(--settings-top-space);
     padding-bottom: 48px;
@@ -246,9 +243,9 @@
   position: relative;
   display: grid;
   grid-template-areas: 'theme divider-theme player divider-player board start';
-  grid-template-columns: minmax(160px, 1.25fr) 18px minmax(126px, 1fr) 18px minmax(136px, 1fr) auto;
+  grid-template-columns: minmax(0, 1.25fr) 18px minmax(0, 1fr) 18px minmax(0, 1fr) auto;
   align-items: center;
-  column-gap: 14px;
+  column-gap: 10px;
   width: 100%;
   min-height: 80px;
   padding: 13px 20px;
@@ -262,6 +259,8 @@
     color: #aaa;
     line-height: 28px;
     min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
     transition: color 160ms ease-in-out;
   }
@@ -348,6 +347,7 @@
 // Start is only active when theme, player and board size are selected.
 .settings-start {
   grid-area: start;
+  justify-self: end;
   display: flex;
   align-items: center;
   justify-content: center;
