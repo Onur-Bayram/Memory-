@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="/assets/shared/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Red+Rose:wght@700&display=swap" rel="stylesheet" />
     <title>Memory</title>
     <!-- Vite starts the app through this TypeScript entry file. -->
     <script type="module" src="/src/ts/main.ts"></script>
@@ -18,7 +18,22 @@
 
       <section class="home-screen__content" aria-label="Startseite">
         <img class="home-screen__text" src="/assets/home/Text.png" alt="It's play time. Ready to play?" />
-        <button class="home-start" id="home-start" type="button" aria-label="Play"></button>
+        <button class="home-start" id="home-start" type="button" aria-label="Play">
+          <span class="home-start__controller" aria-hidden="true">
+            <img
+              class="home-start__controller-image home-start__controller-image--default"
+              src="/assets/code-vibes/stadia_controller.png"
+              alt=""
+            />
+            <img
+              class="home-start__controller-image home-start__controller-image--hover"
+              src="/assets/code-vibes/stadia_controller (1).png"
+              alt=""
+            />
+          </span>
+          <span class="home-start__label">Play</span>
+          <span class="home-start__arrow" aria-hidden="true"></span>
+        </button>
       </section>
     </main>
 
