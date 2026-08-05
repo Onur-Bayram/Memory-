@@ -89,7 +89,14 @@
   }
 
   &__title--themes {
-    background-position: 0 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    background: none;
+    text-indent: 0;
   }
 
   &__title--player {
@@ -100,6 +107,28 @@
     width: var(--settings-heading-board-width);
     height: var(--settings-heading-board-height);
     background-position: 0 var(--settings-heading-board-y);
+  }
+
+  &__title-icon--themes {
+    display: block;
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    flex: 0 0 auto;
+  }
+
+  &__title-text--themes {
+    display: flex;
+    align-items: center;
+    width: 204px;
+    height: 27px;
+    color: #303131;
+    font-family: Almarai, Arial, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1;
   }
 }
 
