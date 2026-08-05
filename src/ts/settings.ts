@@ -10,6 +10,8 @@ export function initSettingsSteps(
   selectedBoardSizeRef: HTMLElement,
   themePreviewImageRef: HTMLImageElement,
 ) {
+  initThemePreviewInteractions(settingsFormRef, themePreviewImageRef);
+
   // On load, the steps should already reflect the current form state.
   updateSettingsSteps(
     settingsFormRef,
@@ -76,13 +78,61 @@ function updateSettingsSteps(
   selectedThemeRef.textContent = themeLabel ?? 'Theme';
   selectedPlayerRef.textContent = playerLabel ?? 'Player';
   selectedBoardSizeRef.textContent = boardSizeLabel ?? 'Board size';
-  themePreviewImageRef.src = themePreviewImages[selectedTheme];
-  themePreviewImageRef.alt = `${themeLabel ?? 'Memory'} preview`;
+  setThemePreview(themePreviewImageRef, selectedTheme, themeLabel);
   // These classes control the yellow arrows and active texts in the step bar.
   settingsStepsRef.classList.toggle('settings-steps--has-theme', Boolean(themeLabel));
   settingsStepsRef.classList.toggle('settings-steps--has-player', Boolean(playerLabel));
   settingsStepsRef.classList.toggle('settings-steps--has-board', Boolean(boardSizeLabel));
   settingsStartButtonRef.disabled = !isComplete;
+}
+
+function initThemePreviewInteractions(settingsFormRef: HTMLFormElement, themePreviewImageRef: HTMLImageElement) {
+  if (settingsFormRef.dataset.themePreviewReady === 'true') {
+    return;
+  }
+
+  settingsFormRef.dataset.themePreviewReady = 'true';
+
+  const themeInputRefs = settingsFormRef.querySelectorAll<HTMLInputElement>('input[name="theme"]');
+
+  themeInputRefs.forEach((themeInputRef) => {
+    const optionRef = themeInputRef.closest('.settings-option');
+
+    if (!(optionRef instanceof HTMLLabelElement) || !isTheme(themeInputRef.value)) {
+      return;
+    }
+
+    const previewTheme = themeInputRef.value;
+    const previewLabel = themeInputRef.dataset.label;
+
+    optionRef.addEventListener('mouseenter', () => {
+      setThemePreview(themePreviewImageRef, previewTheme, previewLabel);
+    });
+
+    optionRef.addEventListener('mouseleave', () => {
+      restoreSelectedThemePreview(settingsFormRef, themePreviewImageRef);
+    });
+
+    themeInputRef.addEventListener('focus', () => {
+      setThemePreview(themePreviewImageRef, previewTheme, previewLabel);
+    });
+
+    themeInputRef.addEventListener('blur', () => {
+      restoreSelectedThemePreview(settingsFormRef, themePreviewImageRef);
+    });
+  });
+}
+
+function restoreSelectedThemePreview(settingsFormRef: HTMLFormElement, themePreviewImageRef: HTMLImageElement) {
+  const selectedTheme = getSelectedTheme(settingsFormRef);
+  const selectedThemeLabel = getSelectedLabel(settingsFormRef, 'theme');
+
+  setThemePreview(themePreviewImageRef, selectedTheme, selectedThemeLabel);
+}
+
+function setThemePreview(themePreviewImageRef: HTMLImageElement, theme: Theme, themeLabel?: string) {
+  themePreviewImageRef.src = themePreviewImages[theme];
+  themePreviewImageRef.alt = `${themeLabel ?? 'Memory'} preview`;
 }
 
 function getSelectedLabel(settingsFormRef: HTMLFormElement, fieldName: string) {
