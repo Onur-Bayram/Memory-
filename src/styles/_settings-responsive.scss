@@ -113,8 +113,18 @@
     --settings-option-arrow-line: 22px;
   }
 
-  .settings-title__image {
+  .settings-heading {
+    width: 200px;
+  }
+
+  .settings-title {
     width: 190px;
+    height: auto;
+    font-size: 42px;
+  }
+
+  .settings-heading__line {
+    width: 200px;
   }
 
   .settings-group__title {

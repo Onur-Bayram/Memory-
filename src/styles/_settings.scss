@@ -24,15 +24,35 @@
   }
 }
 
-// The heading comes from a Figma image.
-.settings-title {
-  margin: 0;
+.settings-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 263px;
+}
 
-  &__image {
-    display: block;
-    width: 263px;
-    height: auto;
-  }
+.settings-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 251px;
+  height: 67px;
+  margin: 0;
+  color: #303131;
+  font-family: 'Red Rose', serif;
+  font-size: 54px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  text-align: center;
+}
+
+.settings-heading__line {
+  display: block;
+  width: 263px;
+  height: auto;
+  margin-top: -10px;
 }
 
 // Left column: options. Right column: preview and start bar.
