@@ -277,7 +277,7 @@
   }
 }
 
-// Foods uses its own orange result screen with handwritten title artwork.
+// Foods uses real text for the game-over title.
 .game-over--foods {
   box-sizing: border-box;
   justify-content: flex-start;
@@ -285,17 +285,23 @@
   padding-top: clamp(180px, 31vh, 422px);
   background: #f3832d;
 
-  .game-over__title,
-  .game-over__label {
-    display: none;
+  .game-over__title {
+    width: min(770px, calc(100% - 48px));
+    min-height: 188px;
+    color: #ffffff;
+    font-family: 'Klee One', cursive;
+    font-size: 130px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1;
+    text-align: center;
+    text-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+    filter: none;
   }
 
-  .game-over__foods-title {
-    display: block;
-    width: 772px;
-    max-width: calc(100% - 48px);
-    height: auto;
-    filter: drop-shadow(0 5px 4px rgb(0 0 0 / 22%));
+  .game-over__label {
+    display: none;
   }
 
   .game-over__final-score {
