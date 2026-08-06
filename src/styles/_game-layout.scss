@@ -60,11 +60,23 @@
   display: flex;
   align-items: center;
   gap: var(--current-player-gap);
+  font-family: 'Red Rose', serif;
   font-size: var(--current-player-font-size);
-  font-weight: 700;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1;
   color: white;
 
+  &__label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    white-space: nowrap;
+  }
+
   &__marker {
+    flex: 0 0 auto;
     width: var(--current-player-marker-width);
     height: var(--current-player-marker-height);
     border-radius: 3px 14px 14px 3px;
@@ -103,6 +115,41 @@
   &:focus-visible {
     outline: 2px solid #54dfce;
     outline-offset: 4px;
+  }
+}
+
+// Code Vibes uses the exported label images for the two score markers.
+body[data-game-theme='code-vibes'] {
+  .current-player {
+    height: 32px;
+  }
+
+  .current-player__label {
+    flex: 0 0 188px;
+    width: 188px;
+    height: 32px;
+  }
+
+  .score-board__player {
+    gap: 6px;
+  }
+
+  .score-board__marker {
+    width: 24px;
+    height: 20px;
+    border-radius: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .score-board__player--blue .score-board__marker {
+    background-image: url('/assets/code-vibes/label (1).png');
+  }
+
+  .score-board__player--orange .score-board__marker {
+    background-image: url('/assets/code-vibes/label (2).png');
   }
 }
 

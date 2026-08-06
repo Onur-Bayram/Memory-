@@ -9,6 +9,7 @@
   justify-content: center;
   gap: 72px;
   background: #303131;
+  animation: game-over-slide-down 500ms ease-out;
   text-align: center;
 
   &[hidden] {

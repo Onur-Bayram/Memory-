@@ -1,3 +1,14 @@
+// Game-over slides in from the top before the final winner view appears.
+@keyframes game-over-slide-down {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
 // Winner screen slides in from the top after game over.
 @keyframes winner-slide-down {
   from {
