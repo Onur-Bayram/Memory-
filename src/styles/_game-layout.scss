@@ -106,6 +106,18 @@
   cursor: pointer;
   transition: transform 180ms ease-in-out, filter 180ms ease-in-out;
 
+  &__icon,
+  &__text {
+    display: none;
+  }
+
+  &__icon-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
   &:hover {
     background-image: var(--exit-game-hover-image, url('/assets/code-vibes/exit_game_unten.png'));
     filter: brightness(1.08);
@@ -150,6 +162,61 @@ body[data-game-theme='code-vibes'] {
 
   .score-board__player--orange .score-board__marker {
     background-image: url('/assets/code-vibes/label (2).png');
+  }
+
+  .exit-game {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 207px;
+    height: 62px;
+    padding: 16px 24px;
+    border: 1px solid #4dd5bc;
+    background: rgb(134 233 214 / 20%);
+    background-image: none;
+    color: #ffffff;
+    font-family: 'Red Rose', serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1;
+    transition: background-color 160ms ease-in-out, border-color 160ms ease-in-out, box-shadow 160ms ease-in-out;
+  }
+
+  .exit-game__icon,
+  .exit-game__text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .exit-game__icon {
+    flex: 0 0 auto;
+    width: 25.75px;
+    height: 22.5px;
+  }
+
+  .exit-game__text {
+    flex: 0 0 auto;
+    width: 119px;
+    height: 30px;
+    color: inherit;
+  }
+
+  .exit-game:hover {
+    background-image: none;
+    background-color: rgb(134 233 214 / 28%);
+    border-color: #86e9d6;
+    box-shadow: 0 0 0 1px rgb(77 213 188 / 16%);
+    filter: none;
+    transform: none;
+  }
+
+  .exit-game:focus-visible {
+    outline: 2px solid #4dd5bc;
+    outline-offset: 4px;
   }
 }
 
@@ -555,6 +622,26 @@ body[data-game-theme='foods'] {
     .current-player__marker {
       width: 31px;
       height: 30px;
+    }
+  }
+
+  body[data-game-theme='code-vibes'] {
+    .exit-game {
+      width: 186px;
+      height: 54px;
+      padding: 14px 20px;
+      gap: 8px;
+    }
+
+    .exit-game__icon {
+      width: 22px;
+      height: 19px;
+    }
+
+    .exit-game__text {
+      width: auto;
+      height: auto;
+      font-size: 21px;
     }
   }
 }

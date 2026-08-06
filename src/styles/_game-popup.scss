@@ -1,3 +1,8 @@
+body[data-game-theme='code-vibes'] .exit-popup__content,
+.exit-popup__content {
+  animation: exit-popup-slide-down 300ms ease-out;
+}
+
 // Popup buttons in the Gaming theme match the pink design.
 body[data-game-theme='gaming'] .exit-popup__actions {
   align-items: center;
