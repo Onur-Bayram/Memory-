@@ -175,7 +175,7 @@
     <!-- Confirmation dialog shown before the player leaves the game. -->
     <section class="exit-popup" id="exit-popup" aria-label="Exit game popup" hidden>
       <div class="exit-popup__content" role="dialog" aria-modal="true">
-        <h2 class="exit-popup__title">Are you sure you want to quit<br />the game?</h2>
+        <h2 class="exit-popup__title">Are you sure you want to<br />quit the game?</h2>
         <div class="exit-popup__actions">
           <button class="exit-popup__button exit-popup__back-button" type="button" data-da-label="Back to game">
             No, back to game
@@ -251,8 +251,8 @@
       <!-- DA Projects theme: custom draw screen made from Figma images. -->
       <div class="winner-screen__da-projects-draw">
         <div class="winner-screen__da-draw-text">
-          <img class="winner-screen__da-draw-small" src="/assets/da-projects/da_projects_draw_label.png" alt="It's a" />
-          <img class="winner-screen__da-draw-title" src="/assets/da-projects/da_projects_draw_title.png" alt="DRAW" />
+          <p class="winner-screen__da-draw-small">It's a</p>
+          <p class="winner-screen__da-draw-title">DRAW</p>
         </div>
         <img class="winner-screen__da-draw-icon" src="/assets/da-projects/da_projects_draw_scale.png" alt="" />
         <button class="winner-screen__da-home-button" type="button" aria-label="Home">
@@ -263,13 +263,8 @@
       <!-- DA Projects theme: custom winner screen for both players. -->
       <div class="winner-screen__da-projects-result">
         <div class="winner-screen__da-text">
-          <img class="winner-screen__da-headline" src="/assets/da-projects/winner.png" alt="The winner is" />
-          <img
-            class="winner-screen__da-player-name"
-            id="da-projects-winner-player-image"
-            src="/assets/da-projects/playero.png"
-            alt="Orange Player"
-          />
+          <p class="winner-screen__da-headline">The winner is</p>
+          <p class="winner-screen__da-player-name" id="da-projects-winner-player-title">Orange Player</p>
         </div>
         <img class="winner-screen__da-player-icon" id="da-projects-winner-icon" src="/assets/da-projects/Player.png" alt="" />
         <button class="winner-screen__da-home-button" type="button" aria-label="Home">

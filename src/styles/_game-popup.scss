@@ -83,15 +83,21 @@ body[data-game-theme='da-projects'] .exit-popup__content {
 }
 
 body[data-game-theme='da-projects'] .exit-popup__title {
-  width: 322px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 376px;
   max-width: 100%;
-  height: 66px;
+  height: 76px;
   margin: 0;
-  background-image: url('/assets/da-projects/da_projects_quit_title.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  font-size: 0;
+  color: #294f60;
+  font-family: Figtree, Arial, sans-serif;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 40px;
+  text-align: center;
 }
 
 body[data-game-theme='da-projects'] .exit-popup__actions {

@@ -949,14 +949,40 @@
   }
 
   .winner-screen__da-headline {
-    width: 233px;
-    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 253px;
+    max-width: 100%;
+    height: 37px;
+    margin: 0;
+    color: #ffffff;
+    font-family: Figtree, Arial, sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1;
+    text-align: center;
   }
 
   .winner-screen__da-player-name {
-    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 522px;
     max-width: 100%;
-    height: auto;
+    height: 96px;
+    margin: 0;
+    color: #ffffff;
+    font-family: Figtree, Arial, sans-serif;
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
   }
 
   .winner-screen__da-player-icon {
@@ -1032,15 +1058,42 @@
   }
 
   .winner-screen__da-draw-small {
-    width: 74px;
-    height: 29px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 253px;
+    max-width: 100%;
+    height: 37px;
+    margin: 0;
+    color: #ffffff;
+    font-family: Figtree, Arial, sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1;
+    text-align: center;
   }
 
   .winner-screen__da-draw-title {
-    width: 384px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 386px;
     max-width: 100%;
-    height: auto;
-    filter: drop-shadow(0 4px 4px rgb(0 0 0 / 25%));
+    height: 162px;
+    margin: 0;
+    color: #fd5b4f;
+    font-family: Figtree, Arial, sans-serif;
+    font-size: 128px;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 1;
+    text-align: center;
+    text-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+    text-transform: uppercase;
+    white-space: nowrap;
   }
 
   .winner-screen__da-draw-icon {

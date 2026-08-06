@@ -109,7 +109,6 @@ function showWinner(
   });
   updateGamingWinnerPlayerText(winner);
   updateDaProjectsWinnerImages(winner);
-  updateDaProjectsDrawImages(isDaProjectsDraw);
   updateFoodsWinnerImages(winner);
   winnerScreenRef.classList.toggle('winner-screen--gaming-result', isGamingWinner);
   winnerScreenRef.classList.toggle('winner-screen--gaming-draw', isGamingDraw);
@@ -190,44 +189,18 @@ function updateDaProjectsWinnerImages(winner: Winner) {
     return;
   }
 
-  const playerNameImageRef = document.getElementById('da-projects-winner-player-image') as HTMLImageElement | null;
+  const playerNameTitleRef = document.getElementById('da-projects-winner-player-title');
   const playerIconImageRef = document.getElementById('da-projects-winner-icon') as HTMLImageElement | null;
 
-  if (!playerNameImageRef || !playerIconImageRef) {
+  if (!playerNameTitleRef || !playerIconImageRef) {
     return;
   }
 
-  // DA Projects uses exported Figma images, so we swap both player graphics here.
-  const playerNameImage = winner === 'blue' ? daProjectsWinnerAssets.bluePlayerName : daProjectsWinnerAssets.orangePlayerName;
   const playerIconImage = winner === 'blue' ? daProjectsWinnerAssets.bluePlayerIcon : daProjectsWinnerAssets.orangePlayerIcon;
   const label = winner === 'blue' ? 'Blue Player' : 'Orange Player';
 
-  playerNameImageRef.src = getAssetUrl(playerNameImage);
-  playerNameImageRef.alt = label;
+  playerNameTitleRef.textContent = label;
   playerIconImageRef.src = getAssetUrl(playerIconImage);
-}
-
-function updateDaProjectsDrawImages(isDaProjectsDraw: boolean) {
-  if (!isDaProjectsDraw) {
-    return;
-  }
-
-  const labelImageRef = document.querySelector<HTMLImageElement>('.winner-screen__da-draw-small');
-  const titleImageRef = document.querySelector<HTMLImageElement>('.winner-screen__da-draw-title');
-  const scaleImageRef = document.querySelector<HTMLImageElement>('.winner-screen__da-draw-icon');
-
-  // DA Projects draw uses its own exported Figma images.
-  if (labelImageRef) {
-    labelImageRef.src = getAssetUrl(daProjectsWinnerAssets.drawLabel);
-  }
-
-  if (titleImageRef) {
-    titleImageRef.src = getAssetUrl(daProjectsWinnerAssets.drawTitle);
-  }
-
-  if (scaleImageRef) {
-    scaleImageRef.src = getAssetUrl(daProjectsWinnerAssets.drawScale);
-  }
 }
 
 function updateFoodsWinnerImages(winner: Winner) {

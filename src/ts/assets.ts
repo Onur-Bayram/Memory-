@@ -113,14 +113,8 @@ const daProjectsAssets = {
     'da-projects/da_project_card_18.png',
   ],
   winner: {
-    headline: 'da-projects/winner.png',
-    orangePlayerName: 'da-projects/playero.png',
-    bluePlayerName: 'da-projects/Bluep.png',
     orangePlayerIcon: 'da-projects/Player.png',
     bluePlayerIcon: 'da-projects/Playerb.png',
-    drawLabel: 'da-projects/da_projects_draw_label.png',
-    drawTitle: 'da-projects/da_projects_draw_title.png',
-    drawScale: 'da-projects/da_projects_draw_scale.png',
     homeButton: 'da-projects/button exit.png',
   },
 } as const;
