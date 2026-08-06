@@ -17,16 +17,20 @@
   }
 
   &__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(981.5048828125px, calc(100% - 48px));
+    min-height: 121.19993591308594px;
     margin: 0;
-    max-width: calc(100% - 48px);
-    color: #54dfce;
+    color: #4dd5bc;
     font-family: Georgia, 'Times New Roman', serif;
     font-size: 132px;
     font-weight: 700;
     line-height: 1;
     letter-spacing: 2px;
     text-rendering: geometricPrecision;
-    text-shadow: 0 2px 0 #37bbae, 0 6px 10px rgb(0 0 0 / 22%);
+    filter: drop-shadow(-7px 0 8px rgb(77 213 188 / 50%));
     -webkit-font-smoothing: antialiased;
   }
 
@@ -48,10 +52,20 @@
   }
 
   &__label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(323px, calc(100% - 48px));
+    height: 32px;
     margin: 0;
     color: white;
-    font-size: 27px;
-    font-weight: 600;
+    font-family: 'Red Rose', serif;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1;
+    text-align: center;
     text-rendering: geometricPrecision;
     -webkit-font-smoothing: antialiased;
   }
