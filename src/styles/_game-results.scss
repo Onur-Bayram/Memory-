@@ -34,8 +34,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  &__da-title,
-  &__da-label,
   &__foods-title,
   &__foods-label {
     display: none;
@@ -182,7 +180,7 @@
   }
 }
 
-// DA Projects uses its own Figma title images and a compact final score box.
+// DA Projects uses real text for the game-over screen.
 .game-over--da-projects {
   box-sizing: border-box;
   justify-content: flex-start;
@@ -190,31 +188,36 @@
   padding-top: 292px;
   background: #23839a;
 
-  .game-over__title,
-  .game-over__label {
-    display: none;
+  .game-over__title {
+    width: min(763px, calc(100% - 48px));
+    min-height: 156px;
+    color: #fd5b4f;
+    font-family: Figtree, Arial, sans-serif;
+    font-size: 130px;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 1;
+    text-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+    filter: none;
   }
 
-  .game-over__da-title,
   .game-over__final-score {
-    width: 969px;
+    width: 222px;
     max-width: calc(100% - 48px);
-  }
-
-  .game-over__da-title {
-    display: block;
-    height: auto;
-    filter: drop-shadow(0 4px 4px rgb(0 0 0 / 25%));
-  }
-
-  .game-over__final-score {
     gap: 12px;
   }
 
-  .game-over__da-label {
-    display: block;
-    width: 189px;
-    height: 30px;
+  .game-over__label {
+    width: 222px;
+    height: 37px;
+    color: #ffffff;
+    font-family: Figtree, Arial, sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1;
   }
 
   .game-over__score-board {
@@ -283,8 +286,6 @@
   background: #f3832d;
 
   .game-over__title,
-  .game-over__da-title,
-  .game-over__da-label,
   .game-over__label {
     display: none;
   }
