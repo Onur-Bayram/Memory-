@@ -83,16 +83,6 @@ const gamingAssets = {
     'gaming/motiv_17_spielkarte_sauber.png',
     'gaming/motiv_18_play_sauber.png',
   ],
-  winner: {
-    headline: 'gaming/The winner is.png',
-    bluePlayer: 'gaming/Blue Player.png',
-    orangePlayer: 'gaming/Orange Player.png',
-    trophy: 'gaming/pockal 1.png',
-    homeButton: 'gaming/game home.png',
-    drawLabel: 'gaming/gaming_draw_label.png',
-    drawTitle: 'gaming/gaming_draw_title.png',
-    drawScale: 'gaming/gaming_draw_scale.png',
-  },
 } as const;
 
 const daProjectsAssets = {
@@ -215,7 +205,6 @@ export const defaultWinnerIcons: Record<Exclude<Winner, 'draw'>, string> = {
 
 export const defaultWinnerDrawImage = getAssetUrl(defaultWinnerAssets.drawIcon);
 
-export const gamingWinnerAssets = gamingAssets.winner;
 export const daProjectsWinnerAssets = daProjectsAssets.winner;
 export const foodsWinnerAssets = foodsAssets.winner;
 

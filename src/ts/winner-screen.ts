@@ -3,7 +3,6 @@ import {
   defaultWinnerDrawImage,
   defaultWinnerIcons,
   foodsWinnerAssets,
-  gamingWinnerAssets,
   getAssetUrl,
 } from './assets';
 import { type Winner } from './game-data';
@@ -108,8 +107,7 @@ function showWinner(
     showFoodsResult: isFoodsWinner,
     showFoodsDraw: isFoodsDraw,
   });
-  updateGamingWinnerPlayerImage(winner);
-  updateGamingDrawImages(isGamingDraw);
+  updateGamingWinnerPlayerText(winner);
   updateDaProjectsWinnerImages(winner);
   updateDaProjectsDrawImages(isDaProjectsDraw);
   updateFoodsWinnerImages(winner);
@@ -170,42 +168,21 @@ function setWinnerPartVisibility(winnerScreenRef: HTMLElement, selector: string,
   }
 }
 
-function updateGamingWinnerPlayerImage(winner: Winner) {
-  const gamingWinnerPlayerImageRef = document.getElementById('gaming-winner-player-image') as HTMLImageElement | null;
+function updateGamingWinnerPlayerText(winner: Winner) {
+  const gamingWinnerPlayerTitleRef = document.getElementById('gaming-winner-player-title');
 
-  if (!gamingWinnerPlayerImageRef || winner === 'draw') {
+  if (!gamingWinnerPlayerTitleRef) {
     return;
   }
 
-  // In the Gaming theme, the player name comes from a Figma image.
-  const imageName = winner === 'blue' ? gamingWinnerAssets.bluePlayer : gamingWinnerAssets.orangePlayer;
-  const label = winner === 'blue' ? 'Blue Player' : 'Orange Player';
+  gamingWinnerPlayerTitleRef.classList.remove('winner-screen__gaming-player--orange');
 
-  gamingWinnerPlayerImageRef.src = getAssetUrl(imageName);
-  gamingWinnerPlayerImageRef.alt = label;
-}
-
-function updateGamingDrawImages(isGamingDraw: boolean) {
-  if (!isGamingDraw) {
+  if (winner === 'draw') {
     return;
   }
 
-  const labelImageRef = document.querySelector<HTMLImageElement>('.winner-screen__draw-small');
-  const titleImageRef = document.querySelector<HTMLImageElement>('.winner-screen__draw-title');
-  const scaleImageRef = document.querySelector<HTMLImageElement>('.winner-screen__draw-icon');
-
-  // Draw images are set here so old file names do not stay cached in the browser.
-  if (labelImageRef) {
-    labelImageRef.src = getAssetUrl(gamingWinnerAssets.drawLabel);
-  }
-
-  if (titleImageRef) {
-    titleImageRef.src = getAssetUrl(gamingWinnerAssets.drawTitle);
-  }
-
-  if (scaleImageRef) {
-    scaleImageRef.src = getAssetUrl(gamingWinnerAssets.drawScale);
-  }
+  gamingWinnerPlayerTitleRef.textContent = winner === 'blue' ? 'Blue Player' : 'Orange Player';
+  gamingWinnerPlayerTitleRef.classList.toggle('winner-screen__gaming-player--orange', winner === 'orange');
 }
 
 function updateDaProjectsWinnerImages(winner: Winner) {
