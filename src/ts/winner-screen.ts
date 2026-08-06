@@ -1,6 +1,7 @@
 import {
   daProjectsWinnerAssets,
-  defaultWinnerImages,
+  defaultWinnerDrawImage,
+  defaultWinnerIcons,
   foodsWinnerAssets,
   gamingWinnerAssets,
   getAssetUrl,
@@ -120,8 +121,8 @@ function showWinner(
   winnerScreenRef.classList.toggle('winner-screen--foods-draw', isFoodsDraw);
   winnerScreenRef.classList.toggle('winner-screen--draw', winner === 'draw' && isNormalResult);
   winnerScreenRef.classList.toggle('winner-screen--orange', winner === 'orange' && isNormalResult);
-  winnerImageRef.src = defaultWinnerImages[winner];
-  winnerImageRef.alt = getWinnerAltText(winner);
+  updateDefaultWinnerVisuals(winner, winnerImageRef);
+  updateDefaultWinnerPlayerText(winner);
   winnerScreenRef.hidden = false;
 }
 
@@ -279,12 +280,36 @@ function updateScore(scoreRef: HTMLElement, score: number) {
   scoreRef.textContent = score.toString();
 }
 
-function getWinnerAltText(winner: Winner) {
-  if (winner === 'draw') {
-    return 'It is a draw';
+function updateDefaultWinnerPlayerText(winner: Winner) {
+  const winnerPlayerTitleRef = document.getElementById('winner-player-title');
+
+  if (!winnerPlayerTitleRef || winner === 'draw') {
+    return;
   }
 
-  return `${winner} player wins`;
+  winnerPlayerTitleRef.textContent = winner === 'orange' ? 'ORANGE PLAYER' : 'BLUE PLAYER';
+}
+
+function updateDefaultWinnerVisuals(winner: Winner, winnerImageRef: HTMLImageElement) {
+  const winnerIconImageRef = document.getElementById('winner-icon-image') as HTMLImageElement | null;
+
+  if (!winnerIconImageRef) {
+    return;
+  }
+
+  if (winner === 'draw') {
+    winnerIconImageRef.hidden = true;
+    winnerImageRef.hidden = false;
+    winnerImageRef.src = defaultWinnerDrawImage;
+    winnerImageRef.alt = '';
+    return;
+  }
+
+  winnerIconImageRef.hidden = false;
+  winnerIconImageRef.src = defaultWinnerIcons[winner];
+  winnerIconImageRef.alt = '';
+  winnerImageRef.hidden = true;
+  winnerImageRef.alt = '';
 }
 
 function getWinner(blueScore: number, orangeScore: number): Winner {

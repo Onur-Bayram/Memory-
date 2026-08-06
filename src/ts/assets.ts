@@ -19,11 +19,11 @@ type ThemeButtonImages = {
   hover: string;
 };
 
-// Shared assets are used by more than one theme or by the default winner screen.
-const sharedAssets = {
-  blueWin: 'shared/bluewin.png',
-  orangeWin: 'shared/orangewin.png',
-  draw: 'shared/draw.png',
+// The default Code Vibes result screen uses dedicated large symbols.
+const defaultWinnerAssets = {
+  drawIcon: 'code-vibes/Scale_Icon (1).png',
+  bluePlayerIcon: 'code-vibes/Player.png',
+  orangePlayerIcon: 'code-vibes/Player (1).png',
 } as const;
 
 // Theme folders keep related previews, card backs, buttons and result assets together.
@@ -207,12 +207,13 @@ export const exitGameButtonImages: Record<Theme, ThemeButtonImages> = {
   },
 };
 
-// The default winner screen uses one image per result state.
-export const defaultWinnerImages: Record<Winner, string> = {
-  blue: getAssetUrl(sharedAssets.blueWin),
-  orange: getAssetUrl(sharedAssets.orangeWin),
-  draw: getAssetUrl(sharedAssets.draw),
+// The default winner screen now uses real text plus separate icon assets.
+export const defaultWinnerIcons: Record<Exclude<Winner, 'draw'>, string> = {
+  blue: getAssetUrl(defaultWinnerAssets.bluePlayerIcon),
+  orange: getAssetUrl(defaultWinnerAssets.orangePlayerIcon),
 };
+
+export const defaultWinnerDrawImage = getAssetUrl(defaultWinnerAssets.drawIcon);
 
 export const gamingWinnerAssets = gamingAssets.winner;
 export const daProjectsWinnerAssets = daProjectsAssets.winner;
