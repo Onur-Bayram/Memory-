@@ -166,7 +166,7 @@ body[data-game-theme='da-projects'] .exit-popup__exit-button {
   }
 }
 
-// Foods popup uses the delivered title and button images from the design export.
+// Foods popup uses real text for the title.
 body[data-game-theme='foods'] .exit-popup__content {
   box-sizing: border-box;
   display: flex;
@@ -182,15 +182,21 @@ body[data-game-theme='foods'] .exit-popup__content {
 }
 
 body[data-game-theme='foods'] .exit-popup__title {
-  width: 334px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 376px;
   max-width: 100%;
-  height: 65px;
+  height: 76px;
   margin: 0;
-  background-image: url('/assets/foods/Are you sure you want to quit the game_.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  font-size: 0;
+  color: #a45212;
+  font-family: 'Klee One', cursive;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 40px;
+  text-align: center;
 }
 
 body[data-game-theme='foods'] .exit-popup__actions {

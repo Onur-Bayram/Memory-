@@ -531,17 +531,25 @@ body[data-game-theme='foods'] {
   }
 
   .current-player {
+    flex: 0 0 auto;
     gap: 11px;
   }
 
   .current-player__label {
-    width: 226px;
-    height: 29px;
-    background-image: url('/assets/foods/foods_current_player.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    font-size: 0;
+    flex: 0 0 232px;
+    min-width: 232px;
+    justify-content: center;
+    width: 232px;
+    height: 46px;
+    color: #a45212;
+    font-family: 'Klee One', cursive;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
   }
 
   // Foods uses the existing player symbols beside the image label.
